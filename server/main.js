@@ -5,7 +5,10 @@ Meteor.startup(() => {
   Accounts.onCreateUser((options, user) => {
     user.profile = options.profile;
     user = Object.assign({
-      whatsapp: user.username,
+      whatsapp: {
+        number: user.username,
+        verified: false,
+      },
     }, user)
     delete user['username'];
     return user;

@@ -98,8 +98,6 @@ export default class Login extends Component {
     login = (event) => {
         event.preventDefault();
 
-        console.log('E - submit #form-login');
-
         Meteor.loginWithPassword(this.state.email, this.state.password, (err) => {
             if(err){
                 this.setState({
