@@ -65,30 +65,6 @@ const StyledGrid = withStyles({
 
 /*CSS*/
 
-const Title = styled.h1`
-    text-align: center;
-    font-family:'Monospace';
-    color: #FFFFFF;
-    margin-bottom: 0px;
-`;
-
-const SubTitle = styled.h1`
-    width: 600px;
-    text-align: center;
-    align-items: center;  
-    margin-top: 0px;
-    font-size: 1.5em;
-    color:  #FFFFFF;
-    font-family:'Monospace';
-`;
-
-const Background = styled.div`    
-    width:100vw;
-    height:100vh;
-    display: flex;
-    justify-content: space-around;
-    background-color: #000000;
-`;
 const LittleText = styled.a`
     font-size: 10px;
     text-align:center;
@@ -145,56 +121,47 @@ export default class Login extends Component {
 
     render() {
         return (
-            <Background>
-                <StyledGrid>
-                    <Hidden mdUp>
-                        <StyledGrid>
-                            <Title style={{"font-size": "5.0em"}}>chAIn</Title>
-                            <SubTitle style={{"font-size": "0.8em"}}>Conectando pessoas atráves de ideias</SubTitle>
-                        </StyledGrid>
-                    </Hidden>
-                    <StyledPaper>
-                        { this.state.error ? <p className="alert alert-danger">{ this.state.error }</p> : '' }
-                        <StyledAvatar>
-                            <FingerPrint/>
-                        </StyledAvatar>
-                        <StyledTypography fontSize={30}>
-                            Login
-                        </StyledTypography>
-                        <TextField
-                            id="email"
-                            label="Email"
-                            type="email"
-                            name="email"
-                            autoComplete="email"
-                            margin="normal"
-                            variant="outlined"
-                            value = {this.state.email}
-                            onKeyPress={this.enterPress}
-                            onChange = {this.handleChangeEmail}
-                        />
+            <StyledGrid>
+                <StyledPaper>
+                    { this.state.error ? <p className="alert alert-danger">{ this.state.error }</p> : '' }
+                    <StyledAvatar>
+                        <FingerPrint/>
+                    </StyledAvatar>
+                    <StyledTypography fontSize={30}>
+                        Login
+                    </StyledTypography>
+                    <TextField
+                        id="email"
+                        label="Email"
+                        type="email"
+                        name="email"
+                        autoComplete="email"
+                        margin="normal"
+                        variant="outlined"
+                        value = {this.state.email}
+                        onKeyPress={this.enterPress}
+                        onChange = {this.handleChangeEmail}
+                    />
 
-                        <TextField
-                            id="password"
-                            label="Password"
-                            type="password"
-                            autoComplete="current-password"
-                            margin="normal"
-                            variant="outlined"
-                            value = {this.state.password}
-                            onKeyPress={this.enterPress}
-                            onChange = {this.handleChangePassword}
-                        />
+                    <TextField
+                        id="password"
+                        label="Password"
+                        type="password"
+                        autoComplete="current-password"
+                        margin="normal"
+                        variant="outlined"
+                        value = {this.state.password}
+                        onKeyPress={this.enterPress}
+                        onChange = {this.handleChangePassword}
+                    />
 
-                        <LittleText> <Link to="/signup"> Ainda não tem uma conta? Clique aqui! </Link></LittleText>
-                        <StyledFab variant="extended" aria-label="Delete" onClick ={this.login}>
-                             <StyledNavigationIcon/>
-                             Enter
-                        </StyledFab>
-                    </StyledPaper>
-                </StyledGrid>
-            </Background>
-
+                    <LittleText> <Link to="/signup"> Ainda não tem uma conta? Clique aqui! </Link></LittleText>
+                    <StyledFab variant="extended" aria-label="Delete" onClick ={this.login}>
+                         <StyledNavigationIcon/>
+                         Enter
+                    </StyledFab>
+                </StyledPaper>
+            </StyledGrid>
         );
     }
 }
