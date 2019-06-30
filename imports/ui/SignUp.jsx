@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Meteor } from 'meteor/meteor';
-import { Link } from 'react-router-dom';
-import Paper from '@material-ui/core/Paper';
+import { Accounts } from 'meteor/accounts-base';
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Fab from '@material-ui/core/Fab';
-import NavigationIcon from '@material-ui/icons/Navigation';
-import Grid from '@material-ui/core/Grid';
-import Hidden from '@material-ui/core/Hidden';
-import FingerPrint from "@material-ui/icons/Fingerprint";
-import Avatar from '@material-ui/core/Avatar';
+import Container from '@material-ui/core/Container';
+import {Link} from "react-router-dom";
 
 const StyledAvatar = withStyles({
     root: {
@@ -73,13 +74,15 @@ const LittleText = styled.a`
 `;
 
 
-export default class Login extends Component {
+export default class SignUp extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            email: '',
-            password: '',
+            firstName: '',
+            lastName: '',
+            CPF: '',
+            username: '',
             error: '',
             redirect: false,
         };
