@@ -78,7 +78,7 @@ export default class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: '',
+            whatsapp: '',
             password: '',
             error: '',
             redirect: false,
@@ -87,8 +87,8 @@ export default class Login extends Component {
 
     /*FUNCTIONS*/
 
-    handleChangeEmail = event => {
-        this.setState({ email: event.target.value });
+    handleChangeWhatsapp = event => {
+        this.setState({ whatsapp: event.target.value });
     };
 
     handleChangePassword = event => {
@@ -98,7 +98,7 @@ export default class Login extends Component {
     login = (event) => {
         event.preventDefault();
 
-        Meteor.loginWithPassword(this.state.email, this.state.password, (err) => {
+        Meteor.loginWithPassword(this.state.whatsapp, this.state.password, (err) => {
             if(err){
                 this.setState({
                     error: err.reason
@@ -129,16 +129,16 @@ export default class Login extends Component {
                         Login
                     </StyledTypography>
                     <TextField
-                        id="email"
-                        label="Email"
-                        type="email"
-                        name="email"
-                        autoComplete="email"
+                        id="whatsapp"
+                        label="Whatsapp"
+                        type="whatsapp"
+                        name="whatsapp"
+                        autoComplete="whatsapp"
                         margin="normal"
                         variant="outlined"
-                        value = {this.state.email}
+                        value = {this.state.whatsapp}
                         onKeyPress={this.enterPress}
-                        onChange = {this.handleChangeEmail}
+                        onChange = {this.handleChangeWhatsapp}
                     />
 
                     <TextField
