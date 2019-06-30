@@ -9,7 +9,6 @@ import TextField from '@material-ui/core/TextField';
 import Fab from '@material-ui/core/Fab';
 import NavigationIcon from '@material-ui/icons/Navigation';
 import Grid from '@material-ui/core/Grid';
-import Hidden from '@material-ui/core/Hidden';
 import FingerPrint from "@material-ui/icons/Fingerprint";
 import Avatar from '@material-ui/core/Avatar';
 

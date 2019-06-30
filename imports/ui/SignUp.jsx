@@ -4,6 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
@@ -32,19 +33,15 @@ const StyledPaper = withStyles({
 
 })(Paper)
 
-const StyledFab = withStyles({
+const StyledButton = withStyles({
     root: {
-        margin : '8px',
+        marginTop: '24px',
+        marginLeft: '0px',
+        marginLeft: '0px',
+        marginBottom: '16px',
+
     },
-
-})(Fab)
-
-const StyledNavigationIcon = withStyles({
-    root: {
-        marginRight:'8px',
-    },
-
-})(NavigationIcon)
+})(Button)
 
 const StyledTypography = withStyles({
     root: {
@@ -158,7 +155,6 @@ export default class SignUp extends Component {
         return (
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
-                <Div>
                     { this.state.error ? <p className="alert alert-danger">{ this.state.error }</p> : '' }
                     <StyledAvatar>
                         <LockOutlinedIcon />
@@ -166,7 +162,7 @@ export default class SignUp extends Component {
                     <StyledTypography component="h1" variant="h5">
                         Sign up
                     </StyledTypography>
-                        <Form>
+                        <form>
                             <Grid container spacing={2}>
                             <Grid item xs={12} sm={6}>
                                 <TextField
@@ -237,9 +233,8 @@ export default class SignUp extends Component {
                         >
                             Sign Up
                         </StyledButton>
-                    </Form>
+                    </form>
                     {this.loginRoute()}
-                </Div>
                 <Box mt={5}>
                     <Typography variant="body2" color="textSecondary" align="center">
                         <Link to="/"> Volte para o login! </Link>
