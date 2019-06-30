@@ -82,89 +82,186 @@ export default class SignUp extends Component {
             firstName: '',
             lastName: '',
             CPF: '',
-            username: '',
+            whatsapp: '',
             error: '',
-            redirect: false,
+            password: '',
+            accountCreated: false,
         };
     }
 
     /*FUNCTIONS*/
 
-    handleChangeEmail = event => {
-        this.setState({ email: event.target.value });
+    handleChangeWhatsapp = event => {
+        this.setState({ whatsapp: event.target.value });
     };
 
     handleChangePassword = event => {
         this.setState({ password: event.target.value });
     };
 
-    login = (event) => {
-        event.preventDefault();
-
-        console.log('E - submit #form-login');
-
-        Meteor.loginWithPassword(this.state.email, this.state.password, (err) => {
-            if(err){
-                this.setState({
-                    error: err.reason
-                });
-            } else {
-                this.props.history.push('/');
-            }
-        });
-
+    handleChangeFirstName = event => {
+        this.setState({ firstName: event.target.value });
     };
 
+    handleChangeLastName = event => {
+        this.setState({ lastName: event.target.value });
+    };
+    handleChangeCPF = event => {
+        this.setState({ CPF: event.target.value });
+    };
+
+    createAccount = () => {
+        console.log('E - submit #form-signup');
+
+        let newUserData = {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            CPF: this.state.CPF,
+            whatsapp: this.state.whatsapp,
+            password: this.state.password,
+        };
+
+        if (newUserData.whatsapp !== '' && newUserData.password !== '' && newUserData.CPF !== '' && newUserData.firstName !== '' && newUserData.lastName !== '') {
+            console.log(newUserData);
+            Accounts.createUser(newUserData);
+            Meteor.call('insertUser', newUserData, (error) => {
+                if (error) {
+                    console.log(error);
+                    this.setState({ error: error.reason });
+                } else {
+                    Meteor.call('insertProfile', newUserData);
+                    this.state.accountCreated = true;
+                    console.log('Created Account');
+                }
+            });
+            console.log('Logged!');
+        } else {
+            this.setState({ error: 'Please provide all fields.'});
+        }
+    };
+    
     enterPress = event => {
         let code = event.key;
         if(code === 'Enter'){
-            this.login(event);
+            this.createAccount();
+        }
+    };
+
+    loginRoute = () => {
+        if (Meteor.userId())  {
+            Meteor.userId() ? this.props.history.push('/signup-subjects') : '';
         }
     };
 
     render() {
+
         return (
-            <StyledGrid>
-                <StyledPaper>
+            <Container component="main" maxWidth="xs">
+                <CssBaseline />
+                <Div>
                     { this.state.error ? <p className="alert alert-danger">{ this.state.error }</p> : '' }
                     <StyledAvatar>
-                        <FingerPrint/>
+                        <LockOutlinedIcon />
                     </StyledAvatar>
-                    <StyledTypography fontSize={30}>
+                    <StyledTypography component="h1" variant="h5">
                         Sign up
                     </StyledTypography>
-                    <TextField
-                        id="email"
-                        label="Email"
-                        type="email"
-                        name="email"
-                        autoComplete="email"
-                        margin="normal"
-                        variant="outlined"
-                        value = {this.state.email}
-                        onKeyPress={this.enterPress}
-                        onChange = {this.handleChangeEmail}
-                    />
+                        <Form>
+                            <Grid container spacing={2}>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    autoComplete="fname"
+                                    name="firstName"
+                                    variant="outlined"
+                                    required
+                                    fullWidth
+                                    id="firstName"
+                                    label="First Name"
+                                    value = {this.state.firstName}
+                                    onChange = {this.handleChangeFirstName}
+                                    onKeyPress={this.enterPress}
+                                />
 
-                    <TextField
-                        id="password"
-                        label="Password"
-                        type="password"
-                        autoComplete="current-password"
-                        margin="normal"
-                        variant="outlined"
-                        value = {this.state.password}
-                        onKeyPress={this.enterPress}
-                        onChange = {this.handleChangePassword}
-                    />
+                            </Grid>
+                            <Grid item xs = {12} sm={6}>
+                                <TextField
+                                    autoComplete="lname"
+                                    variant="outlined"
+                                    required
+                                    fullWidth
+                                    id="lastName"
+                                    label="Last Name"
+                                    name="lastName"
+                                    value = {this.state.lastName}
+                                    onChange = {this.handleChangeLastName}
+                                    onKeyPress={this.enterPress}
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    variant="outlined"
+                                    required
+                                    fullWidth
+                                    id="whatsapp"
+                                    label="Whatsapp"
+                                    name="whatsapp"
+                                    autoComplete="whatsapp"
+                                    value = {this.state.whatsapp}
+                                    onChange = {this.handleChangeWhatsapp}
+                                    onKeyPress={this.enterPress}
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    variant="outlined"
+                                    required
+                                    fullWidth
+                                    name="password"
+                                    label="Password"
+                                    type="password"
+                                    id="password"
+                                    autoComplete="current-password"
+                                    value = {this.state.password}
+                                    onChange = {this.handleChangePassword}
+                                    onKeyPress={this.enterPress}
+                                />
+                            </Grid>
 
-                    <LittleText> <Link to="/signup"> Ainda não tem uma conta? Clique aqui! </Link></LittleText>
-                    <StyledFab variant="extended" aria-label="Delete" onClick ={this.login}>
-                        <StyledNavigationIcon/>
-                        Enter
-                    </StyledFab>
-                </StyledPaper>
-            </StyledGrid>
+                        </Grid>
+                        <StyledButton
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                            onClick={this.createAccount}
+                        >
+                            Sign Up
+                        </StyledButton>
+                    </Form>
+                    {this.loginRoute()}
+                </Div>
+                <Box mt={5}>
+                    <Typography variant="body2" color="textSecondary" align="center">
+                        <Link to="/"> Volte para o login! </Link>
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" align="center">
+
+                        {'iNovaBank'}
+                        
+                        {' team.'}
+                    </Typography>
+                </Box>
+
+
+            </Container>
+
+
         );
     }
 }
+
+
+
+
+
+  
