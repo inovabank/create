@@ -10,7 +10,6 @@ Meteor.startup(() => {
         verified: false,
       },
     }, user);
-    delete user['username'];
     return user;
   });
 

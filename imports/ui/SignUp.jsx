@@ -70,6 +70,11 @@ const LittleText = styled.a`
     padding: 10px;
 `;
 
+const Form = styled.div`
+        width: 100%;
+        margin-top: 24px
+`;
+
 
 export default class SignUp extends Component {
 
@@ -123,6 +128,7 @@ export default class SignUp extends Component {
                 } else {
                     this.state.accountCreated = true;
                     console.log('Created Account');
+                    this.props.history.push('/');
                 }
             });
             console.log('Logged!');
@@ -139,8 +145,8 @@ export default class SignUp extends Component {
     };
 
     loginRoute = () => {
-        if (Meteor.userId())  {
-            Meteor.userId() ? this.props.history.push('/signup-subjects') : '';
+        if (Meteor.userId()) {
+            Meteor.userId() ? this.props.history.push('/') : '';
         }
     };
 
@@ -156,7 +162,7 @@ export default class SignUp extends Component {
                     <StyledTypography component="h1" variant="h5">
                         Sign up
                     </StyledTypography>
-                        <form>
+                        <Form>
                             <Grid container spacing={2}>
                             <Grid item xs={12}>
                                 <TextField
@@ -227,7 +233,7 @@ export default class SignUp extends Component {
                         >
                             Sign Up
                         </StyledButton>
-                    </form>
+                    </Form>
                     {this.loginRoute()}
                 <Box mt={5}>
                     <Typography variant="body2" color="textSecondary" align="center">
