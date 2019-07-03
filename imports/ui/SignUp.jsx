@@ -76,8 +76,7 @@ export default class SignUp extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstName: '',
-            lastName: '',
+            name: '',
             CPF: '',
             whatsapp: '',
             error: '',
@@ -96,13 +95,10 @@ export default class SignUp extends Component {
         this.setState({ password: event.target.value });
     };
 
-    handleChangeFirstName = event => {
-        this.setState({ firstName: event.target.value });
+    handleChangeName = event => {
+        this.setState({ name: event.target.value });
     };
 
-    handleChangeLastName = event => {
-        this.setState({ lastName: event.target.value });
-    };
     handleChangeCPF = event => {
         this.setState({ CPF: event.target.value });
     };
@@ -111,22 +107,20 @@ export default class SignUp extends Component {
         console.log('E - submit #form-signup');
 
         let newUserData = {
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            CPF: this.state.CPF,
-            whatsapp: this.state.whatsapp,
+            username: this.state.whatsapp,
             password: this.state.password,
+            profile: {
+                name: this.state.name,
+                cpf: this.state.CPF,
+            },
         };
 
-        if (newUserData.whatsapp !== '' && newUserData.password !== '' && newUserData.CPF !== '' && newUserData.firstName !== '' && newUserData.lastName !== '') {
-            console.log(newUserData);
-            Accounts.createUser(newUserData);
-            Meteor.call('insertUser', newUserData, (error) => {
+        if (newUserData.username !== '' && newUserData.password !== '' && newUserData.profile.cpf !== '' && newUserData.profile.name!== '') {
+            Accounts.createUser(newUserData, (error) => {
                 if (error) {
                     console.log(error);
                     this.setState({ error: error.reason });
                 } else {
-                    Meteor.call('insertProfile', newUserData);
                     this.state.accountCreated = true;
                     console.log('Created Account');
                 }
@@ -164,7 +158,7 @@ export default class SignUp extends Component {
                     </StyledTypography>
                         <form>
                             <Grid container spacing={2}>
-                            <Grid item xs={12} sm={6}>
+                            <Grid item xs={12}>
                                 <TextField
                                     autoComplete="fname"
                                     name="firstName"
@@ -172,26 +166,12 @@ export default class SignUp extends Component {
                                     required
                                     fullWidth
                                     id="firstName"
-                                    label="First Name"
-                                    value = {this.state.firstName}
-                                    onChange = {this.handleChangeFirstName}
+                                    label="Nome Completo"
+                                    value = {this.state.name}
+                                    onChange = {this.handleChangeName}
                                     onKeyPress={this.enterPress}
                                 />
 
-                            </Grid>
-                            <Grid item xs = {12} sm={6}>
-                                <TextField
-                                    autoComplete="lname"
-                                    variant="outlined"
-                                    required
-                                    fullWidth
-                                    id="lastName"
-                                    label="Last Name"
-                                    name="lastName"
-                                    value = {this.state.lastName}
-                                    onChange = {this.handleChangeLastName}
-                                    onKeyPress={this.enterPress}
-                                />
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
