@@ -212,6 +212,20 @@ export default class SignUp extends Component {
                                     variant="outlined"
                                     required
                                     fullWidth
+                                    id="CPF"
+                                    label="CPF"
+                                    name="CPF"
+                                    autoComplete="CPF"
+                                    value = {this.state.CPF}
+                                    onChange = {this.handleChangeCPF}
+                                    onKeyPress={this.enterPress}
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    variant="outlined"
+                                    required
+                                    fullWidth
                                     name="password"
                                     label="Password"
                                     type="password"
