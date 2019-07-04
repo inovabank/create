@@ -6,7 +6,9 @@ import PublicRoute from './PublicRoute';
 import PrivateRoute from './PrivateRoute';
 import Login from "./ui/Login";
 import SignUp from './ui/SignUp';
-import Calculator from './ui/Calculator';
+import Information from './ui/Information';
+import Create from './ui/Create';
+import PageNotFound from './PageNotFound';
 
 const browserHistory = createHistory();
 
@@ -15,8 +17,9 @@ export const renderRoutes = () => (
         <Switch>
             <PublicRoute exact path="/" component={Login}/>
             <PublicRoute exact path="/signup" component={SignUp}/>
-            <PublicRoute exact path="/calculator" component={Calculator}/>
-            <Route component={Login}/>
+            <PrivateRoute exact path="/information" component={Information}/>
+            <PrivateRoute exact path="/create" component={Create}/>
+            <Route component={PageNotFound}/>
         </Switch>
     </Router>
 );
