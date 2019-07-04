@@ -13,7 +13,7 @@ const PublicRoute = ({ component: Component, ...rest }) => {
                 isAuthenticated === false ? (
                     <Component {...props} />
                 ) : (
-                    <Redirect to={{ pathname: '/', state: { from: props.location } }} />
+                    <Redirect to={{ pathname: '/information', state: { from: props.location } }} />
                 )
             }
         />
