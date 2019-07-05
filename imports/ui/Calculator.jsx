@@ -144,7 +144,7 @@ export default class Calculator extends Component {
         this.state = {
             qtd: 500,
             show: 500,
-            qmeses: 1,
+            qmeses: 3,
         };
 
         this.myfunction.bind(this);

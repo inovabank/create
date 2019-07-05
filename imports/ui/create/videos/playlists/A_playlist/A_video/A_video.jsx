@@ -8,6 +8,11 @@ export default class A_video extends Component {
 
     constructor(props) {
         super(props);
+        this.Description = {
+            description: 'Descrição',
+            documents: 'Documentos',
+            links: 'Links',
+        };
     }
 
     /*FUNCTIONS*/
@@ -18,7 +23,7 @@ export default class A_video extends Component {
                 <Title />
                 <Video />
                 <Playlist />
-                <Description />
+                <Description {...this.Description}/>
             </main>
         );
     }
