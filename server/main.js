@@ -1,6 +1,7 @@
 import {Meteor} from 'meteor/meteor';
 import {Accounts} from 'meteor/accounts-base';
 import {Video} from '../imports/api/collections/schema';
+import {videos} from '../imports/api/insertVideo';
 
 Meteor.startup(() => {
   Accounts.onCreateUser((options, user) => {
