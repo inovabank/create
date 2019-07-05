@@ -1,5 +1,6 @@
-import { Meteor } from 'meteor/meteor';
-import { Accounts } from 'meteor/accounts-base';
+import {Meteor} from 'meteor/meteor';
+import {Accounts} from 'meteor/accounts-base';
+import {Video} from '../imports/api/collections/schema';
 
 Meteor.startup(() => {
   Accounts.onCreateUser((options, user) => {
@@ -32,6 +33,19 @@ Meteor.startup(() => {
       } else {
         throw new Meteor.Error("cpf.invalid", "Esse CPF já foi cadastrado!");
       }
+    },
+
+    'videoRoom': (url) => {
+      let videoId = Video.findOne({ url: url })._id;
+
+      return {
+        videoId: videoId,
+      };
+    },
+
+    'getVideoData': (pathname) => {
+      const id = pathname.split("/").pop();
+      return Video.findOne({_id: id});
     },
 
   });
