@@ -11,7 +11,7 @@ export default class Title extends Component {
     render() {
         return (
             <main>
-                Title
+                {this.props.title}
             </main>
         );
     }

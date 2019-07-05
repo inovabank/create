@@ -15,7 +15,10 @@ export default class VideoPage extends Component {
             documents: '',
             links: '',
             playlist_link: '',
-        };
+        },
+        this.Title = {
+            title: 'Cursos de (...)',
+        }
     }
 
     /*FUNCTIONS*/
@@ -42,7 +45,7 @@ export default class VideoPage extends Component {
     render() {
         return (
             <main>
-                <Title />
+                <Title {...this.Title}/>
                 <Video />
                 <Playlist />
                 <Description {...this.state}/>
