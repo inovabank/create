@@ -9,7 +9,7 @@ export default class A_video extends Component {
     constructor(props) {
         super(props);
         this.Title = {
-            title: 'oie',
+            title: 'Cursos de (...)',
         } 
 }
 
