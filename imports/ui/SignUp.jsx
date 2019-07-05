@@ -121,10 +121,14 @@ export default class SignUp extends Component {
         };
 
         if (newUserData.username !== '' && newUserData.password !== '' && newUserData.profile.cpf !== '' && newUserData.profile.name!== '') {
-            Accounts.createUser(newUserData, (error) => {
+            Meteor.call('createNewUser', newUserData, (error) => {
                 if (error) {
                     console.log(error);
-                    this.setState({ error: error.reason });
+                    if(error.reason === 'Username already exists.') {
+                        this.setState({ error: 'Esse whatsapp já foi cadastrado.'});
+                    } else {
+                        this.setState({ error: error.reason });
+                    }
                 } else {
                     this.state.accountCreated = true;
                     console.log('Created Account');
