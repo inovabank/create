@@ -52,7 +52,7 @@ export default class Description extends Component {
 
         function TabContainer(props) {
             return (
-                <Typography variant="h5" component="div" style={{ padding: 8 * 3 }}>
+                <Typography variant="h5" component="div" style={{ padding: "5% 5%" }}>
                     {props.children}
                 </Typography>
             );
@@ -69,9 +69,9 @@ export default class Description extends Component {
                         indicatorColor="primary"
                         textColor="primary"
                     >
-                        <StyledTab label="Descrição" icon={<Info />} />
-                        <StyledTab label="Documentos Usados" icon={<DescriptionIcon />} />
-                        <StyledTab label="Links úteis" icon={<Bookmark />} />
+                        <StyledTab label="Descrição"/>
+                        <StyledTab label="Documentos Usados" />
+                        <StyledTab label="Links úteis"/>
                     </StyledTabs>
                 </AppBar>
                 {this.state.value === 0 && <TabContainer>{this.props.description}</TabContainer>}
