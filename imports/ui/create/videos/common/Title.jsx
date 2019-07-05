@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class Title extends Component {
 
     constructor(props) {
-        super(props);
+        super(props); 
     }
 
     /*FUNCTIONS*/
@@ -11,7 +11,7 @@ export default class Title extends Component {
     render() {
         return (
             <main>
-                Title
+                {this.props.title}
             </main>
         );
     }

@@ -8,14 +8,17 @@ export default class A_video extends Component {
 
     constructor(props) {
         super(props);
-    }
+        this.Title = {
+            title: 'oie',
+        } 
+}
 
     /*FUNCTIONS*/
 
     render() {
         return (
             <main>
-                <Title />
+                <Title {...this.Title}/>
                 <Video />
                 <Playlist />
                 <Description />
