@@ -12,7 +12,7 @@ export default class Information extends Component {
     /*FUNCTIONS*/
 
     redirectToCreate = () => {
-        this.props.history.push('/create');
+        this.props.history.push('/video');
     };
 
     logout(e){
@@ -30,7 +30,7 @@ export default class Information extends Component {
         return (
             <main>
                 <h1>INFORMATION</h1>
-                <button onClick={this.redirectToCreate}>Vá para o CREATE</button>
+                <button onClick={this.redirectToCreate}>Vá para a página de vídeos</button>
                 <button onClick={this.logout}>Logout</button>
             </main>
         );

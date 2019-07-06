@@ -15,6 +15,7 @@ const StyledCard = withStyles({
     root: {
         maxWidth: 345,
         marginTop: 8,
+        marginLeft: 8,
     },
 })(Card)
 

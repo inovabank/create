@@ -1,4 +1,13 @@
 import React, { Component } from 'react';
+import HomeVideos from "./create/videos/HomeVideos";
+import {createMuiTheme, MuiThemeProvider} from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
+
+const theme = createMuiTheme({
+    palette: {
+        type: 'dark',
+    },
+});
 
 export default class Create extends Component {
 
@@ -23,8 +32,11 @@ export default class Create extends Component {
     render() {
         return (
             <main>
-                <h1>CREATE</h1>
-                <button onClick={this.logout}>Logout</button>
+                <MuiThemeProvider theme={theme} >
+                    <CssBaseline />
+                    <HomeVideos {...this.props} />
+                    <button onClick={this.logout}>Logout</button>
+                </MuiThemeProvider>
             </main>
         );
     }

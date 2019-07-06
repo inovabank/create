@@ -20,8 +20,7 @@ export const renderRoutes = () => (
             <PublicRoute exact path="/" component={Login}/>
             <PublicRoute exact path="/signup" component={SignUp}/>
             <PrivateRoute exact path="/information" component={Information}/>
-            <Route exact path="/create" component={Create}/>
-            <Route exact path="/video" component={HomeVideos}/>
+            <Route exact path="/video" component={Create}/>
             <Route exact path="/video/:videoId" component={VideoPage}/>
             <Route component={PageNotFound}/>
         </Switch>
