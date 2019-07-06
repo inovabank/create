@@ -12,6 +12,9 @@ export default class Video extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            video: '',
+        }
     }
 
     /*FUNCTIONS*/
@@ -19,10 +22,10 @@ export default class Video extends Component {
     render() {
         return (
             <main>
-                <Iframe 
-                src="https://www.youtube.com/embed/vNHSaU8tCbY" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                <Iframe
+                src={this.props.url}
+                frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen>
                 </Iframe>
             </main>

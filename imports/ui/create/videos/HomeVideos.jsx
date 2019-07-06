@@ -17,7 +17,7 @@ export default class HomeVideos extends Component {
         let videosList;
         videosList = (
             allVideos.map((video) => (
-                <VideoIcon {...video} {...this.props} />
+                <VideoIcon {...{...this.props, ...video}} />
             ))
         );
         this.setState(() => ({
