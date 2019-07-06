@@ -5,11 +5,25 @@ import Video from './common/Video';
 import Playlist from './common/Playlist';
 import styled from 'styled-components';
 import VideoIconPlaylist from "./VideoIconPlaylist";
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
+const theme = createMuiTheme({
+    palette: {
+        type: 'dark',
+    },
+});
+const Body = styled.body`
+    height:100%;
+`;
 const Main = styled.div`
     padding:5% 20%;
 `;
-
+const TitleColumn = styled.div`
+    width:67%;
+    display:inline-block;
+    vertical-align:top;
+`;
 const FirstColumn = styled.div`
     width: 67%;
     vertical-align:top;
@@ -17,11 +31,11 @@ const FirstColumn = styled.div`
     padding: 0 0 1% 0;
 `;
 const SecondColumn = styled.div`
-    background-color:black;
     width:33%;
     color:white;
     height:22.5vw;
     display:inline-block;  
+    background-color:#212121;
     padding: 0 0 1% 0;
     vertical-align:top;
 `;
@@ -73,18 +87,26 @@ export default class VideoPage extends Component {
         });
     };
 
+
     render() {
         return (
-            <Main>
-                <Title {...this.state}/>
-                <FirstColumn>
-                    <Video {...this.state}/>
-                </FirstColumn>
-                <SecondColumn>
-                    <Playlist {...this.state}/>
-                </SecondColumn>
-                <Description {...this.state}/>
-            </Main>
+            <Body>
+                <Main>
+                    <MuiThemeProvider theme={theme} >
+                        <CssBaseline />
+                        <TitleColumn>
+                            <Title {...this.state}/>
+                        </TitleColumn>
+                        <FirstColumn>
+                            <Video {...this.state}/>
+                        </FirstColumn>
+                        <SecondColumn>
+                            <Playlist {...this.state}/>
+                        </SecondColumn>
+                        <Description {...this.state}/>
+                    </MuiThemeProvider>
+                 </Main>
+            </Body>
         );
     }
 }

@@ -6,11 +6,24 @@ import {Redirect} from "react-router";
 
 const StyledButton = withStyles({
     root: {
-        marginTop: '8px',
+        marginTop: '0',
         fontSize: 12,
+        color: 'white',
+        borderRadius:'0',
+        padding: '1% 3%'
 
     },
 })(Button)
+
+const sel={
+    backgroundColor:'#121212',
+    fontWeight:'bold',
+    textAlign:'left',
+};
+const notsel={
+    backgroundColor:'#212121',
+    textAlign:'left',
+};
 
 
 const Wrapper = styled.div`
@@ -68,7 +81,7 @@ export default class VideoIcon extends Component {
                         type="submit"
                         fullWidth
                         variant="contained"
-                        color={this.state.id === this.props.history.location.pathname.split("/").pop() ? "secondary" : "primary"}
+                        style={this.state.id === this.props.history.location.pathname.split("/").pop() ? sel : notsel}
                         onClick={this.startVideo.bind(this)}
                     >
                         {this.props.title}

@@ -15,6 +15,7 @@ const StyledGrid = withStyles({
         flexGrow: 1,
         width: '100%',
         justifyContent: 'center',
+        
     },
 })(Grid)
 
@@ -22,15 +23,19 @@ const StyledTabs = withStyles({
     root: {
         display: 'flex',
         justifyContent: 'center',
+        color:'white',
+
     },
+
 })(Tabs)
 
 const StyledTab = withStyles({
     root: {
         fontSize: 12,
+        color:'white',
     },
-})(Tab)
 
+})(Tab)
 
 export default class Description extends Component {
 
@@ -64,6 +69,7 @@ export default class Description extends Component {
                     <StyledTabs
                         value={this.state.value}
                         onChange={this.handleChange}
+                        style = {{color:'white',}}
                         variant="scrollable"
                         scrollButtons="on"
                         indicatorColor="primary"
