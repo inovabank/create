@@ -4,6 +4,7 @@ import Title from './common/Title';
 import Video from './common/Video';
 import Playlist from './common/Playlist';
 import styled from 'styled-components';
+import VideoIconPlaylist from "./VideoIconPlaylist";
 
 const Main = styled.div`
     padding:5% 20%;
@@ -30,49 +31,57 @@ export default class VideoPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            id: '',
             title: '',
             url: '',
             description: 'Descricao',
             documents: 'Documentos',
-            links: 'L   inks',
+            links: 'Links',
             playlist_link: '',
-        },
-        this.Title = {
-            title: 'Cursos de (...)',
-        }
+            playlist: '',
+        };
     }
 
     /*FUNCTIONS*/
-    /*componentDidMount() {
+    componentDidMount() {
         let location = this.props.history.location.pathname;
+        let playlist;
 
         Meteor.call('getVideoData', location, (error, response) => {
             if(error) {
                 console.log(error.reason);
             } 
             else {
+                playlist = (
+                    response.playlist.map((video) => (
+                        <VideoIconPlaylist {...{...this.props, ...video}} />
+                    ))
+                );
+
                 this.setState({
-                    title: response.title,
-                    url: response.url,
-                    description: response.description,
-                    documents: response.documents,
-                    links: response.links,
-                    playlist_link: response.playlist_link,
+                    id: response.data._id,
+                    title: response.data.title,
+                    url: response.data.url,
+                    description: response.data.description,
+                    documents: response.data.documents,
+                    links: response.data.links,
+                    playlist_link: response.data.playlist_link,
+                    playlist: playlist,
                 });
+
             }
         });
-
-    }*/
+    };
 
     render() {
         return (
             <Main>
-                <Title />
+                <Title {...this.state}/>
                 <FirstColumn>
-                    <Video />
+                    <Video {...this.state}/>
                 </FirstColumn>
                 <SecondColumn>
-                    <Playlist />
+                    <Playlist {...this.state}/>
                 </SecondColumn>
                 <Description {...this.state}/>
             </Main>

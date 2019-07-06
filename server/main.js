@@ -46,8 +46,11 @@ Meteor.startup(() => {
 
     'getVideoData': (pathname) => {
       const id = pathname.split("/").pop();
-      return Video.findOne({_id: id});
+      const videoData = Video.findOne({_id: id});
+      return {
+        data: videoData,
+        playlist: Video.find({playlist_link: videoData.playlist_link}).fetch()
+      }
     },
-
   });
 });
