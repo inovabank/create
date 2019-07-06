@@ -31,6 +31,7 @@ export default class VideoPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            id: '',
             title: '',
             url: '',
             description: 'Descricao',
@@ -51,11 +52,11 @@ export default class VideoPage extends Component {
                 console.log(error.reason);
             } 
             else {
-            	playlist = (
-            		response.playlist.map((Video) => (
-            			<VideoIconPlaylist {...{...this.props, ...video}} />
-            			))
-            		);
+                playlist = (
+                    response.playlist.map((video) => (
+                        <VideoIconPlaylist {...{...this.props, ...video}} />
+                    ))
+                );
 
                 this.setState({
                     id: response.data._id,
@@ -67,10 +68,10 @@ export default class VideoPage extends Component {
                     playlist_link: response.data.playlist_link,
                     playlist: playlist,
                 });
+
             }
         });
-
-    }*/
+    };
 
     render() {
         return (
