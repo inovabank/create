@@ -35,8 +35,6 @@ module.exports = {
       image: 'abernix/meteord:node-8.4.0-base',
     },
 
-    deployCheckWaitTime: 60,
-
     // Show progress bar while uploading bundle to server
     // You might need to disable it on CI servers
     enableUploadProgressBar: true
