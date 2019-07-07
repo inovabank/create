@@ -10,7 +10,7 @@ export default class Information extends Component {
 
     /*FUNCTIONS*/
 
-    // Acrescentar coisas do Mifos
+    // 1. Acrescentar coisas do Mifos
 
     logout(e){
         e.preventDefault();
