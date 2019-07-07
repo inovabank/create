@@ -2,7 +2,7 @@ module.exports = {
   servers: {
     one: {
       // TODO: set host address, username, and authentication method
-      host: '3.13.75.5',
+      host: '3.13.70.138',
       username: 'ubuntu',
       pem: '~/.ssh/create.pem'
       // password: 'server-password'
@@ -27,13 +27,15 @@ module.exports = {
       // TODO: Change to your app's url
       // If you are using ssl, it needs to start with https://
       ROOT_URL: 'https://inovabank.meteorapp.com',
-      MONGO_URL: 'mongodb+srv://rubens:@U1vd0NphH6ugNUKyinovabank-odcfn.mongodb.net/test?retryWrites=true&w=majority',
+      MONGO_URL: 'mongodb+srv://rubens:U1vd0NphH6ugNUKy@inovabank-odcfn.mongodb.net/test?retryWrites=true&w=majority',
     },
 
     docker: {
       // change to 'abernix/meteord:base' if your app is using Meteor 1.4 - 1.5
       image: 'abernix/meteord:node-8.4.0-base',
     },
+
+    deployCheckWaitTime: 60,
 
     // Show progress bar while uploading bundle to server
     // You might need to disable it on CI servers
