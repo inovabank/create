@@ -5,15 +5,12 @@ export default class Information extends Component {
     constructor(props) {
         super(props);
 
-        this.redirectToCreate = this.redirectToCreate.bind(this);
         this.logout = this.logout.bind(this);
     }
 
     /*FUNCTIONS*/
 
-    redirectToCreate = () => {
-        this.props.history.push('/video');
-    };
+    // Acrescentar coisas do Mifos
 
     logout(e){
         e.preventDefault();
@@ -29,8 +26,7 @@ export default class Information extends Component {
     render() {
         return (
             <main>
-                <h1>INFORMATION</h1>
-                <button onClick={this.redirectToCreate}>Vá para a página de vídeos</button>
+                <h1>MINHA CONTA</h1>
                 <button onClick={this.logout}>Logout</button>
             </main>
         );
