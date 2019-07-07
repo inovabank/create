@@ -3,7 +3,6 @@ import styled from 'styled-components'
 
 const MainTitle = styled.div`
     font-size:3rem;
-    padding:0 4%
 `;
 const DescriptionTitle = styled.div`
     color:gray;

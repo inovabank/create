@@ -35,7 +35,6 @@ export default class Create extends Component {
                 <MuiThemeProvider theme={theme} >
                     <CssBaseline />
                     <HomeVideos {...this.props} />
-                    <button onClick={this.logout}>Logout</button>
                 </MuiThemeProvider>
             </main>
         );

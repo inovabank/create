@@ -11,6 +11,7 @@ import Create from './ui/Create';
 import VideoPage from './ui/create/videos/VideoPage';
 import HomeVideos from './ui/create/videos/HomeVideos';
 import PageNotFound from './PageNotFound';
+import MenuPage from "./ui/MenuPage";
 
 const browserHistory = createHistory();
 
@@ -19,6 +20,7 @@ export const renderRoutes = () => (
         <Switch>
             <PublicRoute exact path="/" component={Login}/>
             <PublicRoute exact path="/signup" component={SignUp}/>
+            <PrivateRoute exact path="/menu" component={MenuPage}/>
             <PrivateRoute exact path="/information" component={Information}/>
             <Route exact path="/video" component={Create}/>
             <Route exact path="/video/:videoId" component={VideoPage}/>

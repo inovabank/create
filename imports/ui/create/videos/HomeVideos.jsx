@@ -1,14 +1,18 @@
 import React, {Component} from 'react';
 import VideoIcon from './VideoIcon';
 import {allVideos} from '../../../../lib/allVideos';
-import {withStyles} from '@material-ui/core/styles';
+import {MuiThemeProvider, withStyles} from '@material-ui/core/styles';
 import Grid from "@material-ui/core/Grid";
 import styled from "styled-components";
+import Title from "./common/Title";
 
 
 const Main = styled.div`
-    padding: 0% 0%;
-`;
+    padding:2% 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    `;
 
 const Body = styled.body`
     height:100%;
@@ -75,6 +79,7 @@ export default class HomeVideos extends Component {
     render() {
         return (
             <Main>
+            <Title title={"Aprenda com quem faz!"} />
             <StyledGrid>
                 {this.state.videosList}
             </StyledGrid>

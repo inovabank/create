@@ -19,14 +19,6 @@ const StyledCard = withStyles({
     },
 })(Card)
 
-
-const StyledCardMedia = withStyles({
-    root: {
-        height: 140,
-    },
-})(CardMedia)
-
-
 const Wrapper = styled.div`
     overflow-y: auto;
 `;
@@ -87,7 +79,6 @@ export default class VideoIcon extends Component {
                 <Wrapper>
                     <StyledCard>
                         <CardActionArea onClick={this.startVideo.bind(this)}>
-
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="h2">
                                     {this.props.title}
