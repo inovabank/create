@@ -6,7 +6,6 @@ import PublicRoute from './PublicRoute';
 import PrivateRoute from './PrivateRoute';
 import Login from "./ui/Login";
 import SignUp from './ui/SignUp';
-import Information from './ui/Information';
 import Create from './ui/Create';
 import VideoPage from './ui/create/videos/VideoPage';
 import HomeVideos from './ui/create/videos/HomeVideos';
@@ -19,7 +18,6 @@ export const renderRoutes = () => (
         <Switch>
             <PublicRoute exact path="/" component={Login}/>
             <PublicRoute exact path="/signup" component={SignUp}/>
-            <PrivateRoute exact path="/information" component={Information}/>
             <Route exact path="/video" component={Create}/>
             <Route exact path="/video/:videoId" component={VideoPage}/>
             <Route component={PageNotFound}/>
