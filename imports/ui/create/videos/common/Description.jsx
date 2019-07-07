@@ -15,6 +15,7 @@ const StyledGrid = withStyles({
         flexGrow: 1,
         width: '100%',
         justifyContent: 'center',
+        backgroundColor:'#212121',
         
     },
 })(Grid)

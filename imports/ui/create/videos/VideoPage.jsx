@@ -3,6 +3,7 @@ import Description from './common/Description';
 import Title from './common/Title';
 import Video from './common/Video';
 import Playlist from './common/Playlist';
+import Picture from './common/Picture'
 import styled from 'styled-components';
 import VideoIconPlaylist from "./VideoIconPlaylist";
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -14,32 +15,65 @@ const theme = createMuiTheme({
         type: 'dark',
     },
 });
-const Body = styled.body`
-    height:100%;
-`;
 const Main = styled.div`
     padding:5% 20%;
+    @media screen and (max-width:1100px)
+    {
+        padding: 5% 5%;
+    }
 `;
 const TitleColumn = styled.div`
     width:67%;
     display:inline-block;
-    vertical-align:top;
+`;
+const PictureColumn = styled.div`
+    width:33%;
+    display:inline-block;
 `;
 const FirstColumn = styled.div`
-    width: 67%;
     vertical-align:top;
+    width:67%;
     display:inline-block;
     padding: 0 0 1% 0;
+    @media screen and (max-width:1100px){
+        display:block;
+        width:100%;
+    }
 `;
 const SecondColumn = styled.div`
-    width:33%;
+    width:32%;
     color:white;
     height:22.5vw;
     display:inline-block;  
     background-color:#212121;
+    margin-left:5px;
     padding: 0 0 1% 0;
     vertical-align:top;
+    @media screen and (max-width:1100px){
+        width:32%;
+    }
+    @media screen and (max-width:767px){
+        margin-top:5px;
+        margin-left:0px;
+        width:100%
+    }
 `;
+const DescriptionArea = styled.div`
+    width:100%;
+    @media screen and (max-width:1100px){
+        width:67%;
+        display:inline-block;
+    }
+    @media screen and (max-width:767px){
+        width:100%
+    }
+`;
+const show = {
+    display: 'inline-block',
+}
+const hide = {
+    display: 'none',
+}
 
 export default class VideoPage extends Component {
 
@@ -54,13 +88,18 @@ export default class VideoPage extends Component {
             links: 'Links',
             playlist_link: '',
             playlist: '',
+            width: 0, 
+            height: 0
         };
+        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
 
     /*FUNCTIONS*/
     componentDidMount() {
         let location = this.props.history.location.pathname;
         let playlist;
+        this.updateWindowDimensions();
+        window.addEventListener('resize', this.updateWindowDimensions);
 
         Meteor.call('getVideoData', location, (error, response) => {
             if(error) {
@@ -87,28 +126,41 @@ export default class VideoPage extends Component {
             }
         });
     };
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updateWindowDimensions);
+      }
+      
+    updateWindowDimensions() {
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
+    }
 
 
     render() {
         return (
-            <Body>
                 <Main>
                     <MuiThemeProvider theme={theme} >
                         <CssBaseline />
                         <TitleColumn>
                             <Title {...this.state}/>
                         </TitleColumn>
+                        <PictureColumn>
+                            <Picture />
+                        </PictureColumn>
                         <FirstColumn>
                             <Video {...this.state}/>
                         </FirstColumn>
-                        <SecondColumn>
+                        <SecondColumn style={this.state.width>1100 ? show:hide} >
                             <Playlist {...this.state}/>
                         </SecondColumn>
-                        <Description {...this.state}/>
+                        <DescriptionArea>
+                            <Description {...this.state}/>
+                        </DescriptionArea>
+                        <SecondColumn style={this.state.width>1100 ? hide:show} >
+                            <Playlist {...this.state}/>
+                        </SecondColumn>
                         <HomeVideos {...{...this.props, ...this.state}}/>
                     </MuiThemeProvider>
                  </Main>
-            </Body>
         );
     }
 }

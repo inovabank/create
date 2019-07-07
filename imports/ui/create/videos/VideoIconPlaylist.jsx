@@ -10,7 +10,6 @@ const StyledButton = withStyles({
         fontSize: 12,
         color: 'white',
         borderRadius:'0',
-        padding: '1% 3%'
 
     },
 })(Button)
