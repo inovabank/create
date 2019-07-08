@@ -40,6 +40,7 @@ export default class Account extends Component {
                 <WrapperBar >
                     <BarTop {...this.props}/>
                 </WrapperBar>
+                <h1>MINHA CONTA</h1>
             </PageWrapper>
         );
     }
