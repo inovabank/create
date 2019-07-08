@@ -66,7 +66,7 @@ export default class MenuPage extends Component {
     };
 
     redirectToInformation = () => {
-        this.props.history.push('/information');
+        this.props.history.push('/account');
     };
 
     logout(e){
