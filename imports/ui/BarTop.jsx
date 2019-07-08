@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
 import Logout from './Logout';
+import HomePage from './HomePage';
 
 const Wrapper = styled.div`
     align-self: center;
@@ -40,6 +41,7 @@ export default class BarTop extends React.Component {
                         <StyledTypography variant="h6">
                         iNovaBank
                         </StyledTypography>
+                        <HomePage {...this.props}/>
                         <Logout {...this.props}/>
                     </Toolbar>
                 </StyledGrid>

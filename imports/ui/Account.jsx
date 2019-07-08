@@ -30,6 +30,18 @@ export default class Account extends Component {
         return { isAuthenticated: Meteor.userId() !== null };
     }
 
+    componentWillMount(){
+        if (!this.state.isAuthenticated) {
+            this.props.history.push('/video');
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        if (!this.state.isAuthenticated) {
+            this.props.history.push('/video');
+        }
+    }
+
     /*FUNCTIONS*/
 
     // 1. Acrescentar coisas do Mifos
