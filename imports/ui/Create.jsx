@@ -15,9 +15,15 @@ export default class Create extends Component {
         super(props);
 
         this.logout = this.logout.bind(this);
+        this.redirectToAccount = this.redirectToAccount.bind(this);
     }
 
     /*FUNCTIONS*/
+
+    redirectToAccount = () => {
+        this.props.history.push('/Account')
+    }
+    
     logout(e){
         e.preventDefault();
         Meteor.logout( (err) => {
@@ -35,6 +41,8 @@ export default class Create extends Component {
                 <MuiThemeProvider theme={theme} >
                     <CssBaseline />
                     <HomeVideos {...this.props} />
+                    <button onClick={this.logout}>Logout</button>
+                    <button onClick={this.redirectToAccount}>Accessar minha conta</button>
                 </MuiThemeProvider>
             </main>
         );
