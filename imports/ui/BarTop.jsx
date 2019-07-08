@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -26,7 +26,7 @@ const StyledTypography = withStyles({
 })(Typography)
 
 
-export default class BarTop extends Component {
+export default class BarTop extends React.Component {
     constructor(props){
         super(props);
     }
@@ -45,6 +45,6 @@ export default class BarTop extends Component {
                 </StyledGrid>
             </AppBar>
           </Wrapper>
-      );
+        );
     }
   }
