@@ -2,9 +2,9 @@ module.exports = {
   servers: {
     one: {
       // TODO: set host address, username, and authentication method
-      host: '3.13.70.138',
+      host: '3.17.205.114',
       username: 'ubuntu',
-      pem: '~/.ssh/create.pem'
+      pem: '~/.ssh/create3.pem'
       // password: 'server-password'
       // or neither for authenticate from ssh-agent
     }
@@ -26,8 +26,8 @@ module.exports = {
     env: {
       // TODO: Change to your app's url
       // If you are using ssl, it needs to start with https://
-      ROOT_URL: 'https://inovabank.meteorapp.com',
-      MONGO_URL: 'mongodb+srv://rubens:U1vd0NphH6ugNUKy@inovabank-odcfn.mongodb.net/test?retryWrites=true&w=majority',
+      ROOT_URL: 'http://3.17.205.114/',
+      MONGO_URL: "mongodb+srv://rubens:U1vd0NphH6ugNUKy@inovabank-odcfn.mongodb.net/test?retryWrites=true&w=majority",
     },
 
     docker: {
@@ -44,12 +44,13 @@ module.exports = {
   // Use the proxy to setup ssl or to route requests to the correct
   // app when there are several apps
 
-  // proxy: {
-  //   domains: 'mywebsite.com,www.mywebsite.com',
+  proxy: {
+     domains: '3.17.205.114',
 
-  //   ssl: {
-  //     // Enable Let's Encrypt
-  //     letsEncryptEmail: 'email@domain.com'
-  //   }
-  // }
+     ssl: {
+       forceSSL: true,
+       // Enable Let's Encrypt
+       letsEncryptEmail: 'admin@test.fi'
+     }
+   }
 };
