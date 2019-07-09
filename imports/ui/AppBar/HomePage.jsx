@@ -23,7 +23,7 @@ export default class HomePage extends Component {
 
     render() {
         return (
-            <StyledButton size="large" variant="h5" color="inherit" onClick ={this.homepage}>iNovaBank</StyledButton>
+            <StyledButton variant="h5" color="inherit" onClick ={this.homepage}><h5>iNovaBank</h5></StyledButton>
         );
     }
 }

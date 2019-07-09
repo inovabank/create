@@ -19,7 +19,7 @@ export default class MyAccountButton extends Component {
 
     render() {
         return (
-            <Button size="large" variant="h5" color="inherit" onClick ={this.account}>Minha Conta</Button>
+            <Button size="large" color="inherit" onClick ={this.account}><h5>Minha Conta</h5></Button>
         );
     }
 }

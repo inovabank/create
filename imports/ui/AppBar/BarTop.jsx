@@ -21,12 +21,6 @@ const StyledGrid = withStyles({
     },
 })(Grid)
 
-const StyledTypography = withStyles({
-    root: {
-        flexGrow:1,
-    },
-})(Typography)
-
 const StyledToolbar = withStyles({
     root: {
         display: 'flex',

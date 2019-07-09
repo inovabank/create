@@ -22,7 +22,7 @@ export default class Logout extends Component {
 
     render() {
         return (
-            <Button color="inherit" onClick ={this.logout}>Logout</Button>
+            <Button color="inherit" onClick ={this.logout}><h5>Logout</h5></Button>
         );
     }
 

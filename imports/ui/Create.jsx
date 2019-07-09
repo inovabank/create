@@ -7,7 +7,7 @@ import BarTop from "./AppBar/BarTop";
 const theme = createMuiTheme({
     palette: {
         type: 'dark',
-    },
+    }
 });
 
 export default class Create extends Component {
