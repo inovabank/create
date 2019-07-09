@@ -8,14 +8,13 @@ import Title from "./common/Title";
 
 
 const Main = styled.div`
-    padding:2% 20%;
+    padding:2% 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     `;
 
 const Body = styled.body`
-    height:100%;
 `;
 
 const StyledGrid = withStyles({
@@ -79,10 +78,10 @@ export default class HomeVideos extends Component {
     render() {
         return (
             <Main>
-            <Title title={"Aprenda com quem faz!"} />
-            <StyledGrid>
-                {this.state.videosList}
-            </StyledGrid>
+                <Title title={"Aprenda com quem faz!"} />
+                <StyledGrid>
+                    {this.state.videosList}
+                </StyledGrid>
             </Main>
         );
     }

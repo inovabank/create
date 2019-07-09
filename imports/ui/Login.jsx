@@ -2,74 +2,93 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Meteor } from 'meteor/meteor';
 import { Link } from 'react-router-dom';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
 import Fab from '@material-ui/core/Fab';
 import NavigationIcon from '@material-ui/icons/Navigation';
-import Grid from '@material-ui/core/Grid';
-import FingerPrint from "@material-ui/icons/Fingerprint";
-import Avatar from '@material-ui/core/Avatar';
 
-const StyledAvatar = withStyles({
-    root: {
-        margin: '8 px',
-        backgroundColor: '#F1EAEA',
-    },
-})(Avatar)
-
-const StyledPaper = withStyles({
-    root: {
-      padding: '20px 100px',
-      textAlign: 'center',
-      alignItems: 'center',
-      display: 'flex',
-      flexDirection: 'column',
-    },
-
-})(Paper)
-
-const StyledFab = withStyles({
-    root: {
-       margin : '8px',
-    },
-
-})(Fab)
-
-const StyledNavigationIcon = withStyles({
-root: {
-   marginRight:'8px',
-},
-
-})(NavigationIcon)
-
-const StyledTypography = withStyles({
-root: {
-   fontWeight:'fontWeightBold',
-   fontFamily:'Monospace',
-   fontSize:'30px',
-},
-})(Typography)
-
-const StyledGrid = withStyles({
-    root: {
-        width: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-})(Grid)
 
 /*CSS*/
+const LastContainer = styled.div`
+    text-align:center;
+`;
+const MainContainer = styled.div`
+    width:30%;
+    border-radius:10px;
+    border: 2px solid #ccc;
+`;
+const Title = styled.div`
+    font-size : 2vw;
+    display:block;
+    text-align:center;
+`;
+const Relative = styled.div`
+    position:relative;
+`;
+const TextInput = styled.input`
+    outline:none;
+    width: 96%;
+    margin:15px 2%;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    font-size: 1.1vw;
+    box-sizing: border-box;
+    color:black;   
+    padding:5px 20px;
+    display:block;
 
+    &:focus{
+        width: 96%;
+        padding: 5px 20px;
+        margin:15px 2%;
+        font-size: 1.1  vw;
+        box-sizing: border-box;
+        color:black;
+    }
+    &:focus ~ label{
+        top:-13px;
+        font-size:0.8vw;
+        color:black;
+    }
+    &:valid ~ label{
+        top:-13px;
+        font-size:0.8vw;
+        color:black;
+    } 
+`;
+const TextLabel = styled.label`
+    color:#999; 
+    font-size:1.2vw;
+    font-weight:normal;
+    position:absolute;
+    pointer-events:none;
+    left:35px;
+    top:5px;
+    transition:0.2s ease all;
+    -moz-transition:0.2s ease all; 
+    -webkit-transition:0.2s ease all;
+`;
+const TextContainer = styled.div`
+    width:100%;
+    display:block;
+`;
 const LittleText = styled.a`
     font-size: 10px;
     text-align:center;
     color:#0360ad;
     padding: 10px;
 `;
+const StyledFab = withStyles({
+    root: {
+       margin : '8px',
+    },
+
+})(Fab)
+const StyledNavigationIcon = withStyles({
+    root: {
+       marginRight:'8px',
+    },
+    
+    })(NavigationIcon)
 
 
 export default class Login extends Component {
@@ -118,47 +137,40 @@ export default class Login extends Component {
 
     render() {
         return (
-            <StyledGrid>
-                <StyledPaper>
-                    { this.state.error ? <p className="alert alert-danger">{ this.state.error }</p> : '' }
-                    <StyledAvatar>
-                        <FingerPrint/>
-                    </StyledAvatar>
-                    <StyledTypography fontSize={30}>
-                        Login
-                    </StyledTypography>
-                    <TextField
-                        id="whatsapp"
-                        label="Whatsapp"
-                        type="whatsapp"
-                        name="whatsapp"
-                        autoComplete="whatsapp"
-                        margin="normal"
-                        variant="outlined"
-                        value = {this.state.whatsapp}
-                        onKeyPress={this.enterPress}
-                        onChange = {this.handleChangeWhatsapp}
-                    />
-
-                    <TextField
-                        id="password"
-                        label="Password"
-                        type="password"
-                        autoComplete="current-password"
-                        margin="normal"
-                        variant="outlined"
-                        value = {this.state.password}
-                        onKeyPress={this.enterPress}
-                        onChange = {this.handleChangePassword}
-                    />
-
-                    <LittleText> <Link to="/signup"> Ainda não tem uma conta? Clique aqui! </Link></LittleText>
-                    <StyledFab variant="extended" aria-label="Delete" onClick ={this.login}>
-                         <StyledNavigationIcon/>
-                         Enter
-                    </StyledFab>
-                </StyledPaper>
-            </StyledGrid>
+               <MainContainer>
+                   <Title>Login</Title>
+                   <Relative>
+                        <TextContainer>
+                            <TextInput 
+                                type="text"
+                                value = {this.state.whatsapp}
+                                onKeyPress={this.enterPress}
+                                onChange = {this.handleChangeWhatsapp}
+                                required 
+                            /> 
+                            <TextLabel>Nome</TextLabel>
+                        </TextContainer>
+                    </Relative>
+                    <Relative>
+                        <TextContainer>
+                            <TextInput 
+                                type="password"
+                                value = {this.state.password}
+                                onKeyPress={this.enterPress}
+                                onChange = {this.handleChangePassword}
+                                required 
+                            /> 
+                            <TextLabel>Senha</TextLabel>
+                        </TextContainer>
+                    </Relative> 
+                    <LastContainer>
+                        <LittleText> <Link to="/signup"> Ainda não tem uma conta? Clique aqui!<br/> </Link></LittleText>
+                        <StyledFab variant="extended" aria-label="Delete" onClick ={this.login}>
+                            <StyledNavigationIcon/>
+                            Enter
+                        </StyledFab>
+                    </LastContainer>
+               </MainContainer>
         );
     }
 }
