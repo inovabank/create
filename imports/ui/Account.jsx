@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Meteor } from 'meteor/meteor';
-import {withStyles} from '@material-ui/core/styles';
-import BarTop from "./BarTop.jsx";
+import {createMuiTheme, MuiThemeProvider, withStyles} from '@material-ui/core/styles';
+import BarTop from "./AppBar/BarTop.jsx";
 import Grid from '@material-ui/core/Grid';
 import Hidden from "@material-ui/core/Hidden";
+import CssBaseline from "@material-ui/core/CssBaseline";
+
+const theme = createMuiTheme({
+    palette: {
+        type: 'dark',
+    },
+});
 
 const PageWrapper = styled.div`
     height: 100%;
@@ -49,10 +56,13 @@ export default class Account extends Component {
     render() {
         return (
             <PageWrapper>
-                <WrapperBar >
-                    <BarTop {...this.props}/>
-                </WrapperBar>
-                <h1>MINHA CONTA</h1>
+                <MuiThemeProvider theme={theme} >
+                    <CssBaseline />
+                        <WrapperBar >
+                            <BarTop {...this.props}/>
+                        </WrapperBar>
+                        <h1>MINHA CONTA</h1>
+                </MuiThemeProvider>
             </PageWrapper>
         );
     }

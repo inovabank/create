@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
 import Logout from './Logout';
 import HomePage from './HomePage';
+import MyAccountButton from './MyAccountButton';
 
 const Wrapper = styled.div`
     align-self: center;
@@ -26,6 +27,13 @@ const StyledTypography = withStyles({
     },
 })(Typography)
 
+const StyledToolbar = withStyles({
+    root: {
+        display: 'flex',
+        justifyContent: 'space-between',
+
+    },
+})(Toolbar)
 
 export default class BarTop extends React.Component {
     constructor(props){
@@ -35,15 +43,15 @@ export default class BarTop extends React.Component {
     render() {
         return (
           <Wrapper >
-            <AppBar position="static" elevation={0}>
+            <AppBar color="dark" position="static" elevation={0}>
                 <StyledGrid xs={10}>
-                    <Toolbar alignItems={"center"}>
-                        <StyledTypography variant="h6">
-                        iNovaBank
-                        </StyledTypography>
+                    <StyledToolbar alignItems={"center"}>
                         <HomePage {...this.props}/>
-                        <Logout {...this.props}/>
-                    </Toolbar>
+                        <div>
+                            <MyAccountButton {...this.props} />
+                            <Logout {...this.props}/>
+                        </div>
+                    </StyledToolbar>
                 </StyledGrid>
             </AppBar>
           </Wrapper>

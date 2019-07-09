@@ -9,6 +9,7 @@ import VideoIconPlaylist from "./VideoIconPlaylist";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import HomeVideos from "./HomeVideos";
+import BarTop from "../../AppBar/BarTop";
 
 const theme = createMuiTheme({
     palette: {
@@ -145,6 +146,8 @@ export default class VideoPage extends Component {
 
     render() {
         return (
+            <main>
+                <BarTop {...this.props} />
                 <Main>
                     <MuiThemeProvider theme={theme} >
                         <CssBaseline />
@@ -169,6 +172,7 @@ export default class VideoPage extends Component {
                         <HomeVideos {...{...this.props, ...this.state}}/>
                     </MuiThemeProvider>
                  </Main>
+            </main>
         );
     }
 }

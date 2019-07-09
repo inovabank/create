@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import HomeVideos from "./create/videos/HomeVideos";
 import {createMuiTheme, MuiThemeProvider} from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import BarTop from "./AppBar/BarTop";
 
 const theme = createMuiTheme({
     palette: {
@@ -21,7 +22,7 @@ export default class Create extends Component {
     /*FUNCTIONS*/
 
     redirectToAccount = () => {
-        this.props.history.push('/Account')
+        this.props.history.push('/account')
     }
     
     logout(e){
@@ -40,9 +41,8 @@ export default class Create extends Component {
             <main>
                 <MuiThemeProvider theme={theme} >
                     <CssBaseline />
+                    <BarTop {...this.props} />
                     <HomeVideos {...this.props} />
-                    <button onClick={this.logout}>Logout</button>
-                    <button onClick={this.redirectToAccount}>Accessar minha conta</button>
                 </MuiThemeProvider>
             </main>
         );
