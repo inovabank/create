@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import CardMedia from '@material-ui/core/CardMedia';
 
 const MainPicture = styled.div`
     text-align:center;
@@ -23,7 +24,12 @@ export default class Picture extends Component {
         return (
             <main>
                 <MainPicture>
-                    {this.props.author_thumb}
+                <CardMedia
+                                outline="false"
+                                component="img"
+                                height="140"
+                                image={this.props.author_thumb}
+                            />
                 </MainPicture>
                 <Name>
                     {this.props.author_name}
