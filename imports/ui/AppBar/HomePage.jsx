@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Button from "@material-ui/core/Button";
 import {withStyles} from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
 
 const StyledButton = withStyles({
     root: {
@@ -23,7 +24,7 @@ export default class HomePage extends Component {
 
     render() {
         return (
-            <StyledButton variant="h5" color="inherit" onClick ={this.homepage}><h5>iNovaBank</h5></StyledButton>
+            <StyledButton variant="h5" color="inherit" onClick ={this.homepage}><Typography gutterBottom variant="h5" component="h2">iNovaBank</Typography></StyledButton>
         );
     }
 }

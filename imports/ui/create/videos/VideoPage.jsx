@@ -17,7 +17,7 @@ const theme = createMuiTheme({
     },
 });
 const Main = styled.div`
-    padding:5% 20%;
+    padding:2% 20%;
     @media screen and (max-width:1100px)
     {
         padding: 5% 5%;

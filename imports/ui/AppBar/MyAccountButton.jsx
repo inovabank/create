@@ -3,6 +3,7 @@ import React, {Component} from "react";
 import styled from "styled-components";
 import Button from "@material-ui/core/Button";
 import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
 
 export default class MyAccountButton extends Component {
     constructor(props){
@@ -19,7 +20,7 @@ export default class MyAccountButton extends Component {
 
     render() {
         return (
-            <Button size="large" color="inherit" onClick ={this.account}><h5>Minha Conta</h5></Button>
+            <Button size="large" color="inherit" onClick ={this.account}><Typography gutterBottom variant="h5" component="h2">Minha Conta</Typography></Button>
         );
     }
 }

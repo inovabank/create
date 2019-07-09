@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import React, {Component} from "react";
 import styled from "styled-components";
 import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 
 export default class Logout extends Component {
     constructor(props){
@@ -22,7 +23,7 @@ export default class Logout extends Component {
 
     render() {
         return (
-            <Button color="inherit" onClick ={this.logout}><h5>Logout</h5></Button>
+            <Button color="inherit" onClick ={this.logout}><Typography gutterBottom variant="h5" component="h2">Logout</Typography></Button>
         );
     }
 
