@@ -13,7 +13,11 @@ import Typography from '@material-ui/core/Typography';
 
 const StyledCard = withStyles({
     root: {
-        maxWidth: 345,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        maxHeight: 250,
+        width: 345,
         marginTop: 8,
         marginLeft: 8,
     },
@@ -21,6 +25,7 @@ const StyledCard = withStyles({
 
 const Wrapper = styled.div`
     overflow-y: auto;
+    display: flex;
 `;
 
 export default class VideoIcon extends Component {
@@ -79,13 +84,19 @@ export default class VideoIcon extends Component {
                 <Wrapper>
                     <StyledCard>
                         <CardActionArea onClick={this.startVideo.bind(this)}>
+                            <CardMedia
+                                component="img"
+                                height="140"
+                                image={this.props.video_thumb}
+                            />
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="h2">
                                     {this.props.title}
                                 </Typography>
                                 <Typography variant="h6" color="textSecondary" component="p">
-                                    {this.props.description}
+                                    {this.props.author_name}
                                 </Typography>
+
                             </CardContent>
                         </CardActionArea>
                     </StyledCard>

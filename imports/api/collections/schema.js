@@ -18,16 +18,20 @@ export const Video = new Mongo.Collection('video', {
     },
     playlist_link: {
         type: String,
-    }
-});
-
-export const Playlist = new Mongo.Collection('playlist', {
-    video: Video,
-    link: {
+    },
+    video_thumb: {
+        type: String,
+    },
+    author_name: {
         type: String,
     }
 });
 
-export const Playlists = new Mongo.Collection('playlists', {
-    playlist: Playlist,
+export const Playlist = new Mongo.Collection('playlist', {
+    title: {
+        type: String,
+    },
+    link: {
+        type: String,
+    }
 });

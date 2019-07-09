@@ -23,10 +23,10 @@ export default class Picture extends Component {
         return (
             <main>
                 <MainPicture>
-                    Fotinha
+                    {this.props.author_thumb}
                 </MainPicture>
                 <Name>
-                    Nome
+                    {this.props.author_name}
                 </Name>
             </main>
         );

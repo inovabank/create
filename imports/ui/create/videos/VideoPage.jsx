@@ -86,7 +86,11 @@ export default class VideoPage extends Component {
             description: 'Descricao',
             documents: 'Documentos',
             links: 'Links',
+            video_thumb: '',
             playlist_link: '',
+            author_name: '',
+            author_thumb: '',
+            playlist_title: '',
             playlist: '',
             width: 0, 
             height: 0
@@ -119,7 +123,11 @@ export default class VideoPage extends Component {
                     description: response.data.description,
                     documents: response.data.documents,
                     links: response.data.links,
+                    video_thumb: response.data.video_thumb,
                     playlist_link: response.data.playlist_link,
+                    author_name: response.data.author_name,
+                    author_thumb: response.data.author_thumb,
+                    playlist_title: response.data.playlist_title,
                     playlist: playlist,
                 });
 
@@ -144,7 +152,7 @@ export default class VideoPage extends Component {
                             <Title {...this.state}/>
                         </TitleColumn>
                         <PictureColumn>
-                            <Picture />
+                            <Picture {...this.state}/>
                         </PictureColumn>
                         <FirstColumn>
                             <Video {...this.state}/>

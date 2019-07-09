@@ -25,7 +25,7 @@ export default class Playlist extends Component {
         return (
             <main>
                 <PlaylistTitle>
-                    Videos de toy story 
+                    {this.props.playlist_title}
                 </PlaylistTitle>
                 {this.props.playlist}
             </main>
