@@ -13,6 +13,7 @@
     "@material-ui/icons": "^4.2.1",
     "bcrypt": "^3.0.6",
     "history": "^4.9.0",
+    "images": "^3.0.2",
     "meteor-node-stubs": "^0.4.1",
     "node-pre-gyp": "^0.13.0",
     "react": "^16.8.6",

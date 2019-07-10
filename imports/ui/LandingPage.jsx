@@ -4,6 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
+
 const First = styled.div`
     padding:2% 12%;
     text-align:center;
@@ -189,7 +190,7 @@ export default class LandingPage extends Component {
         return (
             <main>
                 <First>
-                    <LogoFirst src="/Pictures/iNova_logo.jpeg"/>
+                    <LogoFirst src="/images/iNova_logo.jpeg"/>
                         <LoginFirst onClick={this.redirectToLogin}>
                         	<Typography gutterBottom variant = "h5" component="h2">
                         		ENTRAR
@@ -224,7 +225,7 @@ export default class LandingPage extends Component {
                         </SecondSubText>
                         <SecondColumns>
                             <SecondColumnsContent>
-                                <img src="/Pictures/check.png" width="50%" className="second-columns-img"/>
+                                <img src="/images/check.png" width="50%" className="second-columns-img"/>
                                     <SecondColumnsTitle>Orientação Financeira</SecondColumnsTitle>
                                     <div>
                                         Aprenda sobre finanças básicas para organizar sua empresa e aumentar sua renda!
@@ -233,7 +234,7 @@ export default class LandingPage extends Component {
                         </SecondColumns>
                         <SecondColumns>
                             <SecondColumnsContent>
-                                <img src="/Pictures/finger.png" width="50%" className="second-columns-img" />
+                                <img src="/images/finger.png" width="50%" className="second-columns-img" />
                                     <SecondColumnsTitle>Educação Empreendedora</SecondColumnsTitle>
                                     <div>
                                         Entenda o caminho para o desenvolvimento pessoal e profissional, impulsione seu
@@ -243,7 +244,7 @@ export default class LandingPage extends Component {
                         </SecondColumns>
                         <SecondColumns>
                             <SecondColumnsContent>
-                                <img src="/Pictures/people.png" width="50%" className="second-columns-img" />
+                                <img src="/images/people.png" width="50%" className="second-columns-img" />
                                     <SecondColumnsTitle>Pessoas que inspiram</SecondColumnsTitle>
                                     <div>
                                         Conheça casos de sucesso de pessoas parecidas com você e se motive para melhorar
