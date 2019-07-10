@@ -233,8 +233,7 @@ export default class SignUp extends Component {
                             fullWidth
                             variant="contained"
                             color="primary"
-                            onClick={this.createAccount}
-                        >
+                            onClick={this.createAccount}>
                             Sign Up
                         </StyledButton>
                     </Form>

@@ -31,7 +31,7 @@ export default class Create extends Component {
             if (err) {
                 console.log( err.reason );
             } else {
-                this.props.history.push('/');
+                this.props.history.push('/login');
             }
         });
     };
