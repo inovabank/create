@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
 const First = styled.div`
     padding:2% 12%;
@@ -17,6 +20,7 @@ const LoginFirst = styled.button`
     padding: 15px 32px;
     float:right;
     border:none;
+    color:white;
     background-color:#0a6ead;
 `;
 
@@ -26,10 +30,12 @@ const ColumnFirst = styled.div`
     font-weight: bold;
 `;
 
-const MainTextFirst = styled.b`
-    text-align:center;
+const MainTextFirst = styled.h4`
+    text-align: center;
+    font-family:'Monospace';
     color:#0a6ead;
-    font-size:3.2rem;
+    margin-bottom: 0px;
+    font-size:5rem;
 `;
 
 const SubTextFirst = styled.p`
@@ -165,38 +171,41 @@ export default class LandingPage extends Component {
     constructor(props) {
         super(props);
 
-        this.logout = this.logout.bind(this);
+        this.redirectToLogin = this.redirectToLogin.bind(this);
+        this.redirectToSignup = this.redirectToSignup.bind(this);
     }
 
     /*FUNCTIONS*/
-    logout(e){
-        e.preventDefault();
-        Meteor.logout( (err) => {
-            if (err) {
-                console.log( err.reason );
-            } else {
-                this.props.history.push('/');
-            }
-        });
+
+    redirectToLogin = () => {
+    	this.props.history.push('/login');
+    };
+
+    redirectToSignup = () => {
+    	this.props.history.push('/signup');
     };
 
     render() {
         return (
             <main>
                 <First>
-                    <LogoFirst src="Pictures/iNova_logo.jpeg"/>
-                        <LoginFirst id="myBtnLogin"
-                                onClick="document.getElementById('myModalLog').style.display='block'">ENTRAR
+                    <LogoFirst src="/Pictures/iNova_logo.jpeg"/>
+                        <LoginFirst onClick={this.redirectToLogin}>
+                        	<Typography gutterBottom variant = "h5" component="h2">
+                        		ENTRAR
+                        	</Typography>
                         </LoginFirst>
                         <ColumnFirst>
                             <MainTextFirst>
-                                Decida sobre sua vida<br /> e suas finanças
+                                Decida sobre sua vida<br/> e suas finanças
                             </MainTextFirst>
                             <SubTextFirst>
                                 Aprenda com o Create
                             </SubTextFirst>
-                            <SignUpFirst id="myBtnSignup"
-                                    onClick="document.getElementById('myModalSign').style.display='block'">COMEÇE AGORA
+                            <SignUpFirst onClick={this.redirectToSignup}>
+                            	<Typography gutterBottom variant="h5" component="h2">
+                            		COMECE AGORA
+                            	</Typography>
                             </SignUpFirst>
                             <br/><br/>
                                 <LearnMoreFirst>SAIBA MAIS</LearnMoreFirst>
@@ -215,7 +224,7 @@ export default class LandingPage extends Component {
                         </SecondSubText>
                         <SecondColumns>
                             <SecondColumnsContent>
-                                <img src="Pictures/check.png" width="50%" className="second-columns-img"/>
+                                <img src="/Pictures/check.png" width="50%" className="second-columns-img"/>
                                     <SecondColumnsTitle>Orientação Financeira</SecondColumnsTitle>
                                     <div>
                                         Aprenda sobre finanças básicas para organizar sua empresa e aumentar sua renda!
@@ -224,7 +233,7 @@ export default class LandingPage extends Component {
                         </SecondColumns>
                         <SecondColumns>
                             <SecondColumnsContent>
-                                <img src="Pictures/finger.png" width="50%" className="second-columns-img" />
+                                <img src="/Pictures/finger.png" width="50%" className="second-columns-img" />
                                     <SecondColumnsTitle>Educação Empreendedora</SecondColumnsTitle>
                                     <div>
                                         Entenda o caminho para o desenvolvimento pessoal e profissional, impulsione seu
@@ -234,7 +243,7 @@ export default class LandingPage extends Component {
                         </SecondColumns>
                         <SecondColumns>
                             <SecondColumnsContent>
-                                <img src="Pictures/people.png" width="50%" className="second-columns-img" />
+                                <img src="/Pictures/people.png" width="50%" className="second-columns-img" />
                                     <SecondColumnsTitle>Pessoas que inspiram</SecondColumnsTitle>
                                     <div>
                                         Conheça casos de sucesso de pessoas parecidas com você e se motive para melhorar
@@ -244,85 +253,8 @@ export default class LandingPage extends Component {
                         </SecondColumns>
                     </SecondContent>
                 </Second>
-
-                <Modal id="myModalSign">
-                    <ModalContentSign>
-                        <Close>&times;</Close>
-                        <div id="abc">
-                            <form autoComplete="off">
-                                <div id="popupContact">
-                                    <MeuH2>Crie sua conta</MeuH2>
-                                    <hr />
-
-                                        <Group>
-                                            <i className="fas fa-user fa-lg fa-fw"></i>
-                                            <input type="text" id="name" name="name" className="input" required />
-                                                <label style="font-weight:bold" className="label">Nome</label>
-                                        </Group>
-
-                                        <Group>
-                                            <i className="fab fa-whatsapp fa-lg fa-fw"></i>
-                                            <input type="number" id="wpp" name="wpp" className="input" required />
-                                                <label style="font-weight:bold" className="label">Whatsapp</label>
-                                        </Group>
-
-                                        <Group>
-                                            <i className="far fa-id-card fa-lg fa-fw"></i>
-                                            <input type="number" id="cpf" name="cpf" className="input" required />
-                                                <label style="font-weight:bold" className="label">CPF</label>
-                                        </Group>
-
-                                        <Group>
-                                            <i className="fas fa-lock fa-lg fa-fw"></i>
-                                            <input type="password" id="senha" name="senha" className="input"
-                                                   required />
-                                                <label style="font-weight:bold" className="label">Sua senha</label>
-                                        </Group>
-
-                                        <Group>
-                                            <i className="fas fa-lock fa-lg fa-fw"></i>
-                                            <input type="password" id="confsenha" name="confsenha" className="input"
-                                                   required />
-                                                <label style="font-weight:bold" className="label">Repita sua
-                                                    senha</label>
-                                        </Group>
-                                        <div style="text-align:center">
-                                            <button onClick="" id="submit-form">Concluir cadastro</button>
-                                        </div>
-                                </div>
-                            </form>
-                        </div>
-                    </ModalContentSign>
-                </Modal>
-                <Modal>
-                    <ModalContentLog>
-                        <span className="close">&times;</span>
-                        <div id="abc1">
-                            <form autoComplete="off">
-                                <div id="popupContact1">
-                                    <MeuH2>Log in</MeuH2>
-                                    <hr />
-
-                                        <Group>
-                                            <i className="fab fa-whatsapp fa-lg fa-fw"></i>
-                                            <input type="number" id="wpp1" name="wpp" className="input" required />
-                                                <label style="font-weight:bold" className="label">Whatsapp</label>
-                                        </Group>
-                                        <Group>
-                                            <i className="fas fa-lock fa-lg fa-fw"></i>
-                                            <input type="password" id="senha1" name="senha" className="input"
-                                                   required />
-                                                <label style="font-weight:bold" className="label">Sua senha</label>
-                                        </Group>
-                                        <div style="text-align:center">
-                                            <button onClick="" id="submit-form1">Entrar</button>
-                                        </div>
-                                </div>
-                            </form>
-                        </div>
-                    </ModalContentLog>
-                </Modal>
             </main>
         );
     }
 }
+            
