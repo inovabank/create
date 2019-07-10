@@ -5,19 +5,30 @@ import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
 import NavigationIcon from '@material-ui/icons/Navigation';
-
+//import Foto from 'FotoDasCasas.png'
 
 /*CSS*/
+
+const Error = styled.div`
+    text-align: center;
+    width: 40%;
+    margin-left: 30%;
+    margin-right:30%;
+`;
+
 const LastContainer = styled.div`
     text-align:center;
 `;
 const MainContainer = styled.div`
-    width:30%;
+    width:350px;
     border-radius:10px;
-    border: 2px solid #ccc;
+    border: 2px solid #fff;
+    margin-top: 5%;
+    margin-left: calc(50% - 175px);
+    margin-right: calc(50% - 175px);
 `;
 const Title = styled.div`
-    font-size : 2vw;
+    font-size : 3rem;
     display:block;
     text-align:center;
 `;
@@ -30,38 +41,37 @@ const TextInput = styled.input`
     margin:15px 2%;
     border: none;
     border-bottom: 2px solid #ccc;
-    font-size: 1.1vw;
+    font-size: 1.5rem;
     box-sizing: border-box;
     color:black;   
-    padding:5px 20px;
+    padding:5px 5px;
     display:block;
-
     &:focus{
         width: 96%;
-        padding: 5px 20px;
+        padding: 5px 5px;
         margin:15px 2%;
-        font-size: 1.1  vw;
+        font-size: 1.5rem;
         box-sizing: border-box;
         color:black;
     }
     &:focus ~ label{
         top:-13px;
-        font-size:0.8vw;
+        font-size:1.2rem;
         color:black;
     }
     &:valid ~ label{
         top:-13px;
-        font-size:0.8vw;
+        font-size:1.2rem;
         color:black;
     } 
 `;
 const TextLabel = styled.label`
     color:#999; 
-    font-size:1.2vw;
+    font-size:1.7rem;
     font-weight:normal;
     position:absolute;
     pointer-events:none;
-    left:35px;
+    left:15px;
     top:5px;
     transition:0.2s ease all;
     -moz-transition:0.2s ease all; 
@@ -71,12 +81,40 @@ const TextContainer = styled.div`
     width:100%;
     display:block;
 `;
-const LittleText = styled.a`
-    font-size: 10px;
-    text-align:center;
+const CriarConta = styled.a`
+    text-align:center;  
+    width:100%;
+    font-size: 13px;
     color:#0360ad;
     padding: 10px;
 `;
+
+const LittleText = styled.div`
+    font-size: 16px;
+    text-align:center;
+    color:#040c27;
+    padding: 10px;
+`;
+
+const LoginButton = styled.button`
+    border-radius:18px;
+    border: none;
+    color: white;
+    text-align: center;
+    cursor:pointer;
+    padding: 15px 80px;
+    font-size:1.1em;
+    position:relative; 
+    font-weight: bold;   
+    background-image: linear-gradient(#0a6ead, blue);
+    margin-top:20px;
+`;
+
+const Imagem = styled.img`
+    z-index = -1;
+    
+`;
+
 const StyledFab = withStyles({
     root: {
        margin : '8px',
@@ -85,7 +123,7 @@ const StyledFab = withStyles({
 })(Fab)
 const StyledNavigationIcon = withStyles({
     root: {
-       marginRight:'8px',
+       marginRight:'10px',
     },
     
     })(NavigationIcon)
@@ -106,10 +144,12 @@ export default class Login extends Component {
     /*FUNCTIONS*/
 
     handleChangeWhatsapp = event => {
+        if(!event.isTrusted) return;
         this.setState({ whatsapp: event.target.value });
     };
 
     handleChangePassword = event => {
+        if(!event.isTrusted) return;
         this.setState({ password: event.target.value });
     };
 
@@ -137,8 +177,19 @@ export default class Login extends Component {
 
     render() {
         return (
+            <div>
                <MainContainer>
+                    <Error>
+                        { this.state.error ? <p className="alert alert-danger">{ this.state.error }</p> : '' }
+                    </Error>
                    <Title>Login</Title>
+                   <LittleText>
+                       Entre na Jangada com a gente! <br></br> 
+                       <Link to="/signup" style={{fontSize: '13px',}}> Ainda não tem uma conta? Clique aqui!</Link>
+                   </LittleText>
+                   {/*<CriarConta> 
+                       <Link to="/signup"> Ainda não tem uma conta? Clique aqui!</Link>
+                   </CriarConta>*/}
                    <Relative>
                         <TextContainer>
                             <TextInput 
@@ -146,9 +197,10 @@ export default class Login extends Component {
                                 value = {this.state.whatsapp}
                                 onKeyPress={this.enterPress}
                                 onChange = {this.handleChangeWhatsapp}
+                                autoComplete="new-wpp"
                                 required 
                             /> 
-                            <TextLabel>Nome</TextLabel>
+                            <TextLabel>WhatsApp com DDD</TextLabel>
                         </TextContainer>
                     </Relative>
                     <Relative>
@@ -158,19 +210,20 @@ export default class Login extends Component {
                                 value = {this.state.password}
                                 onKeyPress={this.enterPress}
                                 onChange = {this.handleChangePassword}
+                                autoComplete="new-password"
                                 required 
                             /> 
                             <TextLabel>Senha</TextLabel>
                         </TextContainer>
                     </Relative> 
                     <LastContainer>
-                        <LittleText> <Link to="/signup"> Ainda não tem uma conta? Clique aqui!<br/> </Link></LittleText>
-                        <StyledFab variant="extended" aria-label="Delete" onClick ={this.login}>
-                            <StyledNavigationIcon/>
-                            Enter
-                        </StyledFab>
+                        <LoginButton variant="extended" aria-label="Delete"  onClick ={this.login}>
+                            ENTRAR!
+                        </LoginButton>
                     </LastContainer>
                </MainContainer>
+               <Imagem style={{width: '100%', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'none',}} src="/images/log2.png" alt="foto"/>
+            </div>
         );
     }
 }
