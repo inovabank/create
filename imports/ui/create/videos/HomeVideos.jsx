@@ -17,14 +17,10 @@ const Main = styled.div`
 const Body = styled.body`
 `;
 
-const StyledGrid = withStyles({
-    root: {
-        width: '100%',
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
-    },
-})(Grid)
+const StyledGrid = styled.div`
+    text-align:center;
+    display:inline-block;
+`;
 
 export default class HomeVideos extends Component {
 

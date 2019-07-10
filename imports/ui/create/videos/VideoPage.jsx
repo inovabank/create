@@ -26,10 +26,13 @@ const Main = styled.div`
 const TitleColumn = styled.div`
     width:67%;
     display:inline-block;
+    vertical-align:top;
 `;
 const PictureColumn = styled.div`
     width:33%;
     display:inline-block;
+    text-align:center;
+    vertical-align:top;
 `;
 const FirstColumn = styled.div`
     vertical-align:top;

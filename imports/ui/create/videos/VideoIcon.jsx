@@ -27,6 +27,9 @@ const Wrapper = styled.div`
     overflow-y: auto;
     display: flex;
 `;
+const Main = styled.div`
+    display:inline-block;
+`;
 
 export default class VideoIcon extends Component {
 
@@ -69,18 +72,9 @@ export default class VideoIcon extends Component {
             }
         });
     }
-
-
-    /*
-                        <StyledCardMedia
-                                image="/static/images/cards/contemplative-reptile.jpg"
-                                title="Contemplative Reptile"
-                            />
-     */
-
     render() {
         return (
-            <main>
+            <Main>
                 <Wrapper>
                     <StyledCard>
                         <CardActionArea onClick={this.startVideo.bind(this)}>
@@ -101,7 +95,7 @@ export default class VideoIcon extends Component {
                         </CardActionArea>
                     </StyledCard>
                 </Wrapper>
-            </main>
+            </Main>
         );
     }
 }

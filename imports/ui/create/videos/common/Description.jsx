@@ -73,8 +73,8 @@ export default class Description extends Component {
                         style = {{color:'white',}}
                         variant="scrollable"
                         scrollButtons="on"
-                        indicatorColor="secondary"
-                        textColor="secondary"
+                        indicatorColor="primary"
+                        textColor="primary"
                     >
                         <StyledTab label ="Descrição"/>
                         <StyledTab label="Documentos Usados" />
