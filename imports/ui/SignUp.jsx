@@ -1,22 +1,13 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Meteor } from 'meteor/meteor';
-import { Accounts } from 'meteor/accounts-base';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import {Link} from "react-router-dom";
+import Fab from '@material-ui/core/Fab';
+import NavigationIcon from '@material-ui/icons/Navigation';
+//import Foto from 'FotoDasCasas.png'
 
 /*CSS*/
-
 const Error = styled.div`
     text-align: center;
     width: 40%;
@@ -29,17 +20,18 @@ const LastContainer = styled.div`
 `;
 const MainContainer = styled.div`
     width:350px;
+    z-index:2;
     border-radius:10px;
-    border: 2px solid #fff;
-    margin-top: 1%;
+    border: none;
     margin-left: calc(50% - 175px);
     margin-right: calc(50% - 175px);
+    position: absolute;
+    top: 15%;
 `;
 const Title = styled.div`
     font-size : 3rem;
     display:block;
     text-align:center;
-
 `;
 const Relative = styled.div`
     position:relative;
@@ -103,9 +95,10 @@ const LittleText = styled.div`
     font-size: 16px;
     text-align:center;
     color:#040c27;
-   
+    padding: 10px;
 `;
-const EnterButton = styled.button`
+
+const LoginButton = styled.button`
     border-radius:18px;
     border: none;
     color: white;
@@ -115,266 +108,192 @@ const EnterButton = styled.button`
     font-size:1.1em;
     position:relative; 
     font-weight: bold;   
-    background-image: linear-gradient(#0a6ead, blue);
-    margin-top:10px;
+    background-image: linear-gradient(to right, #7B473B, #195474);
+    margin-top:20px;
 `;
 
 const Header = styled.div`
     width: 100%;
     height: 70px;
-    background-color: #040c27;
+    margin-top:0px;
+    background-color: white;
     position: sticky;
 `;
 
 const ImagemContainer = styled.div`
     width: 100%;
+    top:350px;
     height: 420px;
     position: relative;
-    overflow:hidden;
+    overflow:hidden;  
 `;
-
 const Imagem = styled.img`
-    z-index: -1;
+    z-index: 1;
+    margin-top: -45px;
     height: 100%;
     position: absolute;
-    top: 0;
+    top: 50px;
     left: 50%;
     transform: translateX(-50%);
 `;
 const INovaLogo = styled.img`
-    margin:15px;
-    height:40px;
+    height:50px;
+    float:right;
+    margin-top:35px;
+    margin-right:70px;
 `;
-
-const StyledAvatar = withStyles({
-    root: {
-        margin: '8 px',
-        backgroundColor: '#F1EAEA',
-    },
-})(Avatar)
-
-const StyledPaper = withStyles({
-    root: {
-        padding: '20px 100px',
-        textAlign: 'center',
-        alignItems: 'center',
-        display: 'flex',
-        flexDirection: 'column',
-    },
-
-})(Paper)
-
-const StyledButton = withStyles({
-    root: {
-        marginTop: '24px',
-        marginLeft: '0px',
-        marginLeft: '0px',
-        marginBottom: '16px',
-
-    },
-})(Button)
-
-const StyledTypography = withStyles({
-    root: {
-        fontWeight:'fontWeightBold',
-        fontFamily:'Monospace',
-        fontSize:'30px',
-    },
-})(Typography)
-
-const StyledGrid = withStyles({
-    root: {
-        width: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-})(Grid)
-
-/*CSS*/
-
-
-const Form = styled.div`
-        width: 100%;
-        margin-top: 24px
+const JangadaLogo = styled.img`
+    height:100px;
+    float:left;
+    margin-top:14px;
+    margin-left:70px;
 `;
-
-
-export default class SignUp extends Component {
+const EnterButton = styled.button`
+    border-radius:18px;
+    border: none;
+    color: white;
+    text-align: center;
+    cursor:pointer;
+    padding: 15px 70px;
+    font-size:1.1em;
+    position:relative; 
+    font-weight: bold;   
+    background-image: linear-gradient(to right, #7B473B, #195474);
+    margin-top:10px;
+`;
+export default class Login extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
-            CPF: '',
             whatsapp: '',
-            error: '',
             password: '',
-            accountCreated: false,
+            error: '',
+            redirect: false,
         };
     }
 
     /*FUNCTIONS*/
 
     handleChangeWhatsapp = event => {
+        if(!event.isTrusted) return;
         this.setState({ whatsapp: event.target.value });
     };
 
     handleChangePassword = event => {
+        if(!event.isTrusted) return;
         this.setState({ password: event.target.value });
     };
 
-    handleChangeName = event => {
-        this.setState({ name: event.target.value });
+    login = (event) => {
+        event.preventDefault();
+
+        Meteor.loginWithPassword(this.state.whatsapp, this.state.password, (err) => {
+            if(err){
+                this.setState({
+                    error: err.reason
+                });
+            } else {
+                this.props.history.push('/');
+            }
+        });
+
     };
 
-    handleChangeCPF = event => {
-        this.setState({ CPF: event.target.value });
-    };
-
-    createAccount = () => {
-        console.log('E - submit #form-signup');
-
-        let newUserData = {
-            username: this.state.whatsapp,
-            password: this.state.password,
-            profile: {
-                name: this.state.name,
-                cpf: this.state.CPF,
-            },
-        };
-
-        if (newUserData.username !== '' && newUserData.password !== '' && newUserData.profile.cpf !== '' && newUserData.profile.name!== '') {
-            Meteor.call('createNewUser', newUserData, (error) => {
-                if (error) {
-                    console.log(error);
-                    if(error.reason === 'Username already exists.') {
-                        this.setState({ error: 'Esse whatsapp já foi cadastrado.'});
-                    } else {
-                        this.setState({ error: error.reason });
-                    }
-                } else {
-                    this.state.accountCreated = true;
-                    console.log('Created Account');
-                    this.props.history.push('/');
-                }
-            });
-            console.log('Logged!');
-        } else {
-            this.setState({ error: 'Please provide all fields.'});
-        }
-    };
-    
     enterPress = event => {
         let code = event.key;
         if(code === 'Enter'){
-            this.createAccount();
-        }
-    };
-
-    loginRoute = () => {
-        if (Meteor.userId()) {
-            Meteor.userId() ? this.props.history.push('/') : '';
+            this.login(event);
         }
     };
 
     render() {
-
         return (
-            <div>
-                <Header><INovaLogo src="/images/iNova_logo.jpeg"/></Header>
+            <main>
+                <Header>
+                    <JangadaLogo src="/images/JangadaSolta.png"/>
+                    <INovaLogo src="/images/iNova_logo.jpeg"/>
+                </Header>
+                <ImagemContainer>
+                    <Imagem src="/images/log2.png" alt="foto"/>
+                </ImagemContainer>
                 <MainContainer>
                     <Error>
                         { this.state.error ? <p className="alert alert-danger">{ this.state.error }</p> : '' }
                     </Error>
-                        <Title>Cadastro</Title>
-                        <LittleText>Venha navegar na Jangada com a gente! </LittleText>
-                            <Form>
-                                <Relative> 
-                                    <TextContainer>
-                                        <TextInput
-                                            name="firstName"
-                                            required
-                                            id="firstName"
-                                            autoComplete="name"
-                                            value = {this.state.name}
-                                            onChange = {this.handleChangeName}
-                                            onKeyPress={this.enterPress}
-                                        />
-                                        <TextLabel>Nome Completo</TextLabel>
-                                    </TextContainer>
-                                </Relative>
-                                <Relative> 
-                                    <TextContainer>
-                                        <TextInput
-                                            required
-                                            id="whatsapp"
-                                            name="whatsapp"
-                                            autoComplete="whatsapp"
-                                            value = {this.state.whatsapp}
-                                            onChange = {this.handleChangeWhatsapp}
-                                            onKeyPress={this.enterPress}
-                                        />
-                                        <TextLabel>WhatsApp com DDD</TextLabel>
-                                    </TextContainer>
-                               </Relative>
-                               <Relative> 
-                                    <TextContainer>
-                                        <TextInput
-                                        required
-                                        id="CPF"
-                                        name="CPF"
-                                        autoComplete="new-CPF"
-                                        value = {this.state.CPF}
-                                        onChange = {this.handleChangeCPF}
-                                        onKeyPress={this.enterPress}
-                                    />
-                                        <TextLabel>CPF</TextLabel>
-                                    </TextContainer>
-                                </Relative>
-                                <Relative> 
-                                    <TextContainer>
-                                        <TextInput
-                                        required
-                                        name="password"
-                                        type="password"
-                                        id="password"
-                                        autoComplete="new-password"
-                                        value = {this.state.password}
-                                        onChange = {this.handleChangePassword}
-                                        onKeyPress={this.enterPress}
-                                    />
-                                        <TextLabel>Sua Senha</TextLabel>
-                                    </TextContainer>
-                                </Relative>
+                   <Title style={{fontWeight: 'bold',}}>Cadastro</Title>
+                   <LittleText>
+                        Venha navegar na Jangada com a gente! <br></br> 
+                        <CriarConta> 
+                            <Link to="/login"> Já tem conta? Clique aqui!</Link>
+                        </CriarConta>
+                   </LittleText>
+                    <Relative> 
+                        <TextContainer>
+                            <TextInput
+                                name="firstName"
+                                required
+                                id="firstName"
+                                autoComplete="name"
+                                value = {this.state.name}
+                                onChange = {this.handleChangeName}
+                                onKeyPress={this.enterPress}
+                            />
+                            <TextLabel>Nome Completo</TextLabel>
+                        </TextContainer>
+                    </Relative>
+                    <Relative> 
+                        <TextContainer>
+                            <TextInput
+                                required
+                                id="whatsapp"
+                                name="whatsapp"
+                                autoComplete="whatsapp"
+                                value = {this.state.whatsapp}
+                                onChange = {this.handleChangeWhatsapp}
+                                onKeyPress={this.enterPress}
+                            />
+                            <TextLabel>WhatsApp com DDD</TextLabel>
+                        </TextContainer>
+                    </Relative>
+                    <Relative> 
+                        <TextContainer>
+                            <TextInput
+                            required
+                            id="CPF"
+                            name="CPF"
+                            autoComplete="new-CPF"
+                            value = {this.state.CPF}
+                            onChange = {this.handleChangeCPF}
+                            onKeyPress={this.enterPress}
+                        />
+                            <TextLabel>CPF</TextLabel>
+                        </TextContainer>
+                    </Relative>
+                    <Relative> 
+                        <TextContainer>
+                            <TextInput
+                            required
+                            name="password"
+                            type="password"
+                            id="password"
+                            autoComplete="new-password"
+                            value = {this.state.password}
+                            onChange = {this.handleChangePassword}
+                            onKeyPress={this.enterPress}
+                        />
+                            <TextLabel>Sua Senha</TextLabel>
+                        </TextContainer>
+                    </Relative>
 
-                           
-                            <LastContainer>
-                                <EnterButton variant="extended" aria-label="Delete"  onClick ={this.createAccount}>
-                                    CADASTRAR!
-                                </EnterButton>
-                            </LastContainer>
-                        </Form>
-                        {this.loginRoute()}
-                    {/*<Box mt={5}>
-                        <Typography variant="body2" color="textSecondary" align="center">
-                            <Link to="/"> Volte para o login! </Link>
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" align="center">
-
-                            {'iNovaBank'}
-                            
-                            {' team.'}
-                        </Typography>
-                    </Box>*/}
-                </MainContainer>
-                <ImagemContainer>
-                    <Imagem src="/images/log2.png" alt="foto"/>
-               </ImagemContainer>
-            </div>
-
-
+                
+                <LastContainer>
+                    <EnterButton variant="extended" aria-label="Delete"  onClick ={this.createAccount}>
+                        CADASTRAR!
+                    </EnterButton>
+                </LastContainer>
+               </MainContainer>
+            </main>
         );
     }
 }

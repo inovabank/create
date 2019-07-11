@@ -1,13 +1,16 @@
 import React, {Component} from "react";
-import Button from "@material-ui/core/Button";
-import {withStyles} from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
+import styled from "styled-components";
 
-const StyledButton = withStyles({
-    root: {
-        justifyContent: 'flex-start',
-    },
-})(Button)
+const Ibagem = styled.img`
+    height:40px;
+    margin-top:3px;
+`;
+const Button1 = styled.button`
+    background-color:inherit;
+    border:none;
+    outline:none;  
+`;
+
 
 export default class HomePage extends Component {
     constructor(props){
@@ -19,12 +22,14 @@ export default class HomePage extends Component {
 
     homepage(e){
         e.preventDefault();
-        this.props.history.push('/video');
+        this.props.history.push('/');
     };
 
     render() {
         return (
-            <StyledButton variant="h5" color="inherit" onClick ={this.homepage}><Typography gutterBottom variant="h5" component="h2">iNovaBank</Typography></StyledButton>
+            <Button1 onClick = {this.homepage}>
+                <Ibagem src="./images/iNova_logo.jpeg"/>
+            </Button1>
         );
     }
 }
