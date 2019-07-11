@@ -39,42 +39,8 @@ export default class HomeVideos extends Component {
 
     /*FUNCTIONS*/
 
-    componentDidMount = () => {
-        let location = this.props.history.location.pathname.split("/").pop();
-        let videosList;
-        let numVideos = 0;
-        let props = this.props;
-        let videosPerLine = 2;
-        if(location === '' || location === 'video') {
-            videosList = (
-                allVideos.map(function (video) {
-                    if(numVideos < 12) {
-                        numVideos = numVideos + 1;
-                        return (<VideoIcon {...{...props, ...video}} />);
-                    }
-                }
-            ));
-        } else {
-            Meteor.call('getVideoData', location, (error, response) => {
-                if(error) {
-                    console.log(error.reason);
-                }
-                else {
-                    videosList = (
-                        allVideos.map(function (video) {
-                            console.log(response.data.url !== video.url);
-                            console.log(video.url);
-                            if(response.data.url !== video.url && numVideos < 12) {
-                                numVideos = numVideos + 1;
-                                return (<VideoIcon {...{...props, ...video}} />);
-                            }
-                        }
-                    ));
-                }
-            });
-        }
-
-
+    videosListsMaker = (videosList) => {
+        const videosPerLine = 3;
         let videosLists = [];
         let videoLine = [];
         for(let i = 0;  i < videosList.length/videosPerLine; i++){
@@ -92,6 +58,43 @@ export default class HomeVideos extends Component {
         this.setState(() => ({
             videosList: videosLists,
         }));
+    };
+
+    componentDidMount = () => {
+        let location = this.props.history.location.pathname.split("/").pop();
+        let videosList;
+        let numVideos = 0;
+        let props = this.props;
+        if(location === '' || location === 'video') {
+            videosList = (
+                allVideos.map(function (video) {
+                    if(numVideos < 12) {
+                        numVideos = numVideos + 1;
+                        return (<VideoIcon {...{...props, ...video}} />);
+                    }
+                }
+            ));
+            this.videosListsMaker(videosList);
+        } else {
+            Meteor.call('getVideoData', location, (error, response) => {
+                if(error) {
+                    console.log(error.reason);
+                }
+                else {
+                    videosList = (
+                        allVideos.map(function (video) {
+                            console.log(response.data.url !== video.url);
+                            console.log(video.url);
+                            if(response.data.url !== video.url && numVideos < 12) {
+                                numVideos = numVideos + 1;
+                                return (<VideoIcon {...{...props, ...video}} />);
+                            }
+                        }
+                    ));
+                    this.videosListsMaker(videosList);
+                }
+            });
+        }
     };
 
     render() {
