@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Iframe = styled.iframe`
     width:100%;
-    height:22.5vw;
+    height:28vw;
     border:none;
     @media screen and (max-width:1100px){
         height:50.625vw;

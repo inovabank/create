@@ -4,9 +4,8 @@ import styled from 'styled-components';
 
 const PlaylistTitle = styled.div`
         color: white;
-        text-align:center;
-        font-size:2rem;
-        padding:1% 0;
+        font-size:2.4rem;
+        padding:8px 10%;
 `;
 
 export default class Playlist extends Component {

@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
+.MainBody{
+	color:black;
+	margin:0px;
+    font-family:'Nunito';
+}
+button{
+	border-radius:25px;
+	color: white;
+	text-align: center;
+	cursor:pointer;
+}
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Primeira parte do site*/
+	.first{
+		padding:2% 12%;
+		text-align:center;
+	}
+	.logo-first{
+		float:left;
+		padding:7px 0;
+		height:45px;
+	}
+	.login-first{
+		font-weight: bold;
+		padding: 15px 32px;
+        float:right;
+        font-size:1.5rem;
+		border:none;
+		background-color:#0a6ead;
+	}
+	.signup-first{
+		padding: 15px 40px;
+		font-size:1.5rem;
+		position:relative; 
+		font-weight: bold;
+		background-color:#0a6ead;
+		border:none;
+		color:white;
+		margin-top:20px;
+	}
+	.learnmore-first{
+		padding: 10px 25px;
+		background-color:white;
+		border-color:#999;
+		color:gray;
+	}
+	.first-column{
+		text-align:center;
+		margin-top:85px;
+		font-weight: bold;
+	}
+	.main-text-first{
+		text-align:center;
+		color:#0a6ead;
+		font-size:5rem;
+	}
+	.sub-text-first{
+		text-align:center;
+		color:grey;
+        font-size:2rem;
+        margin-top:20px;
+	}
+/*Bloco azul pra baixo*/
+
+	.second{
+		width:100%;
+		background-color:#0a6ead;
+		color:white;
+		text-align:center;
+	}
+	.second-content{
+		padding:100px 0 50px 0;
+	}
+	.second-title{
+		font-weight: bold;
+        font-size:4.5rem;
+        padding:0 10%;
+		margin-bottom:20px;
+	}
+	.second-sub-text{
+        font-size:2rem;
+        padding: 0 10%;
+	}
+	.second-columns{
+		margin:2% 1%;
+		border-radius:7px;
+		width:350px;
+		display:inline-block;
+		text-align:center;
+		background-color:white;
+		color:gray;
+		vertical-align: top;
+	}
+	.second-columns-content{
+		padding:7% 3%;
+		font-size:1.7rem;
+	}
+	.second-columns-title{
+		font-size:2.7rem;
+		font-weight:bold;
+		text-align:center;
+		color:	#0a6ead;
+		margin:3% 0 7% 0;
+    }
+    @media screen and (max-width:1160px){
+        .second-columns{
+            width:245px;
+        }
+    }
+	@media screen and (max-width: 800px)
+	{
+		.second-columns{
+			width:60%;
+		}
+    }
+    @media screen and (max-width:550px){
+        .second-columns{
+            width:80%;
+        }
+    }
+
