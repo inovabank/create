@@ -77,7 +77,7 @@ const Second = styled.div`
 `;
 
 const SecondContent = styled.div`
-    padding: 50px 10% 50px 10%;
+    padding: 55px 10% 50px 13%;
 `;
 
 const SecondTitle = styled.div`
