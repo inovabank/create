@@ -35,3 +35,5 @@ export const Playlist = new Mongo.Collection('playlist', {
         type: String,
     }
 });
+
+export const SavingsAccounts = new Mongo.Collection('savings_accounts');

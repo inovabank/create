@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import HomeVideos from "./create/videos/HomeVideos";
 import {createMuiTheme, MuiThemeProvider} from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import BarTop from "./AppBar/BarTop";
+import BarTopVideo from "./AppBar/BarTopVideo";
 
 const theme = createMuiTheme({
     palette: {
@@ -41,7 +41,7 @@ export default class Create extends Component {
             <main>
                 <MuiThemeProvider theme={theme} >
                     <CssBaseline />
-                    <BarTop {...this.props} />
+                    <BarTopVideo {...this.props} />
                     <HomeVideos {...this.props} />
                 </MuiThemeProvider>
             </main>

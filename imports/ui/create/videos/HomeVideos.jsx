@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import VideoIcon from './VideoIcon';
 import {allVideos} from '../../../../lib/allVideos';
-import {MuiThemeProvider, withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import Grid from "@material-ui/core/Grid";
 import styled from "styled-components";
 import Title from "./common/Title";
@@ -14,13 +14,26 @@ const Main = styled.div`
     align-items: center;
     `;
 
-const Body = styled.body`
+const VideoLine = styled.div`
+    display: flex;
+    flex-direction: row;
 `;
 
+<<<<<<< HEAD
 const StyledGrid = styled.div`
     text-align:center;
     display:inline-block;
 `;
+=======
+const StyledGrid = withStyles({
+    root: {
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+    },
+})(Grid)
+>>>>>>> c390a11686492f44de1ed9e7fd5e56a3a9b2990a
 
 export default class HomeVideos extends Component {
 
@@ -33,22 +46,43 @@ export default class HomeVideos extends Component {
 
     /*FUNCTIONS*/
 
+    videosListsMaker = (videosList) => {
+        const videosPerLine = 3;
+        let videosLists = [];
+        let videoLine = [];
+        for(let i = 0;  i < videosList.length/videosPerLine; i++){
+            for(let l=0; l < videosPerLine && l+i < videosList.length; l++) {
+                videoLine = videoLine.concat(videosList[i+l]);
+            }
+            videosLists = videosLists.concat(
+                <VideoLine>
+                    {videoLine}
+                </VideoLine>
+            );
+            videoLine = [];
+        }
+        console.log(videosList);
+        this.setState(() => ({
+            videosList: videosLists,
+        }));
+    };
+
     componentDidMount = () => {
         let location = this.props.history.location.pathname.split("/").pop();
         let videosList;
+        let numVideos = 0;
+        let props = this.props;
         if(location === '' || location === 'video') {
             videosList = (
-                allVideos.map((video) => (
-                    <VideoIcon {...{...this.props, ...video}} />
-                ))
-            );
-            this.setState(() => ({
-                videosList: videosList,
-            }));
+                allVideos.map(function (video) {
+                    if(numVideos < 12) {
+                        numVideos = numVideos + 1;
+                        return (<VideoIcon {...{...props, ...video}} />);
+                    }
+                }
+            ));
+            this.videosListsMaker(videosList);
         } else {
-            let props = this.props;
-            let numVideos = 0;
-
             Meteor.call('getVideoData', location, (error, response) => {
                 if(error) {
                     console.log(error.reason);
@@ -59,13 +93,12 @@ export default class HomeVideos extends Component {
                             console.log(response.data.url !== video.url);
                             console.log(video.url);
                             if(response.data.url !== video.url && numVideos < 12) {
+                                numVideos = numVideos + 1;
                                 return (<VideoIcon {...{...props, ...video}} />);
                             }
                         }
                     ));
-                    this.setState(() => ({
-                        videosList: videosList,
-                    }));
+                    this.videosListsMaker(videosList);
                 }
             });
         }

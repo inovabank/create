@@ -17,16 +17,16 @@ const Wrapper = styled.div`
 const StyledGrid = withStyles({
     root: {
         alignSelf: 'center',
-        width: '100%',
+        width: '100%', 
     },
 })(Grid)
 
 const LogoFirst = styled.img`
     float:left;
-    padding:10px 0px;
-    height:40px;
-    margin-top:10px;
-`;
+    padding:12px 10px;
+    height:60px;
+    margin-top:0px;
+`;       
 
 const StyledToolbar = withStyles({
     root: {
@@ -36,7 +36,7 @@ const StyledToolbar = withStyles({
     },
 })(Toolbar)
 
-export default class BarTop extends React.Component {
+export default class BarTopVideo extends React.Component {
     constructor(props){
         super(props);
     }
@@ -44,10 +44,10 @@ export default class BarTop extends React.Component {
     render() {
         return (
           <Wrapper >
-            <AppBar color="dark" position="static" elevation={0}>
+            <AppBar color="gray33" position="static" elevation={0}>
                 <StyledGrid xs={10}>
                     <StyledToolbar alignItems={"center"}>
-                        <LogoFirst src="/images/inova_logo.png"/>
+                        <LogoFirst src="/images/JangadaSolta.png"/>
                         <div>
                             <MyAccountButton {...this.props} />
                             <Logout {...this.props}/>
