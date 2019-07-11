@@ -41,7 +41,7 @@ export default class Create extends Component {
             <main>
                 <MuiThemeProvider theme={theme} >
                     <CssBaseline />
-                    <BarTopVideo {...this.props} />
+                    <BarTop {...this.props} />
                     <HomeVideos {...this.props} />
                 </MuiThemeProvider>
             </main>

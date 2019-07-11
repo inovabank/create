@@ -24,31 +24,8 @@ const Left = styled.div`
     float:left;
     display:inline-block;
 `;
-<<<<<<< HEAD
-=======
 
-const StyledGrid = withStyles({
-    root: {
-        alignSelf: 'center',
-        width: '100%',
-    },
-})(Grid)
 
-const LogoFirst = styled.img`
-    float:left;
-    padding:10px 0px;
-    height:40px;
-    margin-top:10px;
-`;
-
-const StyledToolbar = withStyles({
-    root: {
-        display: 'flex',
-        justifyContent: 'space-between',
-
-    },
-})(Toolbar)
->>>>>>> 3a163c8f3426745ac7bd32b87484807b4c84f726
 
 export default class BarTop extends React.Component {
     constructor(props){
@@ -57,7 +34,6 @@ export default class BarTop extends React.Component {
 
     render() {
         return (
-<<<<<<< HEAD
             <Wrapper >
                 <Left>
                     <HomePage {...this.props}/>
@@ -67,21 +43,6 @@ export default class BarTop extends React.Component {
                     <Logout {...this.props}/>
                 </Right>
             </Wrapper>
-=======
-          <Wrapper >
-            <AppBar color="dark" position="static" elevation={0}>
-                <StyledGrid xs={10}>
-                    <StyledToolbar alignItems={"center"}>
-                        <LogoFirst src="/images/inova_logo.png"/>
-                        <div>
-                            <MyAccountButton {...this.props} />
-                            <Logout {...this.props}/>
-                        </div>
-                    </StyledToolbar>
-                </StyledGrid>
-            </AppBar>
-          </Wrapper>
->>>>>>> 3a163c8f3426745ac7bd32b87484807b4c84f726
         );
     }
   }
