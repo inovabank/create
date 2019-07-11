@@ -219,9 +219,9 @@ export default class LandingPage extends Component {
                                 Aprenda com a Jangada!
                             </SubTextFirst>
                             <SignUpFirst onClick={this.redirectToSignup}>
-                            	<Typography gutterBottom variant="h7" component="h5">
+                            	<StyledTypography gutterBottom variant="h7" component="h5">
                             		COMECE AGORA
-                            	</Typography>
+                            	</StyledTypography>
                             </SignUpFirst>
                             <br/><br/>
                         </ColumnFirst>
