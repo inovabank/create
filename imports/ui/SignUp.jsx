@@ -15,6 +15,137 @@ import { withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import {Link} from "react-router-dom";
 
+/*CSS*/
+
+const Error = styled.div`
+    text-align: center;
+    width: 40%;
+    margin-left: 30%;
+    margin-right:30%;
+`;
+
+const LastContainer = styled.div`
+    text-align:center;
+`;
+const MainContainer = styled.div`
+    width:350px;
+    border-radius:10px;
+    border: 2px solid #fff;
+    margin-top: 1%;
+    margin-left: calc(50% - 175px);
+    margin-right: calc(50% - 175px);
+`;
+const Title = styled.div`
+    font-size : 3rem;
+    display:block;
+    text-align:center;
+
+`;
+const Relative = styled.div`
+    position:relative;
+`;
+const TextInput = styled.input`
+    outline:none;
+    width: 96%;
+    margin:15px 2%;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    font-size: 1.5rem;
+    box-sizing: border-box;
+    color:black;   
+    padding:5px 5px;
+    display:block;
+
+    &:focus{
+        width: 96%;
+        padding: 5px 5px;
+        margin:15px 2%;
+        font-size: 1.5rem;
+        box-sizing: border-box;
+        color:black;
+    }
+    &:focus ~ label{
+        top:-13px;
+        font-size:1.2rem;
+        color:black;
+    }
+    &:valid ~ label{
+        top:-13px;
+        font-size:1.2rem;
+        color:black;
+    } 
+`;
+const TextLabel = styled.label`
+    color:#999; 
+    font-size:1.7rem;
+    font-weight:normal;
+    position:absolute;
+    pointer-events:none;
+    left:15px;
+    top:5px;
+    transition:0.2s ease all;
+    -moz-transition:0.2s ease all; 
+    -webkit-transition:0.2s ease all;
+`;
+const TextContainer = styled.div`
+    width:100%;
+    display:block;
+`;
+const CriarConta = styled.a`
+    text-align:center;  
+    width:100%;
+    font-size: 13px;
+    color:#0360ad;
+    padding: 10px;
+`;
+
+const LittleText = styled.div`
+    font-size: 16px;
+    text-align:center;
+    color:#040c27;
+   
+`;
+const EnterButton = styled.button`
+    border-radius:18px;
+    border: none;
+    color: white;
+    text-align: center;
+    cursor:pointer;
+    padding: 15px 80px;
+    font-size:1.1em;
+    position:relative; 
+    font-weight: bold;   
+    background-image: linear-gradient(#0a6ead, blue);
+    margin-top:10px;
+`;
+
+const Header = styled.div`
+    width: 100%;
+    height: 70px;
+    background-color: #040c27;
+    position: sticky;
+`;
+
+const ImagemContainer = styled.div`
+    width: 100%;
+    height: 420px;
+    position: relative;
+    overflow:hidden;
+`;
+
+const Imagem = styled.img`
+    z-index: -1;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+`;
+const INovaLogo = styled.img`
+    margin:15px;
+    height:40px;
+`;
+
 const StyledAvatar = withStyles({
     root: {
         margin: '8 px',
@@ -63,12 +194,6 @@ const StyledGrid = withStyles({
 
 /*CSS*/
 
-const LittleText = styled.a`
-    font-size: 10px;
-    text-align:center;
-    color:#0360ad;
-    padding: 10px;
-`;
 
 const Form = styled.div`
         width: 100%;
@@ -157,109 +282,99 @@ export default class SignUp extends Component {
     render() {
 
         return (
-            <Container component="main" maxWidth="xs">
-                <CssBaseline />
-                    { this.state.error ? <p className="alert alert-danger">{ this.state.error }</p> : '' }
-                    <StyledAvatar>
-                        <LockOutlinedIcon />
-                    </StyledAvatar>
-                    <StyledTypography component="h1" variant="h5">
-                        Sign up
-                    </StyledTypography>
-                        <Form>
-                            <Grid container spacing={2}>
-                            <Grid item xs={12}>
-                                <TextField
-                                    autoComplete="fname"
-                                    name="firstName"
-                                    variant="outlined"
-                                    required
-                                    fullWidth
-                                    id="firstName"
-                                    label="Nome Completo"
-                                    value = {this.state.name}
-                                    onChange = {this.handleChangeName}
-                                    onKeyPress={this.enterPress}
-                                />
+            <div>
+                <Header><INovaLogo src="/images/iNova_logo.jpeg"/></Header>
+                <MainContainer>
+                    <Error>
+                        { this.state.error ? <p className="alert alert-danger">{ this.state.error }</p> : '' }
+                    </Error>
+                        <Title>Cadastro</Title>
+                        <LittleText>Venha navegar na Jangada com a gente! </LittleText>
+                            <Form>
+                                <Relative> 
+                                    <TextContainer>
+                                        <TextInput
+                                            name="firstName"
+                                            required
+                                            id="firstName"
+                                            autoComplete="name"
+                                            value = {this.state.name}
+                                            onChange = {this.handleChangeName}
+                                            onKeyPress={this.enterPress}
+                                        />
+                                        <TextLabel>Nome Completo</TextLabel>
+                                    </TextContainer>
+                                </Relative>
+                                <Relative> 
+                                    <TextContainer>
+                                        <TextInput
+                                            required
+                                            id="whatsapp"
+                                            name="whatsapp"
+                                            autoComplete="whatsapp"
+                                            value = {this.state.whatsapp}
+                                            onChange = {this.handleChangeWhatsapp}
+                                            onKeyPress={this.enterPress}
+                                        />
+                                        <TextLabel>WhatsApp com DDD</TextLabel>
+                                    </TextContainer>
+                               </Relative>
+                               <Relative> 
+                                    <TextContainer>
+                                        <TextInput
+                                        required
+                                        id="CPF"
+                                        name="CPF"
+                                        autoComplete="new-CPF"
+                                        value = {this.state.CPF}
+                                        onChange = {this.handleChangeCPF}
+                                        onKeyPress={this.enterPress}
+                                    />
+                                        <TextLabel>CPF</TextLabel>
+                                    </TextContainer>
+                                </Relative>
+                                <Relative> 
+                                    <TextContainer>
+                                        <TextInput
+                                        required
+                                        name="password"
+                                        type="password"
+                                        id="password"
+                                        autoComplete="new-password"
+                                        value = {this.state.password}
+                                        onChange = {this.handleChangePassword}
+                                        onKeyPress={this.enterPress}
+                                    />
+                                        <TextLabel>Sua Senha</TextLabel>
+                                    </TextContainer>
+                                </Relative>
 
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    variant="outlined"
-                                    required
-                                    fullWidth
-                                    id="whatsapp"
-                                    label="Whatsapp"
-                                    name="whatsapp"
-                                    autoComplete="whatsapp"
-                                    value = {this.state.whatsapp}
-                                    onChange = {this.handleChangeWhatsapp}
-                                    onKeyPress={this.enterPress}
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    variant="outlined"
-                                    required
-                                    fullWidth
-                                    id="CPF"
-                                    label="CPF"
-                                    name="CPF"
-                                    autoComplete="CPF"
-                                    value = {this.state.CPF}
-                                    onChange = {this.handleChangeCPF}
-                                    onKeyPress={this.enterPress}
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    variant="outlined"
-                                    required
-                                    fullWidth
-                                    name="password"
-                                    label="Password"
-                                    type="password"
-                                    id="password"
-                                    autoComplete="current-password"
-                                    value = {this.state.password}
-                                    onChange = {this.handleChangePassword}
-                                    onKeyPress={this.enterPress}
-                                />
-                            </Grid>
+                           
+                            <LastContainer>
+                                <EnterButton variant="extended" aria-label="Delete"  onClick ={this.createAccount}>
+                                    CADASTRAR!
+                                </EnterButton>
+                            </LastContainer>
+                        </Form>
+                        {this.loginRoute()}
+                    {/*<Box mt={5}>
+                        <Typography variant="body2" color="textSecondary" align="center">
+                            <Link to="/"> Volte para o login! </Link>
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" align="center">
 
-                        </Grid>
-                        <StyledButton
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="primary"
-                            onClick={this.createAccount}>
-                            Sign Up
-                        </StyledButton>
-                    </Form>
-                    {this.loginRoute()}
-                <Box mt={5}>
-                    <Typography variant="body2" color="textSecondary" align="center">
-                        <Link to="/"> Volte para o login! </Link>
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary" align="center">
-
-                        {'iNovaBank'}
-                        
-                        {' team.'}
-                    </Typography>
-                </Box>
-
-
-            </Container>
+                            {'iNovaBank'}
+                            
+                            {' team.'}
+                        </Typography>
+                    </Box>*/}
+                </MainContainer>
+                <ImagemContainer>
+                    <Imagem src="/images/log2.png" alt="foto"/>
+               </ImagemContainer>
+            </div>
 
 
         );
     }
 }
-
-
-
-
-
-  
