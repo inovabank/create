@@ -17,7 +17,7 @@ const theme = createMuiTheme({
     },
 });
 const Main = styled.div`
-    padding:2% 20%;
+    padding:2% 12%;
     @media screen and (max-width:1100px)
     {
         padding: 5% 5%;
@@ -26,10 +26,13 @@ const Main = styled.div`
 const TitleColumn = styled.div`
     width:67%;
     display:inline-block;
+    vertical-align:top;
 `;
 const PictureColumn = styled.div`
     width:33%;
     display:inline-block;
+    text-align:center;
+    vertical-align:top;
 `;
 const FirstColumn = styled.div`
     vertical-align:top;
@@ -44,7 +47,7 @@ const FirstColumn = styled.div`
 const SecondColumn = styled.div`
     width:32%;
     color:white;
-    height:22.5vw;
+    height:28vw;
     display:inline-block;  
     background-color:#212121;
     margin-left:5px;
@@ -84,9 +87,9 @@ export default class VideoPage extends Component {
             id: '',
             title: '',
             url: '',
-            description: 'Descricao',
-            documents: 'Documentos',
-            links: 'Links',
+            description: '',
+            documents: '',
+            links: '',
             video_thumb: '',
             playlist_link: '',
             author_name: '',
@@ -137,13 +140,10 @@ export default class VideoPage extends Component {
     };
     componentWillUnmount() {
         window.removeEventListener('resize', this.updateWindowDimensions);
-      }
-      
+    }
     updateWindowDimensions() {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
-
-
     render() {
         return (
             <main>
