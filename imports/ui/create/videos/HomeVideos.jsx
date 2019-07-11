@@ -14,14 +14,16 @@ const Main = styled.div`
     align-items: center;
     `;
 
-const Body = styled.body`
+const VideoLine = styled.div`
+    display: flex;
+    flex-direction: row;
 `;
 
 const StyledGrid = withStyles({
     root: {
         width: '100%',
         display: 'flex',
-        flexDirection: 'row',
+        flexDirection: 'column',
         justifyContent: 'flex-start',
     },
 })(Grid)
@@ -40,19 +42,19 @@ export default class HomeVideos extends Component {
     componentDidMount = () => {
         let location = this.props.history.location.pathname.split("/").pop();
         let videosList;
+        let numVideos = 0;
+        let props = this.props;
+        let videosPerLine = 2;
         if(location === '' || location === 'video') {
             videosList = (
-                allVideos.map((video) => (
-                    <VideoIcon {...{...this.props, ...video}} />
-                ))
-            );
-            this.setState(() => ({
-                videosList: videosList,
-            }));
+                allVideos.map(function (video) {
+                    if(numVideos < 12) {
+                        numVideos = numVideos + 1;
+                        return (<VideoIcon {...{...props, ...video}} />);
+                    }
+                }
+            ));
         } else {
-            let props = this.props;
-            let numVideos = 0;
-
             Meteor.call('getVideoData', location, (error, response) => {
                 if(error) {
                     console.log(error.reason);
@@ -63,16 +65,33 @@ export default class HomeVideos extends Component {
                             console.log(response.data.url !== video.url);
                             console.log(video.url);
                             if(response.data.url !== video.url && numVideos < 12) {
+                                numVideos = numVideos + 1;
                                 return (<VideoIcon {...{...props, ...video}} />);
                             }
                         }
                     ));
-                    this.setState(() => ({
-                        videosList: videosList,
-                    }));
                 }
             });
         }
+
+
+        let videosLists = [];
+        let videoLine = [];
+        for(let i = 0;  i < videosList.length/videosPerLine; i++){
+            for(let l=0; l < videosPerLine && l+i < videosList.length; l++) {
+                videoLine = videoLine.concat(videosList[i+l]);
+            }
+            videosLists = videosLists.concat(
+                <VideoLine>
+                    {videoLine}
+                </VideoLine>
+            );
+            videoLine = [];
+        }
+        console.log(videosList);
+        this.setState(() => ({
+            videosList: videosLists,
+        }));
     };
 
     render() {
