@@ -30,7 +30,13 @@ export default class Account extends Component {
 
     constructor(props) {
         super(props);
-        this.state = this.getMeteorData();
+        this.state = {
+            ...this.getMeteorData(),
+            accountData: {
+                accountBalance: undefined,
+                availableBalance: undefined,
+            },
+        };
     }
 
     getMeteorData(){
@@ -49,6 +55,27 @@ export default class Account extends Component {
         }
     }
 
+    getAccountData = () => {
+        Meteor.call('getAccountData', (error, response) => {
+            if(error) {
+                console.log(error);
+            } else {
+                // console.log(response); // uncomment if want see whats getaccountdata returns
+                this.setState({
+                    accountData: {
+                        accountBalance: response.summary.accountBalance,
+                        availableBalance: response.summary.availableBalance,
+                    },
+                });
+            }
+        });
+    };
+
+    componentDidMount = () => {
+        this.getAccountData();
+    }
+
+
     /*FUNCTIONS*/
 
     // 1. Acrescentar coisas do Mifos
@@ -62,6 +89,8 @@ export default class Account extends Component {
                             <BarTop {...this.props}/>
                         </WrapperBar>
                         <h1>MINHA CONTA</h1>
+                        <h1>account balance: {this.state.accountData.accountBalance}</h1>
+                        <h1>avaialable balance: {this.state.accountData.availableBalance}</h1>
                 </MuiThemeProvider>
             </PageWrapper>
         );
