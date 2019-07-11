@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
+const StyledTypography = withStyles({
+    root: {
+        marginBottom: 0,
+    },
+})(Typography)
 
 const First = styled.div`
     padding:2% 10%;
@@ -27,7 +32,7 @@ const LoginFirst = styled.button`
     position:relative; 
     font-weight: bold;   
     background-color: #0a6ead;
-    margin-top:10px;
+    margin-top:16px;
     float:right;
  `;
 
@@ -198,11 +203,11 @@ export default class LandingPage extends Component {
         return (
             <main>
                 <First>
-                    <LogoFirst src="/images/iNova_logo.jpeg"/>
+                        <LogoFirst src="/images/iNova_logo.jpeg"/>
                         <LoginFirst variant="extended" aria-label="Delete" onClick={this.redirectToLogin}>
-                        	<Typography gutterBottom variant = "h7" component="h5">
+                        	<StyledTypography gutterBottom variant = "h7" component="h5">
                         		ENTRAR
-                        	</Typography>
+                        	</StyledTypography>
                         </LoginFirst>
                         <ColumnFirst>
                             <MainTextFirst>

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import VideoIcon from './VideoIcon';
 import {allVideos} from '../../../../lib/allVideos';
-import {MuiThemeProvider, withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import Grid from "@material-ui/core/Grid";
 import styled from "styled-components";
 import Title from "./common/Title";
