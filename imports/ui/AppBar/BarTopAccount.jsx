@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -6,26 +6,12 @@ import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
 import Logout from './Logout';
-import HomePage from './HomePage';
-import MyAccountButton from './MyAccountButton';
+import MyVideoButton from './MyVideosButton';
 
 const Wrapper = styled.div`
     align-self: center;
-    width:100%;
-    height:70px;
-    background-color:#606060;
-    padding : 10px 30px;
+    width:100%; 
 `;
-const Right = styled.div`
-    float:right;
-    display:inline-block;
-`;
-const Left = styled.div`
-    float:left;
-    display:inline-block;
-`;
-<<<<<<< HEAD
-=======
 
 const StyledGrid = withStyles({
     root: {
@@ -37,7 +23,7 @@ const StyledGrid = withStyles({
 const LogoFirst = styled.img`
     float:left;
     padding:10px 0px;
-    height:40px;
+    height:60px;
     margin-top:10px;
 `;
 
@@ -48,40 +34,27 @@ const StyledToolbar = withStyles({
 
     },
 })(Toolbar)
->>>>>>> 3a163c8f3426745ac7bd32b87484807b4c84f726
 
-export default class BarTop extends React.Component {
+export default class BarTopAccount extends React.Component {
     constructor(props){
         super(props);
     }
-
+ 
     render() {
         return (
-<<<<<<< HEAD
-            <Wrapper >
-                <Left>
-                    <HomePage {...this.props}/>
-                </Left>
-                <Right>
-                    <MyAccountButton {...this.props} />
-                    <Logout {...this.props}/>
-                </Right>
-            </Wrapper>
-=======
           <Wrapper >
-            <AppBar color="dark" position="static" elevation={0}>
+            <AppBar color="gray33" position="static" elevation={0}>
                 <StyledGrid xs={10}>
                     <StyledToolbar alignItems={"center"}>
-                        <LogoFirst src="/images/inova_logo.png"/>
+                        <LogoFirst src="/images/JangadaSolta.png"/>
                         <div>
-                            <MyAccountButton {...this.props} />
+                            <MyVideoButton {...this.props} />
                             <Logout {...this.props}/>
                         </div>
                     </StyledToolbar>
                 </StyledGrid>
             </AppBar>
           </Wrapper>
->>>>>>> 3a163c8f3426745ac7bd32b87484807b4c84f726
         );
     }
   }
