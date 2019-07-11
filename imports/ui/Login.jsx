@@ -8,7 +8,6 @@ import NavigationIcon from '@material-ui/icons/Navigation';
 //import Foto from 'FotoDasCasas.png'
 
 /*CSS*/
-
 const Error = styled.div`
     text-align: center;
     width: 40%;
@@ -21,11 +20,13 @@ const LastContainer = styled.div`
 `;
 const MainContainer = styled.div`
     width:350px;
+    z-index:2;
     border-radius:10px;
-    border: 2px solid #fff;
-    margin-top: 5%;
+    border: none;
     margin-left: calc(50% - 175px);
     margin-right: calc(50% - 175px);
+    position: absolute;
+    top: 80px;
 `;
 const Title = styled.div`
     font-size : 3rem;
@@ -46,6 +47,7 @@ const TextInput = styled.input`
     color:black;   
     padding:5px 5px;
     display:block;
+
     &:focus{
         width: 96%;
         padding: 5px 5px;
@@ -106,13 +108,37 @@ const LoginButton = styled.button`
     font-size:1.1em;
     position:relative; 
     font-weight: bold;   
-    background-image: linear-gradient(#0a6ead, blue);
+    background-image: linear-gradient(to right, #7B473B, #195474);
     margin-top:20px;
 `;
 
+const Header = styled.div`
+    width: 100%;
+    height: 70px;
+    background-color: #040c27;
+    position: sticky;
+`;
+
+const ImagemContainer = styled.div`
+    width: 100%;
+    top:300px;
+    height: 420px;
+    position: relative;
+    overflow:hidden;  
+`;
+
 const Imagem = styled.img`
-    z-index = -1;
-    
+    z-index: 1;
+    margin-top: -45px;
+    height: 100%;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+`;
+const INovaLogo = styled.img`
+    margin:15px;
+    height:40px;
 `;
 
 const StyledFab = withStyles({
@@ -178,11 +204,15 @@ export default class Login extends Component {
     render() {
         return (
             <div>
-               <MainContainer>
+                <Header><INovaLogo src="/images/iNova_logo.jpeg"/></Header>
+                <ImagemContainer>
+                    <Imagem src="/images/log2.png" alt="foto"/>
+                </ImagemContainer>
+                <MainContainer>
                     <Error>
                         { this.state.error ? <p className="alert alert-danger">{ this.state.error }</p> : '' }
                     </Error>
-                   <Title>Login</Title>
+                   <Title style={{fontWeight: 'bold',}}>Login</Title>
                    <LittleText>
                        Entre na Jangada com a gente! <br></br> 
                        <Link to="/signup" style={{fontSize: '13px',}}> Ainda não tem uma conta? Clique aqui!</Link>
@@ -222,7 +252,6 @@ export default class Login extends Component {
                         </LoginButton>
                     </LastContainer>
                </MainContainer>
-               <Imagem style={{width: '100%', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'none',}} src="/images/log2.png" alt="foto"/>
             </div>
         );
     }
