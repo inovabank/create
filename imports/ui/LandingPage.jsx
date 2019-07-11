@@ -203,7 +203,7 @@ export default class LandingPage extends Component {
         return (
             <main>
                 <First>
-                        <LogoFirst src="/images/iNova_logo.jpeg"/>
+                        <LogoFirst src="/images/inova_logo.png"/>
                         <LoginFirst variant="extended" aria-label="Delete" onClick={this.redirectToLogin}>
                         	<StyledTypography gutterBottom variant = "h7" component="h5">
                         		ENTRAR

@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import Hidden from "@material-ui/core/Hidden";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
+
 const theme = createMuiTheme({
     palette: {
         type: 'dark',
@@ -77,8 +78,6 @@ export default class Account extends Component {
 
 
     /*FUNCTIONS*/
-
-    // 1. Acrescentar coisas do Mifos
 
     render() {
         return (
