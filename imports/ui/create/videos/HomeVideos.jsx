@@ -6,7 +6,6 @@ import Grid from "@material-ui/core/Grid";
 import styled from "styled-components";
 import Title from "./common/Title";
 
-
 const Main = styled.div`
     padding:2% 0;
     display: flex;
@@ -19,12 +18,6 @@ const VideoLine = styled.div`
     flex-direction: row;
 `;
 
-<<<<<<< HEAD
-const StyledGrid = styled.div`
-    text-align:center;
-    display:inline-block;
-`;
-=======
 const StyledGrid = withStyles({
     root: {
         width: '100%',
@@ -33,7 +26,6 @@ const StyledGrid = withStyles({
         justifyContent: 'flex-start',
     },
 })(Grid)
->>>>>>> c390a11686492f44de1ed9e7fd5e56a3a9b2990a
 
 export default class HomeVideos extends Component {
 
