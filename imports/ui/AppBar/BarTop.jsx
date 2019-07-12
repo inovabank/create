@@ -39,9 +39,12 @@ export default class BarTop extends React.Component {
                     <HomePage {...this.props}/>
                 </Left>
                 <Right>
-                    <MyAccountButton {...this.props} />
                     <Logout {...this.props}/>
                 </Right>
+                <Right>
+                    <MyAccountButton {...this.props} />
+                </Right>
+
             </Wrapper>
         );
     }

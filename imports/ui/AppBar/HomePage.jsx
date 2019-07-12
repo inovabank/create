@@ -28,7 +28,7 @@ export default class HomePage extends Component {
     render() {
         return (
             <Button1 onClick = {this.homepage}>
-                <Ibagem src="./images/iNova_logo.jpeg"/>
+                <Ibagem src="/images/iNova_logo.jpeg"/>
             </Button1>
         );
     }
