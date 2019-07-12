@@ -6,11 +6,8 @@ import BarTopAccount from "./AppBar/BarTopAccount";
 import Grid from '@material-ui/core/Grid';
 import Hidden from "@material-ui/core/Hidden";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 const theme = createMuiTheme({
     palette: {
@@ -20,6 +17,7 @@ const theme = createMuiTheme({
 
 const PageWrapper = styled.div`
     height: 100%;
+    background: white;
 `;
 
 const WrapperBar = styled.div`
@@ -28,15 +26,104 @@ const WrapperBar = styled.div`
     align-items: center;
     width: 100%;
     height:7%;
-    
 `;
 
-const MainTextFirst = styled.h5`
-    text-align: center;
-    font-family:'Helvetica';
-    color:#0a6ead;
-    margin-bottom: 5px;
-    font-size:5rem;
+const First = styled.div`
+    width:100% ;
+    background-color:white;
+    color:white;
+`;
+
+const FirstContent = styled.div`
+    padding: 4px 5% 100px 5%;
+`;
+
+const MainTextFirst = styled.h3`
+    font-family:'Arial';
+    color:#8B008B;
+    font-size:3.2rem;
+    text-align:left;
+`;
+
+const CifraText = styled.h3`
+    font-family:'Arial';
+    color:#8B008B;
+    font-size:3.2rem;
+    text-align:left;
+    padding:0% 26%;
+`;
+
+const SubText = styled.h3`
+    font-family:'Arial';
+    color:grey;
+    padding:0% 8%;
+    font-size:1.3rem;
+`;
+
+const ValorRecebido = styled.h3`
+    font-family:'Arial';
+    color:#8B008B;
+    font-size:2rem;
+    text-align:rigth;
+    padding:0% 70%;
+`;
+
+const Second = styled.div`
+    width:100% ;
+    background-color:#f6f6f6;
+    color:white;
+    display: flex;
+    justify-content: center;
+`;
+
+const SecondContent = styled.div`
+    padding: 4px 5% 25px 5%;
+`;
+
+const SecondColumns = styled.button`
+    margin:2% 1%;
+    border-radius:18px;
+    width:27%;
+    padding: 5px 60px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align:center;
+    background-color:white;
+    color:gray;
+    margin:10px;
+
+`;
+
+const SecondColumnsContent = styled.div`
+    padding:7% 5%
+`;
+
+const Third = styled.div` 
+    width:100% ;
+    background-color:#e9e9e9;
+    color:white;
+`;
+
+const ThirdContent = styled.div`
+    padding: 4px 5% 100px 5%;
+`;
+
+const ThirdColumnsContent = styled.div`
+    padding:7% 5%
+`;
+
+const Fourth = styled.div` 
+    width:100% ;
+    background-color:#081326;
+    color:white;
+`;
+
+const FourthContent = styled.div`
+    padding: 4px 5% 100px 5%;
+`;
+
+const FourthColumnsContent = styled.div`
+    padding:7% 5%
 `;
 
 export default class Account extends Component {
@@ -101,32 +188,55 @@ export default class Account extends Component {
                         <WrapperBar >
                             <BarTopAccount {...this.props}/>
                         </WrapperBar>
-                        <MainTextFirst>
+                        <First>
+                            <FirstContent>
+                                <MainTextFirst>
+                                    Valor em Aberto:
+                                </MainTextFirst>
+                                <SubText>
+                                    Parcelas pagas: 1 de 5
+                                </SubText>
+                            </FirstContent>
+                            <CifraText>
+                                    R$ {this.state.accountData.availableBalance}
+                            </CifraText>
+                        </First>
+                        <Second>
+                            <SecondContent>
+                                <SecondColumns>
+                                    <SecondColumnsContent>
+                                        <Typography  gutterBottom variant="h5" component="h2">
+                                            Gerar boleto
+                                        </Typography>
+                                    </SecondColumnsContent>
+                                </SecondColumns>
+                                <SecondColumns>
+                                    <SecondColumnsContent>
+                                        <Typography gutterBottom variant="h5" component="h2">
+                                            Meu grupo
+                                        </Typography>
+                                    </SecondColumnsContent>
+                                </SecondColumns>
+                                <SecondColumns>
+                                    <SecondColumnsContent>
+                                        <Typography  gutterBottom variant="h5" component="h2">
+                                            Pedir crédito
+                                        </Typography>
+                                    </SecondColumnsContent>
+                                </SecondColumns>
+                            </SecondContent>
+                        </Second>
+                        <Third>
+                            <ThirdContent>
+                            <br/><br/><br/><br/><br/><br/><br/>
+                            <br/><br/><br/><br/><br/><br/><br/>
+                            </ThirdContent>
+                        </Third>
+                        <Fourth>
+                            <FourthContent>
 
-                        <h1>MINHA CONTA</h1>
-                        </MainTextFirst>
-                        <ExpansionPanel>
-                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} 
-                                aria-controls="panel1a-content"
-                                id="panel1a-header">
-
-                                <h1>Saldo: </h1>
-                            </ExpansionPanelSummary>
-                            <ExpansionPanelDetails>
-                                <h1>{this.state.accountData.accountBalance} </h1>
-                            </ExpansionPanelDetails>
-                        </ExpansionPanel>
-                        <ExpansionPanel>
-                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} 
-                                aria-controls="panel1a-content"
-                                id="panel1a-header">
-
-                                <h1>Saldo disponível: </h1>
-                            </ExpansionPanelSummary>
-                            <ExpansionPanelDetails>
-                                <h1>{this.state.accountData.availableBalance} </h1>
-                            </ExpansionPanelDetails>
-                        </ExpansionPanel>
+                            </FourthContent>
+                        </Fourth>
                 </MuiThemeProvider>
             </PageWrapper>
         );
