@@ -26,7 +26,7 @@ const MainContainer = styled.div`
     margin-left: calc(50% - 175px);
     margin-right: calc(50% - 175px);
     position: absolute;
-    top: 80px;
+    top: calc(15% + 30px);
 `;
 const Title = styled.div`
     font-size : 3rem;
@@ -114,14 +114,16 @@ const LoginButton = styled.button`
 
 const Header = styled.div`
     width: 100%;
-    height: 70px;
-    background-color: #040c27;
+    height: 100px;
+    margin-top:0px;
+    background-color: white;
     position: sticky;
+    margin-bottom:30px;
 `;
 
 const ImagemContainer = styled.div`
     width: 100%;
-    top:300px;
+    top:280px;
     height: 420px;
     position: relative;
     overflow:hidden;  
@@ -137,22 +139,17 @@ const Imagem = styled.img`
     transform: translateX(-50%);
 `;
 const INovaLogo = styled.img`
-    margin:15px;
-    height:40px;
+    height:50px;
+    float:right;
+    margin-top:35px;
+    margin-right:70px;
 `;
-
-const StyledFab = withStyles({
-    root: {
-       margin : '8px',
-    },
-
-})(Fab)
-const StyledNavigationIcon = withStyles({
-    root: {
-       marginRight:'10px',
-    },
-    
-    })(NavigationIcon)
+const JangadaLogo = styled.img`
+    height:100px;
+    float:left;
+    margin-top:14px;
+    margin-left:70px;
+`;
 
 
 export default class Login extends Component {
@@ -203,15 +200,15 @@ export default class Login extends Component {
 
     render() {
         return (
-            <div>
-                <Header><INovaLogo src="/images/iNova_logo.jpeg"/></Header>
+            <main>
+                <Header><INovaLogo src="/images/iNova_logo.jpeg"/><JangadaLogo src="/images/JangadaSolta.png"/></Header>
                 <ImagemContainer>
                     <Imagem src="/images/log2.png" alt="foto"/>
                 </ImagemContainer>
                 <MainContainer>
-                    <Error>
+                    {/* <Error>
                         { this.state.error ? <p className="alert alert-danger">{ this.state.error }</p> : '' }
-                    </Error>
+                    </Error> */}
                    <Title style={{fontWeight: 'bold',}}>Login</Title>
                    <LittleText>
                        Entre na Jangada com a gente! <br></br> 
@@ -252,7 +249,7 @@ export default class Login extends Component {
                         </LoginButton>
                     </LastContainer>
                </MainContainer>
-            </div>
+            </main>
         );
     }
 }

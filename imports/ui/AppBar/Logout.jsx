@@ -4,6 +4,15 @@ import styled from "styled-components";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
+const Logout1 = styled.button`
+    font-weight: bold;
+    padding: 15px 25px;
+    font-size:1.5rem;
+    border:none;
+    background-color:inherit;
+    margin-right:10px;
+`;
+
 export default class Logout extends Component {
     constructor(props){
         super(props);
@@ -23,7 +32,7 @@ export default class Logout extends Component {
 
     render() {
         return (
-            <Button color="inherit" onClick ={this.logout}><Typography gutterBottom variant="h5" component="h2">Logout</Typography></Button>
+            <Logout1 onClick ={this.logout}>Logout</Logout1>
         );
     }
 

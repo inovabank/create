@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -11,30 +11,21 @@ import MyAccountButton from './MyAccountButton';
 
 const Wrapper = styled.div`
     align-self: center;
-    width:100%; 
+    width:100%;
+    height:70px;
+    background-color:#606060;
+    padding : 10px 30px;
 `;
-
-const StyledGrid = withStyles({
-    root: {
-        alignSelf: 'center',
-        width: '100%',
-    },
-})(Grid)
-
-const LogoFirst = styled.img`
+const Right = styled.div`
+    float:right;
+    display:inline-block;
+`;
+const Left = styled.div`
     float:left;
-    padding:10px 0px;
-    height:40px;
-    margin-top:10px;
+    display:inline-block;
 `;
 
-const StyledToolbar = withStyles({
-    root: {
-        display: 'flex',
-        justifyContent: 'space-between',
 
-    },
-})(Toolbar)
 
 export default class BarTop extends React.Component {
     constructor(props){
@@ -43,19 +34,15 @@ export default class BarTop extends React.Component {
 
     render() {
         return (
-          <Wrapper >
-            <AppBar color="dark" position="static" elevation={0}>
-                <StyledGrid xs={10}>
-                    <StyledToolbar alignItems={"center"}>
-                        <LogoFirst src="/images/inova_logo.png"/>
-                        <div>
-                            <MyAccountButton {...this.props} />
-                            <Logout {...this.props}/>
-                        </div>
-                    </StyledToolbar>
-                </StyledGrid>
-            </AppBar>
-          </Wrapper>
+            <Wrapper >
+                <Left>
+                    <HomePage {...this.props}/>
+                </Left>
+                <Right>
+                    <MyAccountButton {...this.props} />
+                    <Logout {...this.props}/>
+                </Right>
+            </Wrapper>
         );
     }
   }
