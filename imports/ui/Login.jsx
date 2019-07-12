@@ -201,7 +201,7 @@ export default class Login extends Component {
     render() {
         return (
             <main>
-                <Header><INovaLogo src="/images/iNova_logo.jpeg"/><JangadaLogo src="/images/JangadaSolta.png"/></Header>
+                <Header><INovaLogo src="/images/inova_logo.png"/><JangadaLogo src="/images/JangadaSolta.png"/></Header>
                 <ImagemContainer>
                     <Imagem src="/images/log2.png" alt="foto"/>
                 </ImagemContainer>
