@@ -15,14 +15,13 @@ const updateSavingsAccounts = () => {
       Authorization: "Basic bWlmb3M6YXNla2h0MTk3Mw==",
     }
   };
-  console.log('GET');
+  console.log('Updating Savings Accounts - GET');
   HTTP.call(method, url, options, function(error, response) {
     if (error) {
       console.log(error);
       return error;
     } else {
       console.log('SUCESSFUL');
-      console.log(response.data);
       for (let i = 0; i < response.data.pageItems.length; i++) {
         if(SavingsAccounts.find({}).count() < response.data.pageItems.length) {
           SavingsAccounts.insert(response.data.pageItems[i]);

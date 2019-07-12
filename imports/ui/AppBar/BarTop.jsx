@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import Logout from './Logout';
 import HomePage from './HomePage';
 import MyAccountButton from './MyAccountButton';
+import MyVideosButton from './MyVideosButton';
 
 const Wrapper = styled.div`
     align-self: center;
@@ -42,7 +43,7 @@ export default class BarTop extends React.Component {
                     <Logout {...this.props}/>
                 </Right>
                 <Right>
-                    <MyAccountButton {...this.props} />
+                    {this.props.redirectToHome === true ? <MyVideosButton {...this.props}/> : <MyAccountButton {...this.props} />}
                 </Right>
 
             </Wrapper>

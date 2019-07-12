@@ -5,6 +5,15 @@ import Button from "@material-ui/core/Button";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 
+const MyVideos = styled.button`
+    font-weight: bold;
+    padding: 15px 5px;
+    float:right;
+    font-size:1.5rem;
+    border:none;
+    background-color:inherit;
+`;
+
 export default class MyVideoButton extends Component {
     constructor(props){
         super(props);
@@ -20,7 +29,7 @@ export default class MyVideoButton extends Component {
 
     render() {
         return (
-            <Button size="large" color="inherit" onClick ={this.video}><Typography gutterBottom variant="h5" component="h2">Meus videos</Typography></Button>
+                <MyVideos size="large" color="inherit" onClick ={this.video}>Meus Vídeos</MyVideos>
         );
     }
 }

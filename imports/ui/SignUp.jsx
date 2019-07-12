@@ -212,7 +212,7 @@ export default class Login extends Component {
             <main>
                 <Header>
                     <JangadaLogo src="/images/JangadaSolta.png"/>
-                    <INovaLogo src="/images/iNova_logo.jpeg"/>
+                    <INovaLogo src="/images/inova_logo.png"/>
                 </Header>
                 <ImagemContainer>
                     <Imagem src="/images/log2.png" alt="foto"/>

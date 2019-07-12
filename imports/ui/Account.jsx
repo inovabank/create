@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Meteor } from 'meteor/meteor';
 import {createMuiTheme, MuiThemeProvider, withStyles} from '@material-ui/core/styles';
-import BarTopAccount from "./AppBar/BarTopAccount";
+import BarTop from "./AppBar/BarTop";
 import Grid from '@material-ui/core/Grid';
 import Hidden from "@material-ui/core/Hidden";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -186,7 +186,7 @@ export default class Account extends Component {
                 <MuiThemeProvider theme={theme} >
                     <CssBaseline />
                         <WrapperBar >
-                            <BarTopAccount {...this.props}/>
+                            <BarTop redirectToHome={true} {...this.props}/>
                         </WrapperBar>
                         <First>
                             <FirstContent>
