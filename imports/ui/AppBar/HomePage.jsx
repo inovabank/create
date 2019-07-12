@@ -4,6 +4,7 @@ import styled from "styled-components";
 const Ibagem = styled.img`
     height:40px;
     margin-top:3px;
+    margin-left:10px;
 `;
 const Button1 = styled.button`
     background-color:inherit;
@@ -28,7 +29,7 @@ export default class HomePage extends Component {
     render() {
         return (
             <Button1 onClick = {this.homepage}>
-                <Ibagem src="/images/iNova_logo.jpeg"/>
+                <Ibagem src="/images/JangadaSolta.png"/>
             </Button1>
         );
     }
