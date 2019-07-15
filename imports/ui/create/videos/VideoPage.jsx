@@ -164,6 +164,9 @@ export default class VideoPage extends Component {
                         <CssBaseline />
                         <TitleColumn>
                             <Title {...this.state}/>
+                            <Typography variant="h6">
+                                {this.state.current_video === '' ? '' : this.state.current_video + " de " + this.state.num_videos}
+                            </Typography>
                         </TitleColumn>
                         <PictureColumn>
                             <Picture {...this.state}/>

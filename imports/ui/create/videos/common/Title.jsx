@@ -23,9 +23,6 @@ export default class Title extends Component {
     render() {
         return (
             <main>
-                <Typography variant="h6">
-                    {this.props.current_video === '' ? '' : this.props.current_video + " de " + this.props.num_videos}
-                </Typography>
                 <MainTitle>
                     {this.props.title}
                 </MainTitle>
