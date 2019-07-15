@@ -29,7 +29,7 @@ export default class LandingPage extends Component {
                     <button id="myBtnLogin" class="login-first" onClick={this.redirectToLogin}>ENTRAR</button>
                     <div class="first-column">
                         <b class="main-text-first">
-                            Decida sobre sua vida<br/> e suas finanças
+                            Decida sobre suas finanças
                         </b>
                         <p class="sub-text-first">
                             Aprenda com a Jangada!
