@@ -42,7 +42,8 @@ const MainTextFirst = styled.h3`
     font-family:'Arial';
     color:#8B008B;
     font-size:3.2rem;
-    text-align:left;
+    text-align:justify;
+    text-indent: 4em;
 `;
 
 const CifraText = styled.h3`
@@ -58,6 +59,8 @@ const SubText = styled.h3`
     color:grey;
     padding:0% 8%;
     font-size:1.3rem;
+    text-align:justify;
+    text-indent: 9em;
 `;
 
 const ValorRecebido = styled.h3`
