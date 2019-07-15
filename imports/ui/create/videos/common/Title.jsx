@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
+import {Typography, withStyles} from "@material-ui/core";
+import Button from "@material-ui/core/Button";
 
 const MainTitle = styled.div`
     font-size:3rem;
@@ -21,6 +23,9 @@ export default class Title extends Component {
     render() {
         return (
             <main>
+                <Typography variant="h6">
+                    {this.props.current_video === '' ? '' : this.props.current_video + " de " + this.props.num_videos}
+                </Typography>
                 <MainTitle>
                     {this.props.title}
                 </MainTitle>

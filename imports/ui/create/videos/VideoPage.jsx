@@ -10,6 +10,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import HomeVideos from "./HomeVideos";
 import BarTop from "../../AppBar/BarTop";
+import {Typography} from "@material-ui/core";
 
 const theme = createMuiTheme({
     palette: {
@@ -97,7 +98,9 @@ export default class VideoPage extends Component {
             playlist_title: '',
             playlist: '',
             width: 0, 
-            height: 0
+            height: 0,
+            num_videos: '',
+            current_video: '',
         };
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
@@ -114,10 +117,18 @@ export default class VideoPage extends Component {
                 console.log(error.reason);
             } 
             else {
+                let counter = 0;
                 playlist = (
-                    response.playlist.map((video) => (
-                        <VideoIconPlaylist {...{...this.props, ...video}} />
-                    ))
+                    response.playlist.map((video) => {
+                        counter += 1;
+                        if(this.props.history.location.pathname.split("/").pop() === video._id){
+                            console.log(video._id);
+                            this.setState({current_video: counter, num_videos: response.playlist.length,})
+                        }
+                        return (
+                         <VideoIconPlaylist {...{...this.props, ...video}} counter={counter} />
+                     );
+                    })
                 );
 
                 this.setState({

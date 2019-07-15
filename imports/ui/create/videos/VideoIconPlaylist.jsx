@@ -29,7 +29,7 @@ const Wrapper = styled.div`
     overflow-y: auto;
 `;
 
-export default class VideoIcon extends Component {
+export default class VideoIconPlaylist extends Component {
 
     constructor(props) {
         super(props);
@@ -83,7 +83,7 @@ export default class VideoIcon extends Component {
                         style={this.state.id === this.props.history.location.pathname.split("/").pop() ? sel : notsel}
                         onClick={this.startVideo.bind(this)}
                     >
-                        {this.props.title}
+                        {this.props.counter} - {this.props.title}
                     </StyledButton>
                 </Wrapper>
             </main>

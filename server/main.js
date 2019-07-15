@@ -67,7 +67,7 @@ Meteor.startup(() => {
 
 
   Accounts.onCreateUser((options, user) => {
-      var date = new Date()
+      var date = new Date();
       user.profile = options.profile;
       user = Object.assign({
         whatsapp: {
@@ -147,7 +147,7 @@ Meteor.startup(() => {
     },
 
     'getAccountData': () => {
-      clientId = Meteor.users.find({_id: Meteor.userId()}).clientId;
+      const clientId = Meteor.users.find({_id: Meteor.userId()}).clientId;
       return SavingsAccounts.findOne({clientId: clientId});
     }
   });
