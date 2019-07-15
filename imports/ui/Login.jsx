@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
 import NavigationIcon from '@material-ui/icons/Navigation';
+import {Hidden} from "@material-ui/core";
 //import Foto from 'FotoDasCasas.png'
 
 /*CSS*/
@@ -116,6 +117,7 @@ const Header = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
     height: 100px;
     margin-top:0px;
@@ -161,6 +163,11 @@ const Button = styled.button`
     outline:none;  
 `;
 
+const Main = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+`;
 
 
 export default class Login extends Component {
@@ -217,14 +224,16 @@ export default class Login extends Component {
 
     render() {
         return (
-            <main>
+            <Main>
                 <Header>
                     <Button onClick={this.homepage}>
                          <JangadaLogo src="/images/JangadaSolta.png"/>
                     </Button>
+                    <Hidden xsDown>
                     <Button onClick={this.homepage}>
                         <INovaLogo src="/images/inova_logo.png"/>
                     </Button>
+                    </Hidden>
                 </Header>
                 <ImagemContainer onClick={this.homepage}>
                     <Imagem src="/images/log2.png" alt="foto"/>
@@ -236,7 +245,7 @@ export default class Login extends Component {
                    <Title style={{fontWeight: 'bold',}}>Login</Title>
                    <LittleText>
                        Entre na Jangada com a gente! <br></br> 
-                       <Link to="/signup" style={{fontSize: '13px',}}> Ainda não tem uma conta? Clique aqui!</Link>
+                       <Link to="#" style={{fontSize: '13px',}}> Ainda não tem uma conta? Clique aqui!</Link>
                    </LittleText>
                    {/*<CriarConta> 
                        <Link to="/signup"> Ainda não tem uma conta? Clique aqui!</Link>
@@ -273,7 +282,7 @@ export default class Login extends Component {
                         </LoginButton>
                     </LastContainer>
                </MainContainer>
-            </main>
+            </Main>
         );
     }
 }

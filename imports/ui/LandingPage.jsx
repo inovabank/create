@@ -42,7 +42,7 @@ export default class LandingPage extends Component {
                 <div class="second">
                     <div class="second-content">
                         <div class="second-title">O que é a Jangada?</div>
-                        <div class="second-sub-text">  A Jangada é uma ferramenta do iNovaBank estabelecido para multiplicar o conhecimento dos empreendedores na plataforma. 
+                        <div class="second-sub-text">  A Jangada é uma ferramenta do iNovaBank estabelecida para multiplicar o conhecimento dos empreendedores na plataforma.
                             Através do iNovaBank, além do crédito e da consultoria, você tem acesso a uma plataforma de educação empreendedora gratuitamente!
 
                             <br/><br/>

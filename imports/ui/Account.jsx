@@ -46,6 +46,12 @@ const FirstContent = styled.div`
     padding: 4px 5% 24px 5%;
 `;
 
+const FirstContentRes = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: 4px 5% 24px 5%;
+`;
+
 const ColumnFirst = styled.div`
     display: flex;
 `;
@@ -67,6 +73,7 @@ const CifraText = styled.h3`
 const SubText = styled.h3`
     font-family:'Arial';
     color:grey;
+    margin-top: 0px;
     padding:0% 8%;
     font-size:1.3rem;
     text-align:justify;
@@ -77,7 +84,7 @@ const ReceivedText = styled.h3`
     margin-bottom: 0px;
     font-family:'Arial';
     color:grey;
-    font-size:1.3rem;
+    font-size:2rem;
 `;
 
 const ValorRecebido = styled.h3`
@@ -101,16 +108,22 @@ const SecondContent = styled.div`
     display: flex;
 `;
 
+const SecondContentRespons = styled.div`
+    padding: 4px 5% 25px 5%;
+    display: flex;
+    flex-direction: column;
+`;
+
 const SecondColumns = styled.button`
     margin:2% 1%;
     padding: 5px 60px;
     font-size: 1.2em;
     font-weight: bold;
+    border-radius:0px;
     text-align:center;
     background-color:white;
     color:gray;
     margin:40px;
-
 `;
 
 const SecondColumnsContent = styled.div`
@@ -151,7 +164,6 @@ const SecondColumn = styled.div`
     justify-content: center;
     font-family:'Arial';
     color:#000033;
-
 `;
 
 const OpenValue = styled.div`
@@ -225,34 +237,65 @@ export default class Account extends Component {
                             <BarTop redirectToHome={true} {...this.props}/>
                         </WrapperBar>
                         <First>
-                            <FirstContent>
-                                <div>
-                                <MainTextFirst>
-                                    Valor em Aberto:
-                                </MainTextFirst>
-                                <SubText>
-                                    Parcelas pagas: 1 de 5
-                                </SubText>
-                                </div>
-                                <ReceivedDiv>
-                                <ReceivedText>
-                                    Valor Recebido:
-                                </ReceivedText>
-                                <ReceivedText>
-                                    R$ {this.state.accountData.accountBalance === 1 ? 0 : this.state.accountData.accountBalance}
-                                </ReceivedText>
-                                </ReceivedDiv>
-                            </FirstContent>
-                            <SecondColumn>
-                                <CifraText>
+                            <Hidden smDown>
+                                <FirstContent>
+                                    <div>
+                                    <MainTextFirst>
+                                        Valor em Aberto:
+                                    </MainTextFirst>
+                                    <SubText>
+                                        Parcelas pagas: 1 de 5
+                                    </SubText>
+                                    </div>
+                                    <ReceivedDiv>
+                                    <ReceivedText>
+                                        Valor Recebido:
+                                    </ReceivedText>
+                                    <ReceivedText>
+                                        R$ {this.state.accountData.accountBalance === 1 ? "1250,00" : this.state.accountData.accountBalance}
+                                    </ReceivedText>
+                                    </ReceivedDiv>
+                                </FirstContent>
+                                <SecondColumn>
+                                    <CifraText>
+                                            R$
+                                    </CifraText>
+                                    <OpenValue>
+                                        {this.state.accountData.availableBalance === 1 ? "950,00" : this.state.accountData.availableBalance}
+                                    </OpenValue>
+                                </SecondColumn>
+                            </Hidden>
+                            <Hidden mdUp>
+                                <FirstContentRes>
+                                    <div>
+                                        <MainTextFirst>
+                                            Valor em Aberto:
+                                        </MainTextFirst>
+                                        <SubText>
+                                            Parcelas pagas: 1 de 5
+                                        </SubText>
+                                    </div>
+                                    <ReceivedDiv>
+                                        <ReceivedText>
+                                            Valor Recebido:
+                                        </ReceivedText>
+                                        <ReceivedText>
+                                            R$ {this.state.accountData.accountBalance === 1 ? "1250,00" : this.state.accountData.accountBalance}
+                                        </ReceivedText>
+                                    </ReceivedDiv>
+                                </FirstContentRes>
+                                <SecondColumn>
+                                    <CifraText>
                                         R$
-                                </CifraText>
-                                <OpenValue>
-                                    {this.state.accountData.availableBalance === 1 ? 0 : this.state.accountData.availableBalance}
-                                </OpenValue>
-                            </SecondColumn>
+                                    </CifraText>
+                                    <OpenValue>
+                                        {this.state.accountData.availableBalance === 1 ? "950,00" : this.state.accountData.availableBalance}
+                                    </OpenValue>
+                                </SecondColumn>
+                            </Hidden>
                         </First>
                         <Second>
+                            <Hidden mdDown>
                             <SecondContent>
                                 <SecondColumns>
                                     <SecondColumnsContent>
@@ -276,6 +319,32 @@ export default class Account extends Component {
                                     </SecondColumnsContent>
                                 </SecondColumns>
                             </SecondContent>
+                            </Hidden>
+                            <Hidden lgUp>
+                            <SecondContentRespons>
+                                <SecondColumns>
+                                    <SecondColumnsContent>
+                                        <Typography  gutterBottom variant="h5" component="h2">
+                                            Gerar boleto
+                                        </Typography>
+                                    </SecondColumnsContent>
+                                </SecondColumns>
+                                <SecondColumns>
+                                    <SecondColumnsContent>
+                                        <Typography gutterBottom variant="h5" component="h2">
+                                            Meu grupo
+                                        </Typography>
+                                    </SecondColumnsContent>
+                                </SecondColumns>
+                                <SecondColumns>
+                                    <SecondColumnsContent>
+                                        <Typography  gutterBottom variant="h5" component="h2">
+                                            Pedir crédito
+                                        </Typography>
+                                    </SecondColumnsContent>
+                                </SecondColumns>
+                            </SecondContentRespons>
+                            </Hidden>
                         </Second>
                         <Third>
                             <ThirdContent>

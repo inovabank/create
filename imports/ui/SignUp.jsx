@@ -250,12 +250,22 @@ export default class Login extends Component {
 
     };
 
+
+    homepage(e){
+        e.preventDefault();
+        this.props.history.push('/');
+    };
+
     render() {
         return (
             <main>
                 <Header>
-                    <JangadaLogo src="/images/JangadaSolta.png"/>
-                    <INovaLogo src="/images/inova_logo.png"/>
+                    <Button onClick={this.homepage}>
+                        <JangadaLogo src="/images/JangadaSolta.png"/>
+                    </Button>
+                    <Button onClick={this.homepage}>
+                        <INovaLogo src="/images/inova_logo.png"/>
+                    </Button>
                 </Header>
                 <ImagemContainer>
                     <Imagem src="/images/log2.png" alt="foto"/>
