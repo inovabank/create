@@ -42,10 +42,6 @@ export default class BarTop extends React.Component {
                 <Right>
                     <Logout {...this.props}/>
                 </Right>
-                <Right>
-                    {this.props.redirectToHome === true ? <MyVideosButton {...this.props}/> : <MyAccountButton {...this.props} />}
-                </Right>
-
             </Wrapper>
         );
     }

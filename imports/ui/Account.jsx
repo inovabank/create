@@ -16,6 +16,9 @@ const theme = createMuiTheme({
 });
 
 const PageWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 100%;
     background: white;
 `;
@@ -29,29 +32,36 @@ const WrapperBar = styled.div`
 `;
 
 const First = styled.div`
-    width:100% ;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
     background-color:white;
+    padding: 4px 5% 24px 5%;
     color:white;
 `;
 
 const FirstContent = styled.div`
-    padding: 4px 5% 100px 5%;
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 5% 24px 5%;
+`;
+
+const ColumnFirst = styled.div`
+    display: flex;
 `;
 
 const MainTextFirst = styled.h3`
     font-family:'Arial';
-    color:#8B008B;
+    color:#000033;
     font-size:3.2rem;
     text-align:justify;
-    text-indent: 4em;
 `;
 
 const CifraText = styled.h3`
     font-family:'Arial';
-    color:#8B008B;
+    color:#000033;
     font-size:3.2rem;
     text-align:left;
-    padding:0% 26%;
 `;
 
 const SubText = styled.h3`
@@ -60,7 +70,14 @@ const SubText = styled.h3`
     padding:0% 8%;
     font-size:1.3rem;
     text-align:justify;
-    text-indent: 9em;
+`;
+
+const ReceivedText = styled.h3`
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-family:'Arial';
+    color:grey;
+    font-size:1.3rem;
 `;
 
 const ValorRecebido = styled.h3`
@@ -81,12 +98,12 @@ const Second = styled.div`
 
 const SecondContent = styled.div`
     padding: 4px 5% 25px 5%;
+    display: flex;
 `;
 
 const SecondColumns = styled.button`
     margin:2% 1%;
     border-radius:18px;
-    width:27%;
     padding: 5px 60px;
     font-size: 1.2em;
     font-weight: bold;
@@ -98,7 +115,7 @@ const SecondColumns = styled.button`
 `;
 
 const SecondColumnsContent = styled.div`
-    padding:7% 5%
+    width: 64px;
 `;
 
 const Third = styled.div` 
@@ -127,6 +144,23 @@ const FourthContent = styled.div`
 
 const FourthColumnsContent = styled.div`
     padding:7% 5%
+`;
+
+const SecondColumn = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family:'Arial';
+    color:#000033;
+
+`;
+
+const OpenValue = styled.div`
+    font-size: 100px;
+`;
+
+const ReceivedDiv = styled.div`
+    margin-top: 20px;  
 `;
 
 export default class Account extends Component {
@@ -193,16 +227,31 @@ export default class Account extends Component {
                         </WrapperBar>
                         <First>
                             <FirstContent>
+                                <div>
                                 <MainTextFirst>
                                     Valor em Aberto:
                                 </MainTextFirst>
                                 <SubText>
                                     Parcelas pagas: 1 de 5
                                 </SubText>
+                                </div>
+                                <ReceivedDiv>
+                                <ReceivedText>
+                                    Valor Recebido:
+                                </ReceivedText>
+                                <ReceivedText>
+                                    R$ {this.state.accountData.accountBalance === 1 ? 0 : this.state.accountData.accountBalance}
+                                </ReceivedText>
+                                </ReceivedDiv>
                             </FirstContent>
-                            <CifraText>
-                                    R$ {this.state.accountData.availableBalance}
-                            </CifraText>
+                            <SecondColumn>
+                                <CifraText>
+                                        R$
+                                </CifraText>
+                                <OpenValue>
+                                    {this.state.accountData.availableBalance === 1 ? 0 : this.state.accountData.availableBalance}
+                                </OpenValue>
+                            </SecondColumn>
                         </First>
                         <Second>
                             <SecondContent>
