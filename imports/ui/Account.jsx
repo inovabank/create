@@ -103,14 +103,13 @@ const SecondContent = styled.div`
 
 const SecondColumns = styled.button`
     margin:2% 1%;
-    border-radius:18px;
     padding: 5px 60px;
     font-size: 1.2em;
     font-weight: bold;
     text-align:center;
     background-color:white;
     color:gray;
-    margin:10px;
+    margin:40px;
 
 `;
 
