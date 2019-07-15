@@ -168,16 +168,27 @@ export default class Login extends Component {
         this.state = {
             whatsapp: '',
             password: '',
+            CPF: '',
             error: '',
             redirect: false,
-        };
+            accountCreated: false,
+    };
     }
 
     /*FUNCTIONS*/
 
+    handleChangeName = event => {
+        this.setState({ name: event.target.value });
+    };
+
     handleChangeWhatsapp = event => {
         if(!event.isTrusted) return;
         this.setState({ whatsapp: event.target.value });
+    };
+
+    handleChangeCPF = event => {
+        if(!event.isTrusted) return;
+        this.setState({ CPF: event.target.value });
     };
 
     handleChangePassword = event => {
@@ -185,10 +196,49 @@ export default class Login extends Component {
         this.setState({ password: event.target.value });
     };
 
-    login = (event) => {
-        event.preventDefault();
+    createAccount = () => {
+        console.log('E - submit #form-signup');
+        let newUserData = {
+            username: this.state.whatsapp,
+            password: this.state.password,
+            profile: {
+                name: this.state.name,
+                cpf: this.state.CPF,
+            },
+        };
+        if (newUserData.username !== '' && newUserData.password !== '' && newUserData.profile.cpf !== '' && newUserData.profile.name!== '') {
+            Meteor.call('createNewUser', newUserData, (error) => {
+                if (error) {
+                    console.log(error);
+                    if(error.reason === 'Username already exists.') {
+                        this.setState({ error: 'Esse whatsapp já foi cadastrado.'});
+                    } else {
+                        this.setState({ error: error.reason });
+                    }
+                } else {
+                    this.state.accountCreated = true;
+                    this.login();
+                    console.log('Created Account');
+                }
+            });
+            console.log('Logged!');
+        } else {
+            this.setState({ error: 'Please provide all fields.'});
+        }
+    };
 
-        Meteor.loginWithPassword(this.state.whatsapp, this.state.password, (err) => {
+
+    enterPress = event => {
+        let code = event.key;
+        if(code === 'Enter'){
+            this.createAccount();
+        }
+    };
+
+    login = () => {
+        this.props.history.push('/login');
+
+        /*Meteor.loginWithPassword(this.state.whatsapp, this.state.password, (err) => {
             if(err){
                 this.setState({
                     error: err.reason
@@ -196,15 +246,8 @@ export default class Login extends Component {
             } else {
                 this.props.history.push('/');
             }
-        });
+        });*/
 
-    };
-
-    enterPress = event => {
-        let code = event.key;
-        if(code === 'Enter'){
-            this.login(event);
-        }
     };
 
     render() {
@@ -220,6 +263,7 @@ export default class Login extends Component {
                 <MainContainer>
                     <Error>
                         { this.state.error ? <p className="alert alert-danger">{ this.state.error }</p> : '' }
+                        { this.state.accountCreated ? this.login() : ''}
                     </Error>
                    <Title style={{fontWeight: 'bold',}}>Cadastro</Title>
                    <LittleText>

@@ -113,9 +113,13 @@ const LoginButton = styled.button`
 `;
 
 const Header = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     width: 100%;
     height: 100px;
     margin-top:0px;
+    padding: 0% 5%;
     background-color: white;
     position: sticky;
     margin-bottom:30px;
@@ -151,6 +155,13 @@ const JangadaLogo = styled.img`
     margin-left:70px;
 `;
 
+const Button = styled.button`
+    background-color:inherit;
+    border:none;
+    outline:none;  
+`;
+
+
 
 export default class Login extends Component {
 
@@ -162,6 +173,7 @@ export default class Login extends Component {
             error: '',
             redirect: false,
         };
+        this.homepage = this.homepage.bind(this);
     }
 
     /*FUNCTIONS*/
@@ -198,11 +210,23 @@ export default class Login extends Component {
         }
     };
 
+    homepage(e){
+        e.preventDefault();
+        this.props.history.push('/');
+    };
+
     render() {
         return (
             <main>
-                <Header><INovaLogo src="/images/inova_logo.png"/><JangadaLogo src="/images/JangadaSolta.png"/></Header>
-                <ImagemContainer>
+                <Header>
+                    <Button onClick={this.homepage}>
+                         <JangadaLogo src="/images/JangadaSolta.png"/>
+                    </Button>
+                    <Button onClick={this.homepage}>
+                        <INovaLogo src="/images/inova_logo.png"/>
+                    </Button>
+                </Header>
+                <ImagemContainer onClick={this.homepage}>
                     <Imagem src="/images/log2.png" alt="foto"/>
                 </ImagemContainer>
                 <MainContainer>
