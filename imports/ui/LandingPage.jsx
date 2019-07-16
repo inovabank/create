@@ -28,7 +28,7 @@ export default class LandingPage extends Component {
                     {/* <a href="http://inovabank.com.br"> */}
                         <img src="images/Jangada2.png" class="logo-first"/>
                     {/* </a> */}
-                    <button id="myBtnLogin" class="login-first">ENTRAR</button>
+                    <button id="myBtnLogin" class="login-first" onClick={this.redirectToLogin}>ENTRAR</button>
                     <div class="first-column">
                         <b class="main-text-first">
                             Decida sobre suas finanças
