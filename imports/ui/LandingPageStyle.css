@@ -9,6 +9,7 @@ button{
 	color: white;
 	text-align: center;
 	cursor:pointer;
+	outline:none;
 }
 img {
   display: block;
@@ -23,7 +24,7 @@ img {
 	.logo-first{
 		float:left;
 		padding:7px 0;
-		height:45px;
+		height:60px;
 	}
 	.login-first{
 		font-weight: bold;
@@ -89,7 +90,7 @@ img {
 	.second-columns{
 		margin:2% 1%;
 		border-radius:7px;
-		width:350px;
+		width:370px;
 		display:inline-block;
 		text-align:center;
 		background-color:white;
