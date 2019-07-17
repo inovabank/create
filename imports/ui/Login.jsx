@@ -11,9 +11,11 @@ import {Hidden} from "@material-ui/core";
 /*CSS*/
 const Error = styled.div`
     text-align: center;
-    width: 40%;
-    margin-left: 30%;
-    margin-right:30%;
+    width: 200px;
+    position:relative;
+    margin-left: calc(50% - 100px);
+    margin-right:calc(50% - 100px);
+    top:-455px;
 `;
 
 const LastContainer = styled.div`
@@ -27,7 +29,7 @@ const MainContainer = styled.div`
     margin-left: calc(50% - 175px);
     margin-right: calc(50% - 175px);
     position: absolute;
-    top: calc(15% + 30px);
+    top: 160px;
 `;
 const Title = styled.div`
     font-size : 3rem;
@@ -151,7 +153,7 @@ const INovaLogo = styled.img`
     margin-right:70px;
 `;
 const JangadaLogo = styled.img`
-    height:100px;
+    height:60px;
     float:left;
     margin-top:14px;
     margin-left:70px;
@@ -227,7 +229,7 @@ export default class Login extends Component {
             <Main>
                 <Header>
                     <Button onClick={this.homepage}>
-                         <JangadaLogo src="/images/JangadaSolta.png"/>
+                         <JangadaLogo src="/images/Jangada2.png"/>
                     </Button>
                     <Hidden xsDown>
                     <Button onClick={this.homepage}>
@@ -238,10 +240,10 @@ export default class Login extends Component {
                 <ImagemContainer onClick={this.homepage}>
                     <Imagem src="/images/log2.png" alt="foto"/>
                 </ImagemContainer>
+                <Error>
+                    { this.state.error ? <p className="alert alert-danger">{ this.state.error }</p> : '' }
+                </Error>
                 <MainContainer>
-                    {/* <Error>
-                        { this.state.error ? <p className="alert alert-danger">{ this.state.error }</p> : '' }
-                    </Error> */}
                    <Title style={{fontWeight: 'bold',}}>Login</Title>
                    <LittleText>
                        Entre na Jangada com a gente! <br></br> 
