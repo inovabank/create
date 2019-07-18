@@ -78,16 +78,32 @@ const SubText = styled.h3`
     color:grey;
     margin-top: 0px;
     padding:0% 8%;
-    font-size:1.3rem;
+    font-size:1.4rem;
     text-align:justify;
+    font-weight: 100;
 `;
 
 const ReceivedText = styled.h3`
     font-family:'Bahnschrift';
+    color:#c2c2c2;
+    font-size:3.2rem;
+    text-align:right;
     margin-top: 0px;
+    font-weight: 200;
     margin-bottom: 0px;
-    color:grey;
-    font-size:2rem;
+`;
+
+const ReceivedTextCifra = styled.h3 `
+    font-family:'Bahnschrift';
+    color:#000033;
+    font-size:3.2rem;
+    text-align:right;
+`
+
+const ReceivedDiv = styled.div`
+    font-family:'Bahnschrift';
+    font-weight: 200;
+    margin-top: 20px;
 `;
 
 const Second = styled.div`
@@ -109,20 +125,8 @@ const SecondContentRespons = styled.div`
     flex-direction: column;
 `;
 
-const SecondColumns = styled.button`
-    margin:2% 1%;
-    padding: 5px 60px;
-    font-size: 1.2em;
-    font-weight: bold;
-    border-radius:0px;
-    text-align:center;
-    background-color:white;
-    color:gray;
-    margin:40px;
-`;
-
 const SecondColumnsContent = styled.div`
-    width: 1500% ;
+    width: 100% ;
 `;
 
 const Third = styled.div` 
@@ -163,12 +167,9 @@ const SecondColumn = styled.div`
 
 const OpenValue = styled.div`
     font-family:'Bahnschrift';
-    font-size: 100px;
-`;
-
-const ReceivedDiv = styled.div`
-    font-family:'Bahnschrift';
-    margin-top: 20px;  
+    font-weight: 200;
+    font-size: 140px;
+    text-align:right;
 `;
 
 export default class Account extends Component {
@@ -237,10 +238,9 @@ export default class Account extends Component {
                                             bgcolor="white"
                                             color="white"
                                             position="absolute"
-                                            zIndex="modal"
-                                          >
+                                            zIndex="modal">
                                     <MainTextFirst>
-                                        Valor em Aberto:
+                                        Valor devido:
                                     </MainTextFirst>
                                     <SubText>
                                         Parcelas pagas: 1 de 5
@@ -269,19 +269,19 @@ export default class Account extends Component {
                                 <FirstContentRes>
                                     <div>
                                         <MainTextFirst>
-                                            Valor em Aberto:
+                                            Valor devido:
                                         </MainTextFirst>
                                         <SubText>
                                             Parcelas pagas: 1 de 5
                                         </SubText>
                                     </div>
-                                    <ReceivedDiv>
+                                    <ReceivedDiv >
                                         <ReceivedText>
                                             Valor Recebido:
                                         </ReceivedText>
-                                        <ReceivedText>
+                                        
                                             R$ {this.state.accountData.accountBalance === 1 ? "1250,00" : this.state.accountData.accountBalance}
-                                        </ReceivedText>
+                                        
                                     </ReceivedDiv>
                                 </FirstContentRes>
                                 <SecondColumn>
@@ -292,15 +292,15 @@ export default class Account extends Component {
                                         {this.state.accountData.availableBalance === 1 ? "950,00" : this.state.accountData.availableBalance}
                                     </OpenValue>
                                 </SecondColumn>
-                            </Hidden>
-                        
+                            </Hidden>                       
                         </First>              
                         <Second>
                         <Box
                                 bgcolor="rgba(0,0,0,0)"
                                 color="white"
                                 position="absolute"
-                                top={302}
+                                left= "16.5%"
+                                top={130}
                                 zIndex="tooltip"
                               >
                             <Hidden mdDown>

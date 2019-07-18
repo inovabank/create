@@ -13,20 +13,23 @@ import MyVideosButton from './MyVideosButton';
 const Wrapper = styled.div`
     align-self: center;
     width:100%;
-    height:70px;
-    background-color:#606060;
-    padding : 10px 30px;
+    height:50px;
+    background-color:#c2c2c2;
+    padding : 11px 50px;
 `;
+
 const Right = styled.div`
+    font-family:'Bahnschrift';
     float:right;
+    padding : 0px;
+    margin-top: 0;
     display:inline-block;
 `;
+
 const Left = styled.div`
     float:left;
     display:inline-block;
 `;
-
-
 
 export default class BarTop extends React.Component {
     constructor(props){
