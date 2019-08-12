@@ -2,10 +2,11 @@ import React, {Component} from "react";
 import styled from "styled-components";
 
 const Ibagem = styled.img`
-    height:25px;
+    height:35px;
     margin-top:0px;
-    margin-left:15px;
+    margin-left:0px;
 `;
+
 const Button1 = styled.button`
     background-color:inherit;
     border:none;

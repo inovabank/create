@@ -13,8 +13,8 @@ import MyVideosButton from './MyVideosButton';
 const Wrapper = styled.div`
     align-self: center;
     width:100%;
-    height:50px;
-    background-color:#c2c2c2;
+    height:59px;
+    background-color:#f2f2f2;  
     padding : 11px 50px;
 `;
 
@@ -29,6 +29,7 @@ const Right = styled.div`
 const Left = styled.div`
     float:left;
     display:inline-block;
+    margin-left:0px
 `;
 
 export default class BarTop extends React.Component {

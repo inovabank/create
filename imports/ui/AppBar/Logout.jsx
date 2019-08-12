@@ -6,10 +6,10 @@ import Typography from "@material-ui/core/Typography";
 
 const Logout1 = styled.button`
     font-weight: bold;
-    padding: 15px 25px;
+    padding: 10px 35px;
     font-size:1.5rem;
     border:none;
-    background-color:inherit;
+    background-color:#081326;
     margin-right:10px;
 `;
 
