@@ -2,16 +2,16 @@ import React, {Component} from "react";
 import styled from "styled-components";
 
 const Ibagem = styled.img`
-    height:40px;
-    margin-top:3px;
-    margin-left:10px;
+    height:35px;
+    margin-top:0px;
+    margin-left:0px;
 `;
+
 const Button1 = styled.button`
     background-color:inherit;
     border:none;
     outline:none;  
 `;
-
 
 export default class HomePage extends Component {
     constructor(props){
@@ -29,7 +29,7 @@ export default class HomePage extends Component {
     render() {
         return (
             <Button1 onClick = {this.homepage}>
-                <Ibagem src="/images/JangadaSolta.png"/>
+                <Ibagem src="/images/jagads.png"/>
             </Button1>
         );
     }

@@ -8,6 +8,9 @@ import Hidden from "@material-ui/core/Hidden";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import ButtonAccount from './button-account';
+import Box from '@material-ui/core/Box';
+import {position} from '@material-ui/system';
 
 const theme = createMuiTheme({
     palette: {
@@ -43,7 +46,7 @@ const First = styled.div`
 const FirstContent = styled.div`
     display: flex;
     justify-content: space-between;
-    padding: 4px 5% 24px 5%;
+    padding: 4px 5% 24px 0%;
 `;
 
 const FirstContentRes = styled.div`
@@ -57,42 +60,50 @@ const ColumnFirst = styled.div`
 `;
 
 const MainTextFirst = styled.h3`
-    font-family:'Arial';
+    font-family:'Bahnschrift';
     color:#000033;
     font-size:3.2rem;
     text-align:justify;
 `;
 
 const CifraText = styled.h3`
-    font-family:'Arial';
+    font-family:'Bahnschrift';
     color:#000033;
     font-size:3.2rem;
     text-align:left;
 `;
 
 const SubText = styled.h3`
-    font-family:'Arial';
+    font-family:'Bahnschrift';
     color:grey;
     margin-top: 0px;
     padding:0% 8%;
-    font-size:1.3rem;
+    font-size:1.4rem;
     text-align:justify;
+    font-weight: 100;
 `;
 
 const ReceivedText = styled.h3`
+    font-family:'Bahnschrift';
+    color:#c2c2c2;
+    font-size:3.2rem;
+    text-align:right;
     margin-top: 0px;
+    font-weight: 200;
     margin-bottom: 0px;
-    font-family:'Arial';
-    color:grey;
-    font-size:2rem;
 `;
 
-const ValorRecebido = styled.h3`
-    font-family:'Arial';
-    color:#8B008B;
-    font-size:2rem;
-    text-align:rigth;
-    padding:0% 70%;
+const ReceivedTextCifra = styled.h3 `
+    font-family:'Bahnschrift';
+    color:#000033;
+    font-size:3.2rem;
+    text-align:right;
+`
+
+const ReceivedDiv = styled.div`
+    font-family:'Bahnschrift';
+    font-weight: 200;
+    margin-top: 20px;
 `;
 
 const Second = styled.div`
@@ -114,25 +125,13 @@ const SecondContentRespons = styled.div`
     flex-direction: column;
 `;
 
-const SecondColumns = styled.button`
-    margin:2% 1%;
-    padding: 5px 60px;
-    font-size: 1.2em;
-    font-weight: bold;
-    border-radius:0px;
-    text-align:center;
-    background-color:white;
-    color:gray;
-    margin:40px;
-`;
-
 const SecondColumnsContent = styled.div`
-    width: 64px;
+    width: 100% ;
 `;
 
 const Third = styled.div` 
     width:100% ;
-    background-color:#e9e9e9;
+    background-color:#f6f6f6;
     color:white;
 `;
 
@@ -167,11 +166,10 @@ const SecondColumn = styled.div`
 `;
 
 const OpenValue = styled.div`
-    font-size: 100px;
-`;
-
-const ReceivedDiv = styled.div`
-    margin-top: 20px;  
+    font-family:'Bahnschrift';
+    font-weight: 200;
+    font-size: 140px;
+    text-align:right;
 `;
 
 export default class Account extends Component {
@@ -223,11 +221,6 @@ export default class Account extends Component {
         this.getAccountData();
     }
 
-
-    /*FUNCTIONS*/
-    // account balance: Empréstimo ou Saldo? (fix this)
-    // available balance: Saldo disponível
-
     render() {
         return (
             <PageWrapper>
@@ -236,16 +229,23 @@ export default class Account extends Component {
                         <WrapperBar >
                             <BarTop redirectToHome={true} {...this.props}/>
                         </WrapperBar>
+                        
                         <First>
                             <Hidden smDown>
                                 <FirstContent>
                                     <div>
+                                    <Box
+                                            bgcolor="white"
+                                            color="white"
+                                            position="absolute"
+                                            zIndex="modal">
                                     <MainTextFirst>
-                                        Valor em Aberto:
+                                        Valor devido:
                                     </MainTextFirst>
                                     <SubText>
                                         Parcelas pagas: 1 de 5
                                     </SubText>
+                                    </Box>
                                     </div>
                                     <ReceivedDiv>
                                     <ReceivedText>
@@ -269,19 +269,19 @@ export default class Account extends Component {
                                 <FirstContentRes>
                                     <div>
                                         <MainTextFirst>
-                                            Valor em Aberto:
+                                            Valor devido:
                                         </MainTextFirst>
                                         <SubText>
                                             Parcelas pagas: 1 de 5
                                         </SubText>
                                     </div>
-                                    <ReceivedDiv>
+                                    <ReceivedDiv >
                                         <ReceivedText>
                                             Valor Recebido:
                                         </ReceivedText>
-                                        <ReceivedText>
+                                        
                                             R$ {this.state.accountData.accountBalance === 1 ? "1250,00" : this.state.accountData.accountBalance}
-                                        </ReceivedText>
+                                        
                                     </ReceivedDiv>
                                 </FirstContentRes>
                                 <SecondColumn>
@@ -292,58 +292,31 @@ export default class Account extends Component {
                                         {this.state.accountData.availableBalance === 1 ? "950,00" : this.state.accountData.availableBalance}
                                     </OpenValue>
                                 </SecondColumn>
-                            </Hidden>
-                        </First>
+                            </Hidden>                       
+                        </First>              
                         <Second>
+                        <Box
+                                bgcolor="rgba(0,0,0,0)"
+                                color="white"
+                                position="absolute"
+                                left= "16.5%"
+                                top={130}
+                                zIndex="tooltip"
+                              >
                             <Hidden mdDown>
                             <SecondContent>
-                                <SecondColumns>
-                                    <SecondColumnsContent>
-                                        <Typography  gutterBottom variant="h5" component="h2">
-                                            Gerar boleto
-                                        </Typography>
-                                    </SecondColumnsContent>
-                                </SecondColumns>
-                                <SecondColumns>
-                                    <SecondColumnsContent>
-                                        <Typography gutterBottom variant="h5" component="h2">
-                                            Meu grupo
-                                        </Typography>
-                                    </SecondColumnsContent>
-                                </SecondColumns>
-                                <SecondColumns>
-                                    <SecondColumnsContent>
-                                        <Typography  gutterBottom variant="h5" component="h2">
-                                            Pedir crédito
-                                        </Typography>
-                                    </SecondColumnsContent>
-                                </SecondColumns>
+                                <SecondColumnsContent>
+                                         <ButtonAccount {...this.state}/>
+                                </SecondColumnsContent>
                             </SecondContent>
                             </Hidden>
+                        </Box>
                             <Hidden lgUp>
-                            <SecondContentRespons>
-                                <SecondColumns>
+                                <SecondContent>
                                     <SecondColumnsContent>
-                                        <Typography  gutterBottom variant="h5" component="h2">
-                                            Gerar boleto
-                                        </Typography>
+                                         <ButtonAccount {...this.state}/>
                                     </SecondColumnsContent>
-                                </SecondColumns>
-                                <SecondColumns>
-                                    <SecondColumnsContent>
-                                        <Typography gutterBottom variant="h5" component="h2">
-                                            Meu grupo
-                                        </Typography>
-                                    </SecondColumnsContent>
-                                </SecondColumns>
-                                <SecondColumns>
-                                    <SecondColumnsContent>
-                                        <Typography  gutterBottom variant="h5" component="h2">
-                                            Pedir crédito
-                                        </Typography>
-                                    </SecondColumnsContent>
-                                </SecondColumns>
-                            </SecondContentRespons>
+                                </SecondContent>
                             </Hidden>
                         </Second>
                         <Third>

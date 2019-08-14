@@ -13,7 +13,7 @@ const PublicRoute = ({ component: Component, ...rest }) => {
                 isAuthenticated === false ? (
                     <Component {...props} />
                 ) : (
-                    <Redirect to={{ pathname: '/account', state: { from: props.location } }} />
+                    <Redirect to={{ pathname: '/video', state: { from: props.location } }} />
                 )
             }
         />
