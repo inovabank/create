@@ -9,6 +9,7 @@ import Logout from './Logout';
 import HomePage from './HomePage';
 import MyAccountButton from './MyAccountButton';
 import MyVideosButton from './MyVideosButton';
+import Divider from '@material-ui/core/Divider';
 
 const Wrapper = styled.div`
     align-self: center;
@@ -46,6 +47,8 @@ export default class BarTop extends React.Component {
                 <Right>
                     <Logout {...this.props}/>
                 </Right>
+                <br/><br/><br/><br/>
+                <Divider component="li"/>
             </Wrapper>
         );
     }

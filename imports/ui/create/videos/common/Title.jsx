@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 
 const MainTitle = styled.div`
     font-size:4rem;
-    color:#122B48;
+    color:#002747;
     font-family: 'Bahnschrift';
     text-align: right;
 `;
