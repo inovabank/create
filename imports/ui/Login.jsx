@@ -245,10 +245,10 @@ export default class Login extends Component {
                    <Title style={{fontWeight: 'bold',}}>Login</Title>
                    <LittleText>
                        Entre na Jangada com a gente! <br></br> 
-                       <Link to="#" style={{fontSize: '13px',}}> Ainda não tem uma conta? Clique aqui!</Link>
+                       <Link to="/signup" style={{fontSize: '13px',}}> Ainda não tem uma conta? Clique aqui!</Link>
                    </LittleText>
                    {/*<CriarConta> 
-                       <Link to="/signup"> Ainda não tem uma conta? Clique aqui!</Link>
+                       <Link to=""> Ainda não tem uma conta? Clique aqui!</Link>
                    </CriarConta>*/}
                    <Relative>
                         <TextContainer>
