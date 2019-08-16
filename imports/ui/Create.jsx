@@ -44,7 +44,9 @@ export default class Create extends Component {
                 <MuiThemeProvider theme={theme} >
                     <CssBaseline />
                     <BarTop {...this.props} />
+                    <div className="container  d-flex justify-content-center" style={{ justifyContent: 'center'}}>
                     <HomeVideos {...this.props} />
+                    </div>
                 </MuiThemeProvider>
             </main>
         );
