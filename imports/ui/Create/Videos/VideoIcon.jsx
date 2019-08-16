@@ -68,7 +68,6 @@ export default class VideoIcon extends Component {
                     this.props.history.push(`${ response.videoId }`);
 
                 }
-                {this.state.id === this.props.history.location.pathname.split("/").pop() ? window.location.reload() : ''}
             }
         });
     }

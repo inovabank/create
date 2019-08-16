@@ -82,8 +82,6 @@ export default class HomeVideos extends Component {
                 else {
                     videosList = (
                         allVideos.map(function (video) {
-                            console.log(response.data.url !== video.url);
-                            console.log(video.url);
                             if(response.data.url !== video.url && numVideos < 12) {
                                 numVideos = numVideos + 1;
                                 return (<VideoIcon {...{...props, ...video}} />);
