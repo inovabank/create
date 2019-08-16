@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Meteor } from 'meteor/meteor';
 import {createMuiTheme, MuiThemeProvider, withStyles} from '@material-ui/core/styles';
-import BarTop from "./AppBar/BarTop";
+import BarTop from "../AppBar/BarTop";
 import Grid from '@material-ui/core/Grid';
 import Hidden from "@material-ui/core/Hidden";
 import CssBaseline from "@material-ui/core/CssBaseline";

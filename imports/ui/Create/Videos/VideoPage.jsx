@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import Description from './common/Description';
-import Title from './common/Title';
-import Video from './common/Video';
-import Playlist from './common/Playlist';
-import Picture from './common/Picture'
+import Description from './Common/Description';
+import Title from './Common/Title';
+import Video from './Common/Video';
+import Playlist from './Common/Playlist';
+import Picture from './Common/Picture'
 import styled from 'styled-components';
 import VideoIconPlaylist from "./VideoIconPlaylist";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import HomeVideos from "./HomeVideos";
-import BarTop from "../../AppBar/BarTop";
+import BarTop from "../AppBar/BarTop";
 import {Typography} from "@material-ui/core";
 
 const theme = createMuiTheme({
