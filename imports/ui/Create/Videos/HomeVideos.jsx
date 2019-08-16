@@ -4,7 +4,7 @@ import {allVideos} from '../../../../lib/allVideos';
 import {withStyles} from '@material-ui/core/styles';
 import Grid from "@material-ui/core/Grid";
 import styled from "styled-components";
-import Title from "./common/Title";
+import Title from "./Common/Title";
 
 const Main = styled.div`
     padding:2% 0;

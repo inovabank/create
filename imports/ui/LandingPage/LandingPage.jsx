@@ -36,7 +36,7 @@ export default class LandingPage extends Component {
                         <p class="sub-text-first">
                             Aprenda com a Jangada!
                         </p>
-                        <button class="signup-first" id="myBtnSignup">COMEÇE AGORA</button>
+                        <button class="signup-first" id="myBtnSignup" onClick={this.redirectToSignup}>COMEÇE AGORA</button>
                         <br/><br/>
                         <button class="learnmore-first">SAIBA MAIS</button>
                     </div>
