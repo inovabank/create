@@ -9,24 +9,29 @@ import Logout from './Logout';
 import HomePage from './HomePage';
 import MyAccountButton from './MyAccountButton';
 import MyVideosButton from './MyVideosButton';
+import Divider from '@material-ui/core/Divider';
 
 const Wrapper = styled.div`
     align-self: center;
     width:100%;
-    height:70px;
-    background-color:#606060;
-    padding : 10px 30px;
+    height:59px;
+    background-color:#f2f2f2;  
+    padding : 11px 50px;
 `;
+
 const Right = styled.div`
+    font-family:'Bahnschrift';
     float:right;
+    padding : 0px;
+    margin-top: 0;
     display:inline-block;
 `;
+
 const Left = styled.div`
     float:left;
     display:inline-block;
+    margin-left:0px
 `;
-
-
 
 export default class BarTop extends React.Component {
     constructor(props){
@@ -42,6 +47,8 @@ export default class BarTop extends React.Component {
                 <Right>
                     <Logout {...this.props}/>
                 </Right>
+                <br/><br/><br/><br/>
+                <Divider component="li"/>
             </Wrapper>
         );
     }

@@ -5,9 +5,11 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import BarTop from "./AppBar/BarTop";
 
 const theme = createMuiTheme({
-    palette: {
-        type: 'dark',
+  palette: {
+    background: {
+      default: "#f2f2f2"
     }
+  }
 });
 
 export default class Create extends Component {

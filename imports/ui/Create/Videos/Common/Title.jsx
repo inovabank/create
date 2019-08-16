@@ -4,8 +4,12 @@ import {Typography, withStyles} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 
 const MainTitle = styled.div`
-    font-size:3rem;
+    font-size:4rem;
+    color:#002747;
+    font-family: 'Bahnschrift';
+    text-align: right;
 `;
+
 const DescriptionTitle = styled.div`
     color:gray;
     padding: 0 4% 1% 4%;

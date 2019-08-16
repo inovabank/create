@@ -180,6 +180,13 @@ const EnterButton = styled.button`
     background-image: linear-gradient(to right, #7B473B, #195474);
     margin-top:10px;
 `;
+
+const Button = styled.button`
+    background-color:inherit;
+    border:none;
+    outline:none;  
+`;
+
 export default class Login extends Component {
 
     constructor(props) {
