@@ -8,7 +8,7 @@ import Hidden from "@material-ui/core/Hidden";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import ButtonAccount from './button-account';
+import ButtonAccount from '../AppBar/ButtonAccount';
 import Box from '@material-ui/core/Box';
 import {position} from '@material-ui/system';
 

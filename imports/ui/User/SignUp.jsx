@@ -156,11 +156,6 @@ const JangadaLogo = styled.img`
     margin-top:14px;
     margin-left:70px;
 `;
-const Button = styled.button`
-    background-color:inherit;
-    border:none;
-    outline:none;  
-`;
 const Button2 = styled.button`
     background-color:inherit;
     border:none;
