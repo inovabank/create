@@ -11,19 +11,20 @@ import Button from '@material-ui/core/Button';
 import ButtonAccount from '../AppBar/ButtonAccount';
 import Box from '@material-ui/core/Box';
 import {position} from '@material-ui/system';
+import Dashboard from './Dashboard/Dashboard';
 
 const theme = createMuiTheme({
     palette: {
-        type: 'dark',
-    },
+        background: "#f2f2f2"
+      }    
 });
 
 const PageWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: space-between;
     height: 100%;
-    background: white;
+    background: #f2f2f2;
 `;
 
 const WrapperBar = styled.div`
@@ -223,76 +224,40 @@ export default class Account extends Component {
 
     render() {
         return (
-            <PageWrapper>
-                <MuiThemeProvider theme={theme} >
-                    <CssBaseline />
-                        <WrapperBar >
-                            <BarTop redirectToHome={true} {...this.props}/>
-                        </WrapperBar>
+            <PageWrapper >
+                <BarTop redirectToHome={true} {...this.props}/>
+
+                <MuiThemeProvider theme={theme}>
+                <CssBaseline />
+                        <Dashboard />
                         
-                        <First>
-                            <Hidden smDown>
-                                <FirstContent>
-                                    <div>
-                                    <Box
-                                            bgcolor="white"
-                                            color="white"
-                                            position="absolute"
-                                            zIndex="modal">
+                        {/* <First>
+                            <FirstContentRes>
+                                <div>
                                     <MainTextFirst>
                                         Valor devido:
                                     </MainTextFirst>
                                     <SubText>
                                         Parcelas pagas: 1 de 5
                                     </SubText>
-                                    </Box>
-                                    </div>
-                                    <ReceivedDiv>
+                                </div>
+                                <ReceivedDiv >
                                     <ReceivedText>
                                         Valor Recebido:
                                     </ReceivedText>
-                                    <ReceivedText>
+                                    
                                         R$ {this.state.accountData.accountBalance === 1 ? "1250,00" : this.state.accountData.accountBalance}
-                                    </ReceivedText>
-                                    </ReceivedDiv>
-                                </FirstContent>
-                                <SecondColumn>
-                                    <CifraText>
-                                            R$
-                                    </CifraText>
-                                    <OpenValue>
-                                        {this.state.accountData.availableBalance === 1 ? "950,00" : this.state.accountData.availableBalance}
-                                    </OpenValue>
-                                </SecondColumn>
-                            </Hidden>
-                            <Hidden mdUp>
-                                <FirstContentRes>
-                                    <div>
-                                        <MainTextFirst>
-                                            Valor devido:
-                                        </MainTextFirst>
-                                        <SubText>
-                                            Parcelas pagas: 1 de 5
-                                        </SubText>
-                                    </div>
-                                    <ReceivedDiv >
-                                        <ReceivedText>
-                                            Valor Recebido:
-                                        </ReceivedText>
-                                        
-                                            R$ {this.state.accountData.accountBalance === 1 ? "1250,00" : this.state.accountData.accountBalance}
-                                        
-                                    </ReceivedDiv>
-                                </FirstContentRes>
-                                <SecondColumn>
-                                    <CifraText>
-                                        R$
-                                    </CifraText>
-                                    <OpenValue>
-                                        {this.state.accountData.availableBalance === 1 ? "950,00" : this.state.accountData.availableBalance}
-                                    </OpenValue>
-                                </SecondColumn>
-                            </Hidden>                       
+                                    
+                                </ReceivedDiv>
+                            </FirstContentRes>
+                            <SecondColumn>
+                                <CifraText>
+                                    R$
+                                </CifraText>
+                                <OpenValue>
+                                    {this.state.accountData.availableBalance === 1 ? "950,00" : this.state.accountData.availableBalance}
+                                </OpenValue>
+                            </SecondColumn>
                         </First>              
                         <Second>
                         <Box
@@ -303,34 +268,14 @@ export default class Account extends Component {
                                 top={130}
                                 zIndex="tooltip"
                               >
-                            <Hidden mdDown>
                             <SecondContent>
                                 <SecondColumnsContent>
                                          <ButtonAccount {...this.state}/>
                                 </SecondColumnsContent>
                             </SecondContent>
-                            </Hidden>
                         </Box>
-                            <Hidden lgUp>
-                                <SecondContent>
-                                    <SecondColumnsContent>
-                                         <ButtonAccount {...this.state}/>
-                                    </SecondColumnsContent>
-                                </SecondContent>
-                            </Hidden>
-                        </Second>
-                        <Third>
-                            <ThirdContent>
-                            <br/><br/><br/><br/><br/><br/><br/>
-                            <br/><br/><br/><br/><br/><br/><br/>
-                            </ThirdContent>
-                        </Third>
-                        <Fourth>
-                            <FourthContent>
-
-                            </FourthContent>
-                        </Fourth>
-                </MuiThemeProvider>
+                        </Second> */}
+                    </MuiThemeProvider>
             </PageWrapper>
         );
     }

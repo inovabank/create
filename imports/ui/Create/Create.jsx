@@ -41,7 +41,7 @@ export default class Create extends Component {
     render() {
         return (
             <main>
-                <MuiThemeProvider theme={theme} >
+                <MuiThemeProvider theme={theme}  >
                     <CssBaseline />
                     <BarTop {...this.props} />
                     <HomeVideos {...this.props} />

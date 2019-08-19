@@ -40,6 +40,7 @@ export default class BarTop extends React.Component {
 
     render() {
         return (
+            <main>
             <Wrapper >
                 <Left>
                     <HomePage {...this.props}/>
@@ -47,9 +48,9 @@ export default class BarTop extends React.Component {
                 <Right>
                     <Logout {...this.props}/>
                 </Right>
-                <br/><br/><br/><br/>
-                <Divider component="li"/>
             </Wrapper>
+            <Divider component="li"/>
+            </main>
         );
     }
   }

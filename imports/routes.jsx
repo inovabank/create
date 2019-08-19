@@ -15,7 +15,7 @@ import LandingPage from "./ui/LandingPage/LandingPage";
 const browserHistory = createHistory();
 
 export const renderRoutes = () => (
-    <Router history={browserHistory}>
+    <Router history={browserHistory} >
         <Switch>
             <PublicRoute exact path ="/" component={LandingPage}/>
             <PublicRoute exact path="/login" component={Login}/>
