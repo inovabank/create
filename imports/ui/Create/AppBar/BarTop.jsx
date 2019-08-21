@@ -49,7 +49,7 @@ export default class BarTop extends React.Component {
                     <Logout {...this.props}/>
                 </Right>
             </Wrapper>
-            <Divider component="li"/>
+            <Divider/>
             </main>
         );
     }
