@@ -41,7 +41,7 @@ export default class BarTop extends React.Component {
     render() {
         return (
             <Wrapper >
-                <div className="container  d-flex justify-content-center" style={{ justifyContent: 'center'}}>
+                <div className="container d-flex justify-content-center" style={{ justifyContent: 'center'}}>
                     <Left>
                         <HomePage {...this.props}/>
                     </Left>

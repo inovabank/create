@@ -13,10 +13,13 @@ import BarTop from "../../AppBar/BarTop";
 import {Typography} from "@material-ui/core";
 
 const theme = createMuiTheme({
-    palette: {
-        type: 'dark',
-    },
+  palette: {
+    background: {
+      default: "#f2f2f2"
+    }
+  }
 });
+
 const Main = styled.div`
     padding:2% 12%;
     @media screen and (max-width:1100px)
@@ -50,7 +53,7 @@ const SecondColumn = styled.div`
     color:white;
     height:28vw;
     display:inline-block;  
-    background-color:#212121;
+    background-color:#f2f2f2;
     margin-left:5px;
     padding: 0 0 1% 0;
     vertical-align:top;

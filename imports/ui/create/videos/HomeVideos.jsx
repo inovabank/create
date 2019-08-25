@@ -22,8 +22,8 @@ const StyledGrid = withStyles({
     root: {
         width: '100%',
         display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'flex-start',
+        flexDirection: 'inline',
+        justifyContent: 'center',
     },
 })(Grid)
 
